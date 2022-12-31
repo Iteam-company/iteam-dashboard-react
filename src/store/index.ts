@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+// import { setupListeners } from '@reduxjs/toolkit/query';
 import { isDevelopment } from '../constants/env';
 import { authReducer } from './slices/auth-slice';
+import { baseApiService } from '../api/base-query';
 
 export const store = configureStore({
 	reducer: {
 		authReducer,
+		[baseApiService.reducerPath]: baseApiService.reducer,
 		// posts: postsReducer,
 		// comments: commentsReducer,
 		// users: usersReducer,
@@ -13,7 +15,7 @@ export const store = configureStore({
 
 	middleware(getDefaultMiddleware) {
 		// there we add some apis endpoints
-		return getDefaultMiddleware().concat();
+		return getDefaultMiddleware().concat(baseApiService.middleware);
 	},
 	devTools: isDevelopment,
 });
