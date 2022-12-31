@@ -48,8 +48,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 [Steps](https://yarnpkg.com/getting-started/migration#editor-support)
 [VS-code-configuration](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-the-workspace-version-of-typescript)
 
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-

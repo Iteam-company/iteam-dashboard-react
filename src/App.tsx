@@ -1,9 +1,14 @@
-import React, { memo } from 'react';
+import { ThemeProvider } from '@mui/material';
+import React, { memo, useMemo } from 'react';
+import { useRoutes } from 'react-router-dom';
+import { routesSchema } from './constants/routes/routes-schema';
+import { themes } from './themes';
 
-const App = memo(() => {
-  return <div>Hello world!</div>;
+export const App = memo(() => {
+	// in the future we get theme from redux store and make it extendable
+	const currentTheme = useMemo(() => themes[0], [themes]);
+	const content = useRoutes(routesSchema);
+	return <ThemeProvider theme={currentTheme}>{content}</ThemeProvider>;
 });
 
 App.displayName = 'App';
-
-export default App;
