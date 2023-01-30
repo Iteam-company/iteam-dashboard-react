@@ -13,10 +13,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from '../reusable/copyright';
+import { useLogoutMutation } from '../../../api/auth';
+import { useDispatch } from 'react-redux';
 
 const theme = createTheme();
 
 export const SignUp = () => {
+	const dispatch = useDispatch();
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);

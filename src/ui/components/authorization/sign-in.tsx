@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useCallback, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,18 +13,40 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from '../reusable/copyright';
+import { useLoginMutation } from '../../../api/auth';
+import { useAppDispatch } from '../../../hooks/store/use-app-dispatch-hook';
 
 const theme = createTheme();
 
 export function SignIn() {
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get('email'),
-			password: data.get('password'),
-		});
-	};
+	const dispatch = useAppDispatch();
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [login, { isLoading: isLoginLoading, isError: isLoginError }] =
+		useLoginMutation();
+
+	const takeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setEmail(event.target.value)
+	}
+	
+
+	const handleSubmit = useCallback(
+		async (event: React.FormEvent<HTMLFormElement>) => {
+			event.preventDefault();
+			try {
+				const response = await login(
+					{ email: 'email@gmail.com', password: 'password' });
+			} catch (e) {
+				console.log(JSON.stringify(e, null, 2));
+			}
+			console.log('sending has fired');
+		},
+		[dispatch, login],
+	);
+
+	if (isLoginLoading) {
+		return <div>Loading</div>;
+	}
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -57,6 +79,7 @@ export function SignIn() {
 							name='email'
 							autoComplete='email'
 							autoFocus
+							value={email}
 						/>
 						<TextField
 							margin='normal'
@@ -67,6 +90,7 @@ export function SignIn() {
 							type='password'
 							id='password'
 							autoComplete='current-password'
+							value={password}
 						/>
 						<FormControlLabel
 							control={<Checkbox value='remember' color='primary' />}
