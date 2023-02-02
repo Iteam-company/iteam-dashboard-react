@@ -3,6 +3,7 @@ import { RouteObject } from 'react-router-dom';
 import { SignIn } from '../../ui/components/authorization/sign-in';
 import { SignUp } from '../../ui/components/authorization/sign-up';
 import { ManagerDashboard } from '../../ui/layouts/dashboards/manager-dashboard';
+import { AuthGuard } from '../../ui/utils/Auth-guard';
 import { Routes } from './routes';
 
 export const routesSchema: Array<RouteObject> = [
@@ -16,6 +17,10 @@ export const routesSchema: Array<RouteObject> = [
 	},
 	{
 		path: Routes.ROOT_PATH,
-		element: <ManagerDashboard />,
+		element: (
+			<AuthGuard>
+				<ManagerDashboard />
+			</AuthGuard>
+		),
 	},
 ];

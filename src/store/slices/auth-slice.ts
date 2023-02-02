@@ -6,7 +6,7 @@ import { LocalStorageWorker } from '../../utils/local-storage/local-storage-work
 
 const initialState: AuthSliceStoreType = {
 	user: null,
-	accessToken: null,
+	accessToken: LocalStorageWorker.readFromLocalStorage(KeysOfLocalStorage.ACCESS_TOKEN),
 };
 
 const authSlice = createSlice({
@@ -15,7 +15,7 @@ const authSlice = createSlice({
 	reducers: {
 		setCredentials(state, action: PayloadAction<any>) {
 			const { user, accessToken } = action.payload;
-
+			console.log(user);
 			state.user = action.payload.user;
 			LocalStorageWorker.writeToLocalStorage(
 				KeysOfLocalStorage.ACCESS_TOKEN,
@@ -43,5 +43,6 @@ export const { setAccesToken, setCredentials, removeCredentials } =
 
 export const user = (state: RootState) => state.authReducer.user;
 export const accessToken = (state: RootState) => state.authReducer.accessToken;
+export const selectIsAuthenticated = (state: RootState) => !!(state.authReducer.user);
 
 export const authReducer = authSlice.reducer;

@@ -1,24 +1,32 @@
-import { baseApiService } from "./base-query";
+import { baseApiService } from './base-query';
 import { AUTH_ENDPOINTS } from './auth-endpoints/auth-endpoints';
-import { LoginCredentials } from './login-credentials';
-
+import { LoginCredentials } from '../types/auth/login-credentials';
+import { RegistrationCredentials } from '../types/auth/sign-up-credentials';
 
 export const authAPIService = baseApiService.injectEndpoints({
-  endpoints: (builder) => ({
-    login: builder.mutation({
-      query: (credentials: LoginCredentials) => ({
-        url: AUTH_ENDPOINTS.SIGN_IN,
-        method: 'POST',
-        body: credentials,
-      }),
-    }),
-    logout: builder.mutation({
-      query: () => ({
-        url: AUTH_ENDPOINTS.SIGN_DOWN ,
-        method: 'POST',
-      }),
-    }),
-  }),
+	endpoints: (builder) => ({
+		login: builder.mutation({
+			query: (credentials: LoginCredentials) => ({
+				url: AUTH_ENDPOINTS.SIGN_IN,
+				method: 'POST',
+				body: credentials,
+			}),
+		}),
+		registration: builder.mutation({
+			query: (credentials: RegistrationCredentials) => ({
+				url: AUTH_ENDPOINTS.SIGN_UP,
+				method: 'POST',
+				body: credentials,
+			}),
+		}),
+		logout: builder.mutation({
+			query: () => ({
+				url: AUTH_ENDPOINTS.SIGN_DOWN,
+				method: 'POST',
+			}),
+		}),
+	}),
 });
 
-export const { useLoginMutation, useLogoutMutation } = authAPIService;
+export const { useLoginMutation, useLogoutMutation, useRegistrationMutation } =
+	authAPIService;

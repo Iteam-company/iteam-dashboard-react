@@ -13,21 +13,71 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from '../reusable/copyright';
-import { useLogoutMutation } from '../../../api/auth';
 import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { initialSignUpValue } from '../../../types/formik/formik-sign-up';
+import { useRegistrationMutation } from '../../../api/auth';
+import { Link as RouterLink } from 'react-router-dom';
+import { Routes } from '../../../constants/routes/routes';
+import { useState } from 'react';
 
 const theme = createTheme();
 
+const initialValues: initialSignUpValue = {
+	email: '',
+	password: '',
+	name: '',
+	surname: '',
+};
+
 export const SignUp = () => {
 	const dispatch = useDispatch();
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get('email'),
-			password: data.get('password'),
-		});
-	};
+
+	const [registration, { isLoading: isSignUpLoading, isError: isSignUpError }] =
+		useRegistrationMutation();
+	const formik = useFormik({
+		initialValues,
+		onSubmit: async (data: initialSignUpValue) => {
+			const { name, surname, email, password } = data;
+			try {
+				const response = await registration({
+					name,
+					surname,
+					email,
+					password,
+				}).unwrap();
+				console.log(response);
+			} catch (error) {
+				alert(JSON.stringify(data, null, 2));
+			}
+		},
+		validationSchema: Yup.object().shape({
+			name: Yup.string()
+				.min(2, 'Too Short!')
+				.max(50, 'Too Long!')
+				.required('Required'),
+			surname: Yup.string()
+				.min(2, 'Too Short!')
+				.max(50, 'Too Long!')
+				.required('Required'),
+			password: Yup.string().min(8).max(20).required('Password is required'),
+			email: Yup.string()
+				.required('Email is required')
+				.email('Must be a valid email')
+				.min(8)
+				.max(50),
+		}),
+		validateOnBlur: false,
+	});
+
+	const {
+		errors,
+		touched,
+		values,
+		handleChange,
+		handleSubmit,
+	} = formik;
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -55,22 +105,30 @@ export const SignUp = () => {
 							<Grid item xs={12} sm={6}>
 								<TextField
 									autoComplete='given-name'
-									name='firstName'
+									id='name'
+									name='name'
+									label='First Name'
 									required
 									fullWidth
-									id='firstName'
-									label='First Name'
 									autoFocus
+									value={values.name}
+									onChange={handleChange}
+									helperText={touched.name && errors.name}
+									error={touched.name && Boolean(errors.name)}
 								/>
 							</Grid>
 							<Grid item xs={12} sm={6}>
 								<TextField
 									required
 									fullWidth
-									id='lastName'
+									id='surname'
 									label='Last Name'
-									name='lastName'
+									name='surname'
 									autoComplete='family-name'
+									value={values.surname}
+									onChange={handleChange}
+									helperText={touched.surname && errors.surname}
+									error={touched.surname && Boolean(errors.surname)}
 								/>
 							</Grid>
 							<Grid item xs={12}>
@@ -81,6 +139,11 @@ export const SignUp = () => {
 									label='Email Address'
 									name='email'
 									autoComplete='email'
+									value={values.email}
+									onChange={handleChange}
+									helperText={touched.email && errors.email}
+									error={touched.email && Boolean(errors.email)}
+									
 								/>
 							</Grid>
 							<Grid item xs={12}>
@@ -92,6 +155,10 @@ export const SignUp = () => {
 									type='password'
 									id='password'
 									autoComplete='new-password'
+									value={values.password}
+									onChange={handleChange}
+									helperText={touched.password && errors.password}
+									error={touched.password && Boolean(errors.password)}
 								/>
 							</Grid>
 							<Grid item xs={12}>
@@ -112,7 +179,10 @@ export const SignUp = () => {
 						</Button>
 						<Grid container justifyContent='flex-end'>
 							<Grid item>
-								<Link href='#' variant='body2'>
+								<Link
+									component={RouterLink}
+									to={`/${Routes.SIGN_IN}`}
+									variant='body2'>
 									Already have an account? Sign in
 								</Link>
 							</Grid>
