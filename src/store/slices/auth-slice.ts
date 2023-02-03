@@ -15,7 +15,6 @@ const authSlice = createSlice({
 	reducers: {
 		setCredentials(state, action: PayloadAction<any>) {
 			const { user, accessToken } = action.payload;
-
 			state.user = action.payload.user;
 			LocalStorageWorker.writeToLocalStorage(
 				KeysOfLocalStorage.ACCESS_TOKEN,
@@ -43,5 +42,6 @@ export const { setAccesToken, setCredentials, removeCredentials } =
 
 export const user = (state: RootState) => state.authReducer.user;
 export const accessToken = (state: RootState) => state.authReducer.accessToken;
+export const selectIsAuthenticated = (state: RootState) => !!(state.authReducer.user);
 
 export const authReducer = authSlice.reducer;
