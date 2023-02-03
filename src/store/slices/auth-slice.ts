@@ -6,7 +6,7 @@ import { LocalStorageWorker } from '../../utils/local-storage/local-storage-work
 
 const initialState: AuthSliceStoreType = {
 	user: null,
-	accessToken: LocalStorageWorker.readFromLocalStorage(KeysOfLocalStorage.ACCESS_TOKEN),
+	accessToken: null,
 };
 
 const authSlice = createSlice({

@@ -34,6 +34,8 @@ export function SignIn() {
 	const navigate = useNavigate();
 	const [login, { isLoading: isLoginLoading, isError: isLoginError }] =
 		useLoginMutation();
+		const token = document.cookie;
+		console.log(token)
 
 	const formik = useFormik({
 		initialValues,

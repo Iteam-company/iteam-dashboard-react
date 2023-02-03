@@ -19,14 +19,25 @@ export const authAPIService = baseApiService.injectEndpoints({
 				body: credentials,
 			}),
 		}),
+		refreshAccesToken: builder.mutation({
+			query: () => ({
+				url: AUTH_ENDPOINTS.REGENERATE,
+				method: 'POST',
+			}),
+		}),
 		logout: builder.mutation({
 			query: () => ({
 				url: AUTH_ENDPOINTS.SIGN_DOWN,
-				method: 'POST',
+				method: 'POST', ////WAIT FOR ENDPOINT
 			}),
+		}),
+		getUsers: builder.query({
+			query: () => ({
+				url: '/user'
+			})
 		}),
 	}),
 });
 
-export const { useLoginMutation, useLogoutMutation, useRegistrationMutation } =
+export const { useLoginMutation, useRefreshAccesTokenMutation, useRegistrationMutation, useLogoutMutation, useGetUsersQuery } =
 	authAPIService;

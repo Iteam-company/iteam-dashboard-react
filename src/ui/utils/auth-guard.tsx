@@ -1,27 +1,30 @@
-import React, { FC, useState } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import React, { FC } from 'react';
+import { Navigate } from 'react-router-dom';
+import { Routes } from '../../constants/routes/routes';
 import useAuth from '../../types/hooks/auth/use-auth';
-import { SignIn } from '../components/authorization/sign-in';
+
 interface Props {
 	children?: React.ReactNode;
 }
 export const AuthGuard: FC<Props> = (_, children) => {
 	const auth = useAuth();
-	const location = useLocation();
-	const [requestedLocation, setRequestedLocation] = useState<null | string>(
-		null,
-	);
+	//const location = useLocation();
+	//const [requestedLocation, setRequestedLocation] = useState<null | string>(
+	//	null,
+	//);
 	if (!auth.isAuthorized) {
-		if (location.pathname !== requestedLocation) {
-			setRequestedLocation(location.pathname);
-		}
-		return <SignIn />;
+
+		return <Navigate to={`${Routes.ROOT_PATH}${Routes.SIGN_IN}`} />;
+		//if (location.pathname !== requestedLocation) {
+		//	setRequestedLocation(location.pathname);
+		//}
+		//return <Navigate to={`${Routes.ROOT_PATH}${Routes.SIGN_IN}`} />;
 	}
 
-	if (requestedLocation && location.pathname !== requestedLocation) {
-		setRequestedLocation(null);
-		return <Navigate to='/sign-in' />;
-	}
+	//if (requestedLocation && location.pathname !== requestedLocation) {
+	//	setRequestedLocation(null);
+	//	return <Navigate to={`${Routes.ROOT_PATH}${Routes.SIGN_IN}`} />;
+	//}
 
 	return children;
 	//const { children } = props;
