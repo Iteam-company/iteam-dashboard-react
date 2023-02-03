@@ -41,4 +41,3 @@ export const authAPIService = baseApiService.injectEndpoints({
 
 export const { useLoginMutation, useRefreshAccesTokenMutation, useRegistrationMutation, useLogoutMutation, useGetUsersQuery } =
 	authAPIService;
-	
