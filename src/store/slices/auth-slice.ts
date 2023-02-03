@@ -15,7 +15,6 @@ const authSlice = createSlice({
 	reducers: {
 		setCredentials(state, action: PayloadAction<any>) {
 			const { user, accessToken } = action.payload;
-			console.log(user);
 			state.user = action.payload.user;
 			LocalStorageWorker.writeToLocalStorage(
 				KeysOfLocalStorage.ACCESS_TOKEN,
