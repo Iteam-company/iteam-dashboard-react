@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,18 +13,56 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from '../reusable/copyright';
+import { useLoginMutation } from '../../../api/auth';
+import { useAppDispatch } from '../../../hooks/store/use-app-dispatch-hook';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { setAccesToken } from '../../../store/slices/auth-slice';
+import { InitialFormValue } from '../../../types/formik/formik-sign-in';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Routes } from '../../../constants/routes/routes';
 
 const theme = createTheme();
 
+const initialValues: InitialFormValue = {
+	email: '',
+	password: '',
+};
+
 export function SignIn() {
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get('email'),
-			password: data.get('password'),
-		});
-	};
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const [login, { isLoading: isLoginLoading, isError: isLoginError }] =
+		useLoginMutation();
+		const token = document.cookie;
+		console.log(token)
+
+	const formik = useFormik({
+		initialValues,
+		onSubmit: async (data) => {
+			const { email, password } = data;
+			try {
+				const response = await login({ email, password }).unwrap();
+				dispatch(setAccesToken(response.token));
+				console.log(response);
+				if (response) {
+					return navigate('/');
+				}
+			} catch (error) {
+				console.log(JSON.stringify(error, null, 2));
+			}
+		},
+		validationSchema: Yup.object().shape({
+			email: Yup.string()
+				.email('Must be a valid email')
+				.max(50)
+				.required('Email is required'),
+			password: Yup.string().min(8).max(20).required('Password is required'),
+		}),
+		validateOnBlur: false,
+	});
+
+	const { errors, touched, values, handleChange, handleSubmit } = formik;
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -49,6 +87,7 @@ export function SignIn() {
 						noValidate
 						sx={{ mt: 1 }}>
 						<TextField
+							error={touched.email && Boolean(errors.email)}
 							margin='normal'
 							required
 							fullWidth
@@ -57,8 +96,14 @@ export function SignIn() {
 							name='email'
 							autoComplete='email'
 							autoFocus
+							value={values.email}
+							onChange={handleChange}
+							helperText={touched.email && errors.email}
 						/>
+
 						<TextField
+							error={touched.email && Boolean(errors.password)}
+							helperText={touched.password && errors.password}
 							margin='normal'
 							required
 							fullWidth
@@ -67,6 +112,8 @@ export function SignIn() {
 							type='password'
 							id='password'
 							autoComplete='current-password'
+							value={values.password}
+							onChange={handleChange}
 						/>
 						<FormControlLabel
 							control={<Checkbox value='remember' color='primary' />}
@@ -86,7 +133,10 @@ export function SignIn() {
 								</Link>
 							</Grid>
 							<Grid item>
-								<Link href='#' variant='body2'>
+								<Link
+									component={RouterLink}
+									to={`/${Routes.SIGN_UP}`}
+									variant='body2'>
 									{"Don't have an account? Sign Up"}
 								</Link>
 							</Grid>
