@@ -20,7 +20,6 @@ import { initialSignUpValue } from '../../../types/formik/formik-sign-up';
 import { useRegistrationMutation } from '../../../api/auth';
 import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
-import { useState } from 'react';
 
 const theme = createTheme();
 
@@ -47,9 +46,8 @@ export const SignUp = () => {
 					email,
 					password,
 				}).unwrap();
-				console.log(response);
 			} catch (error) {
-				alert(JSON.stringify(data, null, 2));
+				console.log(JSON.stringify(data, null, 2));
 			}
 		},
 		validationSchema: Yup.object().shape({

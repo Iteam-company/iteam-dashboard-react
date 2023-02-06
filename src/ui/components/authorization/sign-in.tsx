@@ -34,8 +34,6 @@ export function SignIn() {
 	const navigate = useNavigate();
 	const [login, { isLoading: isLoginLoading, isError: isLoginError }] =
 		useLoginMutation();
-		const token = document.cookie;
-		console.log(token)
 
 	const formik = useFormik({
 		initialValues,
@@ -43,11 +41,7 @@ export function SignIn() {
 			const { email, password } = data;
 			try {
 				const response = await login({ email, password }).unwrap();
-				dispatch(setAccesToken(response.token));
-				console.log(response);
-				if (response) {
-					return navigate('/');
-				}
+				dispatch(setAccesToken(response.accessToken));
 			} catch (error) {
 				console.log(JSON.stringify(error, null, 2));
 			}
@@ -128,7 +122,13 @@ export function SignIn() {
 						</Button>
 						<Grid container>
 							<Grid item xs>
-								<Link href='#' variant='body2'>
+								<Link
+									component={RouterLink}
+									to={`/${Routes.FORGOT_PASS}`}
+									href='#' 
+									variant='body2'
+
+								>
 									Forgot password?
 								</Link>
 							</Grid>

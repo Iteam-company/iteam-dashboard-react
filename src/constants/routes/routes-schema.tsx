@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
+import { ForgetPassword } from '../../ui/components/authorization/forget-password';
 import { SignIn } from '../../ui/components/authorization/sign-in';
 import { SignUp } from '../../ui/components/authorization/sign-up';
 import { ManagerDashboard } from '../../ui/layouts/dashboards/manager-dashboard';
@@ -23,4 +24,8 @@ export const routesSchema: Array<RouteObject> = [
 			</AuthGuard>
 		),
 	},
+	{
+		path: `${Routes.ROOT_PATH}/${Routes.FORGOT_PASS}`,
+		element: <ForgetPassword />,
+	}
 ];

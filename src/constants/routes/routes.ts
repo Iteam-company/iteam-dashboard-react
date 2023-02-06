@@ -3,4 +3,5 @@ export enum Routes {
 	SIGN_IN = 'sign-in',
 	SIGN_UP = 'sign-up',
 	LOG_OUT = 'logout',
+	FORGOT_PASS = 'remind'
 }
