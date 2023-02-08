@@ -1,4 +1,4 @@
-import { KeysOfLocalStorage } from '../../constants/utils/local-storage/keys-of-local-storage';
+import { KeysOfLocalStorage } from '../../../constants/utils/local-storage/keys-of-local-storage';
 
 export class LocalStorageWorker {
 	// we make constructor prive there

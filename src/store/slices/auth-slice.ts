@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
 import { KeysOfLocalStorage } from '../../constants/utils/local-storage/keys-of-local-storage';
 import { AuthSliceStoreType } from '../../types/store/slices/auth-slice-store-type';
-import { LocalStorageWorker } from '../../utils/local-storage/local-storage-worker';
+import { LocalStorageWorker } from '../../ui/utils/local-storage/local-storage-worker';
 
 const initialState: AuthSliceStoreType = {
 	user: null,
@@ -42,6 +42,7 @@ export const { setAccesToken, setCredentials, removeCredentials } =
 
 export const user = (state: RootState) => state.authReducer.user;
 export const accessToken = (state: RootState) => state.authReducer.accessToken;
-export const selectIsAuthenticated = (state: RootState) => !!(state.authReducer.user);
+export const selectIsAuthenticated = (state: RootState) =>
+	!!state.authReducer.user;
 
 export const authReducer = authSlice.reducer;

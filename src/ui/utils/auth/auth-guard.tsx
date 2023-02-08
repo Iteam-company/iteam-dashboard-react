@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Routes } from '../../constants/routes/routes';
-import { useAuth } from '../../types/hooks/auth/use-auth';
+import { Routes } from '../../../constants/routes/routes';
+import { useAuth } from '../../../hooks/auth-hooks.ts/use-auth';
 
 interface Props {
 	children:  JSX.Element;

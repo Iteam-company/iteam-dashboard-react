@@ -1,10 +1,11 @@
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
-import { ForgetPassword } from '../../ui/components/authorization/forget-password';
+import { ForgotPassword } from '../../ui/components/authorization/forgot-password';
 import { SignIn } from '../../ui/components/authorization/sign-in';
 import { SignUp } from '../../ui/components/authorization/sign-up';
+import { UserPage } from '../../ui/components/userPage/user-page';
 import { ManagerDashboard } from '../../ui/layouts/dashboards/manager-dashboard';
-import { AuthGuard } from '../../ui/utils/Auth-guard';
+import { AuthGuard } from '../../ui/utils/auth/auth-guard';
 import { Routes } from './routes';
 
 export const routesSchema: Array<RouteObject> = [
@@ -26,6 +27,10 @@ export const routesSchema: Array<RouteObject> = [
 	},
 	{
 		path: `${Routes.ROOT_PATH}/${Routes.FORGOT_PASS}`,
-		element: <ForgetPassword />,
+		element: <ForgotPassword />,
+	},
+	{
+		path: `${Routes.ROOT_PATH}/${Routes.USER_PAGE}`,
+		element: <UserPage />
 	}
 ];

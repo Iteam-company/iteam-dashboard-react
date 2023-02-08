@@ -19,7 +19,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { setAccesToken } from '../../../store/slices/auth-slice';
 import { InitialFormValue } from '../../../types/formik/formik-sign-in';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
 
 const theme = createTheme();
@@ -31,7 +31,6 @@ const initialValues: InitialFormValue = {
 
 export function SignIn() {
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
 	const [login, { isLoading: isLoginLoading, isError: isLoginError }] =
 		useLoginMutation();
 

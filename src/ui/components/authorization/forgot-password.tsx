@@ -17,13 +17,13 @@ const initialValues: Pick<InitialFormValue, 'email'> = {
 	email: '',
 };
 
-export const ForgetPassword = () => {
+export const ForgotPassword = () => {
 	const formik = useFormik({
 		initialValues,
 		onSubmit: (data) => {
 			const { email } = data;
 			try {
-				const response = 'waiting for endpoint'; /////waiting for
+				const response = 'waiting for endpoint'; /////waiting for endpoint to reset password
 			} catch (error) {
 				console.log(JSON.stringify(error, null, 2));
 			}
