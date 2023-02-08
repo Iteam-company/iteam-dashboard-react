@@ -28,12 +28,12 @@ export const UserExperienceItem = () => {
 				<Box sx={{
           mb: 2
         }}>Ukraine</Box>
-        <Flexbox sx={{justifyContent: "space-between"}}>
+        <Flexbox>
           <Box sx={{mb: 2}}>
           <Typography variant='body2'>Project: Smartannie (litesite.com)</Typography>
           <Typography variant='body2'>Business management tool for interaction with customers and clients</Typography>
           </Box>
-          <Typography sx={{pr: '5%', cursor: 'pointer'}}>see more...</Typography>
+          <Typography sx={{ml: 5, cursor: 'pointer'}}>see more...</Typography>
         </Flexbox>
         <Typography variant='body2'>Skills: React.js, JS, TS, Npm, Angular, Rxjs</Typography>
         </Box>

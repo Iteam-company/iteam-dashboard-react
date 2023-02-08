@@ -17,12 +17,15 @@ export const UserEducationItem = () => {
 						{' '}
 						National Transport University
 					</Typography>
-					<Box sx={{ color: '#424242' }}>
+					<Flexbox>
+					<Box sx={{ color: '#424242', mr: 5 }}>
 						<Typography variant='body2'>
 							Master of Architecture (MArch), Computer Science
 						</Typography>
 						<Typography variant='body2'>Sep 2017 - Jun 2021</Typography>
 					</Box>
+					<Typography sx={{ cursor: 'pointer'}}>see more...</Typography>
+					</Flexbox>
 				</Box>
 			</Flexbox>
 			<Box

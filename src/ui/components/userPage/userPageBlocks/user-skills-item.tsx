@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import Flexbox from '../../../utils/styles/flexbox';
 
 export const UserSkillsItem: React.FC = () => {
 	return (
@@ -15,8 +14,9 @@ export const UserSkillsItem: React.FC = () => {
 					mt: 1,
 					mb: 1,
 				}}></Box>
-			<Flexbox
+			<Container
 				sx={{
+					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
 				}}>
@@ -26,7 +26,7 @@ export const UserSkillsItem: React.FC = () => {
 						pt: '3px',
 					}}
 				/>
-			</Flexbox>
+			</Container>
 		</>
 	);
 };

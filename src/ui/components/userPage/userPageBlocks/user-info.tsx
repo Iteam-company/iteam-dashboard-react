@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Button, Card, Container, CssBaseline, Typography } from '@mui/material';
-import Flexbox from '../../../utils/styles/flexbox';
 
 export const UserInfo = () => {
 	return (

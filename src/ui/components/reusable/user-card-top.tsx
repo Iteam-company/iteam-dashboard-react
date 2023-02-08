@@ -18,7 +18,7 @@ export const UserCardTop: React.FC<Props> = ({ UserExperienceItem, UserEducation
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-      }} contentEditable={true}>
+      }}>
 
         <Typography variant='h6' sx={{mb: 2}}>
           { title }
@@ -35,4 +35,3 @@ export const UserCardTop: React.FC<Props> = ({ UserExperienceItem, UserEducation
     </Card>
   )
 }
-
