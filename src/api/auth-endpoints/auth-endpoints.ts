@@ -1,6 +1,6 @@
 export enum AUTH_ENDPOINTS {
-  SIGN_IN = '/auth/signIn',
-  SIGN_UP = '/auth/signUp',
-  REGENERATE = '/auth/regenerateTokens',
-  SIGN_DOWN = '', ////WAIT FOR ENDPOINT
+  SIGN_IN = '/auth/sign-in',
+  SIGN_UP = '/auth/registration',
+  REFRESH = '/auth/refresh',
+  SIGN_OUT = '/auth/sign-out',
 }

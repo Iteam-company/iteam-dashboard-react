@@ -1,15 +1,23 @@
 import React from 'react';
-import { Box, Button, Card, Container, CssBaseline, Typography } from '@mui/material';
+import {
+	Box,
+	Button,
+	Card,
+	Container,
+	CssBaseline,
+	Typography,
+} from '@mui/material';
 
 export const UserInfo = () => {
 	return (
 		<Card sx={{ mt: 6, p: 2, mb: 2 }}>
 			<CssBaseline />
-			<Container sx={{
-				display: 'flex',
-				flexWrap: {md: 'nowrap', xs: 'wrap'},
-				justifyContent: {xs: 'center'},
-				alignItems: 'center'
+			<Container
+				sx={{
+					display: 'flex',
+					flexWrap: { md: 'nowrap', xs: 'wrap' },
+					justifyContent: { xs: 'center' },
+					alignItems: 'center',
 				}}>
 				<Box
 					sx={{
@@ -17,24 +25,20 @@ export const UserInfo = () => {
 						flexDirection: 'column',
 						textAlign: 'center',
 						margin: 'auto',
-						
 					}}>
 					<Box
 						component='img'
 						alt='user-avatar'
 						src='https://via.placeholder.com/200'
 					/>
-					<Button variant='contained' sx={{ mt: 3, mb: 2, minWidth: '200px' }}>
-						Send a message
-					</Button>
 				</Box>
-				<Box sx={{ width: '100%' , ml:{ md: '15%'}}}>
+				<Box sx={{ width: '100%', ml: { md: '15%' } }}>
 					<Typography
 						variant='h6'
 						component='h2'
 						sx={{
 							color: (props) => props.palette.primary.light,
-							textAlign: {xs: 'center', md: 'left'},
+							textAlign: { xs: 'center', md: 'left' },
 						}}>
 						Chris Pratt
 					</Typography>
@@ -43,9 +47,9 @@ export const UserInfo = () => {
 						component='h3'
 						sx={{
 							mb: 2,
-							textAlign: {xs: 'center', md: 'left'}
+							textAlign: { xs: 'center', md: 'left' },
 						}}>
-						All the best happens unexpectedly
+						employee position: Front End Dev
 					</Typography>
 					<Box
 						sx={{
@@ -54,7 +58,13 @@ export const UserInfo = () => {
 							backgroundColor: '#f3f3f3',
 							mb: 2,
 						}}></Box>
-					<Container sx={{display: 'flex',justifyContent: { xs: 'center', md: 'flex-start'}, p: {md: '0'}, height: '100%'}}>
+					<Container
+						sx={{
+							display: 'flex',
+							justifyContent: { xs: 'center', md: 'flex-start' },
+							p: { md: '0' },
+							height: '100%',
+						}}>
 						<Box
 							sx={{
 								mr: '15%',
@@ -63,16 +73,16 @@ export const UserInfo = () => {
 								Birthday:
 							</Typography>
 							<Typography component={'div'} variant='caption'>
-								Hometown:
+								Location:
 							</Typography>
 							<Typography component={'div'} variant='caption'>
-								Relationship status:
+								Date of the first working day:
 							</Typography>
 							<Typography component={'div'} variant='caption'>
-								Company:
+								Projects:
 							</Typography>
 							<Typography component={'div'} variant='caption'>
-								Language:
+								English level:
 							</Typography>
 						</Box>
 						<Box
@@ -80,25 +90,21 @@ export const UserInfo = () => {
 								color: (props) => props.palette.primary.main,
 							}}>
 							<Typography component={'div'} variant='caption'>
-								June 21, 1979
+								Lorem ipsum dolor sit amet.
 							</Typography>
 							<Typography component={'div'} variant='caption'>
-								Virginia
+								Lorem ipsum dolor sit amet.
 							</Typography>
 							<Typography component={'div'} variant='caption'>
-								Enagaged to Anna Faris
+								Lorem ipsum dolor sit amet.
 							</Typography>
 							<Typography component={'div'} variant='caption'>
-								Guardian of the Galaxy
-							</Typography>
-							<Typography component={'div'} variant='caption'>
-								English
+								Lorem ipsum dolor sit amet.
 							</Typography>
 							<Typography
 								component={'div'}
-								variant='body2'
-								sx={{ cursor: 'pointer', mt: 1 }}>
-								Show full information
+								variant='caption'>
+								English
 							</Typography>
 						</Box>
 					</Container>
