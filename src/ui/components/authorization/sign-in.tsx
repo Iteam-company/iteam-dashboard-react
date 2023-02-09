@@ -50,7 +50,7 @@ export function SignIn() {
 				.email('Must be a valid email')
 				.max(50)
 				.required('Email is required'),
-			password: Yup.string().min(8).max(20).required('Password is required'),
+			password: Yup.string().min(8).max(20).required('Password is required').matches(/[0-9]/, 'Password requires a number'),
 		}),
 		validateOnBlur: false,
 	});

@@ -59,7 +59,7 @@ export const SignUp = () => {
 				.min(2, 'Too Short!')
 				.max(50, 'Too Long!')
 				.required('Required'),
-			password: Yup.string().min(8).max(20).required('Password is required'),
+			password: Yup.string().min(8).max(20).required('Password is required').matches(/[0-9]/, 'Password requires a number'),
 			email: Yup.string()
 				.required('Email is required')
 				.email('Must be a valid email')
