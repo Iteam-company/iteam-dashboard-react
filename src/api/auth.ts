@@ -1,19 +1,20 @@
 import { baseApiService } from './base-query';
-import { AUTH_ENDPOINTS } from './auth-endpoints/auth-endpoints';
-import { LoginCredentials } from '../types/auth/login-credentials';
-import { RegistrationCredentials } from '../types/auth/sign-up-credentials';
+import { AUTH_ENDPOINTS } from '../constants/api/auth-endpoints-urls/auth-endpoints';
+import { SignInDto as ClientSignInDto } from '../types/client/auth/sign-in.dto';
+import { SignInDto as ApiSignInDto } from '../types/api/auth/sign-in.dto';
+import { SignUpDto } from '../types/client/auth/sign-up.dto';
 
 export const authAPIService = baseApiService.injectEndpoints({
 	endpoints: (builder) => ({
-		login: builder.mutation({
-			query: (credentials: LoginCredentials) => ({
+		signIn: builder.mutation<ApiSignInDto, ClientSignInDto>({
+			query: (credentials) => ({
 				url: AUTH_ENDPOINTS.SIGN_IN,
 				method: 'POST',
 				body: credentials,
 			}),
 		}),
-		registration: builder.mutation({
-			query: (credentials: RegistrationCredentials) => ({
+		signUp: builder.mutation({
+			query: (credentials: SignUpDto) => ({
 				url: AUTH_ENDPOINTS.SIGN_UP,
 				method: 'POST',
 				body: credentials,
@@ -21,23 +22,22 @@ export const authAPIService = baseApiService.injectEndpoints({
 		}),
 		refreshAccesToken: builder.mutation({
 			query: () => ({
-				url: AUTH_ENDPOINTS.REGENERATE,
+				url: AUTH_ENDPOINTS.REFRESH,
 				method: 'POST',
 			}),
 		}),
-		logout: builder.mutation({
+		signOut: builder.mutation({
 			query: () => ({
-				url: AUTH_ENDPOINTS.SIGN_DOWN,
-				method: 'POST', ////WAIT FOR ENDPOINT
+				url: AUTH_ENDPOINTS.SIGN_OUT,
+				method: 'POST',
 			}),
-		}),
-		getUsers: builder.query({
-			query: () => ({
-				url: '/user'
-			})
 		}),
 	}),
 });
 
-export const { useLoginMutation, useRefreshAccesTokenMutation, useRegistrationMutation, useLogoutMutation, useGetUsersQuery } =
-	authAPIService;
+export const {
+	useSignInMutation,
+	useRefreshAccesTokenMutation,
+	useSignUpMutation,
+	useSignOutMutation,
+} = authAPIService;

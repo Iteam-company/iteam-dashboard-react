@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import { setupListeners } from '@reduxjs/toolkit/query';
-import { isDevelopment } from '../constants/env';
+import { isProd } from '../constants/env';
 import { authReducer } from './slices/auth-slice';
 import { baseApiService } from '../api/base-query';
 
@@ -17,7 +17,7 @@ export const store = configureStore({
 		// there we add some apis endpoints
 		return getDefaultMiddleware().concat(baseApiService.middleware);
 	},
-	devTools: isDevelopment,
+	devTools: !isProd,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,7 +1,7 @@
 import { KeysOfLocalStorage } from '../../constants/utils/local-storage/keys-of-local-storage';
 
 export class LocalStorageWorker {
-	// we make constructor prive there
+	// we make constructor private there
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	private constructor() {}
 	static writeToLocalStorage(

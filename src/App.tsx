@@ -8,6 +8,7 @@ export const App: FC<object> = memo(() => {
 	// in the future we get theme from redux store and make it extendable
 	const currentTheme = useMemo(() => themes[0], [themes]);
 	const content = useRoutes(routesSchema);
+
 	return <ThemeProvider theme={currentTheme}>{content}</ThemeProvider>;
 });
 

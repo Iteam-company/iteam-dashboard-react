@@ -6,12 +6,18 @@ import {
 	FetchBaseQueryError,
 	FetchBaseQueryMeta,
 } from '@reduxjs/toolkit/query/react';
-import { ApiEndpoints } from '../constants/api/api-endpoints';
 import { RequestHeaders } from '../constants/api/request-headers';
 import { StatusCodes } from '../constants/api/status-codes';
 import { apiURL as baseUrl } from '../constants/env';
 import { RootState } from '../store';
-import { removeCredentials, setAccesToken } from '../store/slices/auth-slice';
+import {
+	removeCredentials,
+	setAccesToken,
+	setCredentials,
+} from '../store/slices/auth-slice';
+import { AUTH_ENDPOINTS } from '../constants/api/auth-endpoints-urls/auth-endpoints';
+import { SignInDto as ApiSignInDto } from '../types/api/auth/sign-in.dto';
+import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 
 const baseQuery = fetchBaseQuery({
 	baseUrl,
@@ -39,13 +45,13 @@ export const baseQueryWithReauth: BaseQueryFn<
 
 	if (originalResponse.error?.status === StatusCodes.UNAUHTORIZED) {
 		const refreshAccesResponse = await baseQuery(
-			ApiEndpoints.REFRESH,
+			{ method: 'POST', url: AUTH_ENDPOINTS.REFRESH },
 			api,
 			extraOptions,
 		);
 
 		if (refreshAccesResponse.data) {
-			api.dispatch(setAccesToken((refreshAccesResponse.data as any).token));
+			api.dispatch(setCredentials(refreshAccesResponse.data as ApiSignInDto));
 
 			originalResponse = await baseQuery(args, api, extraOptions);
 			if (originalResponse.error?.status === StatusCodes.UNAUHTORIZED) {
@@ -63,5 +69,5 @@ export const baseApiService = createApi({
 	reducerPath: 'api',
 	tagTypes: ['User'],
 	baseQuery: baseQueryWithReauth,
-	endpoints: (builder) => ({}),
+	endpoints: () => ({}),
 });
