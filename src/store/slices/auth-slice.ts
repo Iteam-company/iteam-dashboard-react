@@ -41,10 +41,9 @@ const authSlice = createSlice({
 export const { setAccesToken, setCredentials, removeCredentials } =
 	authSlice.actions;
 
-export const selectUser = (state: RootState) => state.authReducer.user;
-export const selectAccessToken = (state: RootState) =>
-	state.authReducer.accessToken;
+export const selectUser = (state: RootState) => state.auth.user;
+export const selectAccessToken = (state: RootState) => state.auth.accessToken;
 export const selectIsAuthenticated = (state: RootState) =>
-	!!state.authReducer.user && state.authReducer.accessToken;
+	!!state.auth.user && state.auth.accessToken;
 
 export const authReducer = authSlice.reducer;
