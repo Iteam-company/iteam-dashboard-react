@@ -10,20 +10,15 @@ import { RequestHeaders } from '../constants/api/request-headers';
 import { StatusCodes } from '../constants/api/status-codes';
 import { apiURL as baseUrl } from '../constants/env';
 import { RootState } from '../store';
-import {
-	removeCredentials,
-	setAccesToken,
-	setCredentials,
-} from '../store/slices/auth-slice';
+import { removeCredentials, setCredentials } from '../store/slices/auth-slice';
 import { AUTH_ENDPOINTS } from '../constants/api/auth-endpoints-urls/auth-endpoints';
 import { SignInDto as ApiSignInDto } from '../types/api/auth/sign-in.dto';
-import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 
 const baseQuery = fetchBaseQuery({
 	baseUrl,
 	credentials: 'include',
 	prepareHeaders: (headers, api) => {
-		const { accessToken } = (api.getState() as RootState).authReducer;
+		const { accessToken } = (api.getState() as RootState).auth;
 
 		if (accessToken) {
 			headers.set(RequestHeaders.AUTHORIZATION, `Bearer ${accessToken}`);

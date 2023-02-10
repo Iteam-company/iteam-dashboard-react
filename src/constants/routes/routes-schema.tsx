@@ -4,16 +4,25 @@ import { SignIn } from '../../ui/layouts/authorization/sign-in';
 import { SignUp } from '../../ui/layouts/authorization/sign-up';
 import { ManagerDashboard } from '../../ui/layouts/dashboards/manager-dashboard';
 import { AuthGuard } from '../../ui/utils/auth-guard';
+import { GuestGuard } from '../../ui/utils/guest-guard';
 import { Routes } from './routes';
 
 export const routesSchema: Array<RouteObject> = [
 	{
 		path: `${Routes.ROOT_PATH}/${Routes.SIGN_IN}`,
-		element: <SignIn />,
+		element: (
+			<GuestGuard>
+				<SignIn />
+			</GuestGuard>
+		),
 	},
 	{
 		path: `${Routes.ROOT_PATH}/${Routes.SIGN_UP}`,
-		element: <SignUp />,
+		element: (
+			<GuestGuard>
+				<SignUp />
+			</GuestGuard>
+		),
 	},
 	{
 		path: Routes.ROOT_PATH,
