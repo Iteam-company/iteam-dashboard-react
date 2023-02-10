@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { SnackbarProvider } from 'notistack';
 
 // importing fonts
 import '@fontsource/roboto/300.css';
@@ -20,7 +21,9 @@ root.render(
 			<Provider store={store}>
 				<BrowserRouter>
 					<CssBaseline enableColorScheme />
-					<App />
+					<SnackbarProvider maxSnack={3}>
+						<App />
+					</SnackbarProvider>
 				</BrowserRouter>
 			</Provider>
 		</HelmetProvider>

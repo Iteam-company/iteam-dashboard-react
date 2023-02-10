@@ -12,38 +12,36 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Copyright } from '../reusable/copyright';
+import { Copyright } from '../../components/reusable/copyright';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { initialSignUpValue } from '../../../types/formik/formik-sign-up';
-import { useRegistrationMutation } from '../../../api/auth';
+import { useSignUpMutation } from '../../../api/auth';
 import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
-import { useState } from 'react';
 
 const theme = createTheme();
 
-const initialValues: initialSignUpValue = {
+const initialValues = {
 	email: '',
 	password: '',
-	name: '',
-	surname: '',
+	// name: '',
+	// surname: '',
 };
 
 export const SignUp = () => {
 	const dispatch = useDispatch();
 
 	const [registration, { isLoading: isSignUpLoading, isError: isSignUpError }] =
-		useRegistrationMutation();
+		useSignUpMutation();
 	const formik = useFormik({
 		initialValues,
-		onSubmit: async (data: initialSignUpValue) => {
-			const { name, surname, email, password } = data;
+		onSubmit: async (data) => {
+			const { email, password } = data;
 			try {
 				const response = await registration({
-					name,
-					surname,
+					// name,
+					// surname,
 					email,
 					password,
 				}).unwrap();
@@ -53,14 +51,14 @@ export const SignUp = () => {
 			}
 		},
 		validationSchema: Yup.object().shape({
-			name: Yup.string()
-				.min(2, 'Too Short!')
-				.max(50, 'Too Long!')
-				.required('Required'),
-			surname: Yup.string()
-				.min(2, 'Too Short!')
-				.max(50, 'Too Long!')
-				.required('Required'),
+			// name: Yup.string()
+			// 	.min(2, 'Too Short!')
+			// 	.max(50, 'Too Long!')
+			// 	.required('Required'),
+			// surname: Yup.string()
+			// 	.min(2, 'Too Short!')
+			// 	.max(50, 'Too Long!')
+			// 	.required('Required'),
 			password: Yup.string().min(8).max(20).required('Password is required'),
 			email: Yup.string()
 				.required('Email is required')
@@ -71,13 +69,7 @@ export const SignUp = () => {
 		validateOnBlur: false,
 	});
 
-	const {
-		errors,
-		touched,
-		values,
-		handleChange,
-		handleSubmit,
-	} = formik;
+	const { errors, touched, values, handleChange, handleSubmit } = formik;
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -103,7 +95,7 @@ export const SignUp = () => {
 						sx={{ mt: 3 }}>
 						<Grid container spacing={2}>
 							<Grid item xs={12} sm={6}>
-								<TextField
+								{/* <TextField
 									autoComplete='given-name'
 									id='name'
 									name='name'
@@ -129,7 +121,7 @@ export const SignUp = () => {
 									onChange={handleChange}
 									helperText={touched.surname && errors.surname}
 									error={touched.surname && Boolean(errors.surname)}
-								/>
+								/>*/}
 							</Grid>
 							<Grid item xs={12}>
 								<TextField
@@ -143,7 +135,6 @@ export const SignUp = () => {
 									onChange={handleChange}
 									helperText={touched.email && errors.email}
 									error={touched.email && Boolean(errors.email)}
-									
 								/>
 							</Grid>
 							<Grid item xs={12}>

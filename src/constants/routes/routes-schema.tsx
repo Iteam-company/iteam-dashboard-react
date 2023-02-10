@@ -1,9 +1,9 @@
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
-import { SignIn } from '../../ui/components/authorization/sign-in';
-import { SignUp } from '../../ui/components/authorization/sign-up';
+import { SignIn } from '../../ui/layouts/authorization/sign-in';
+import { SignUp } from '../../ui/layouts/authorization/sign-up';
 import { ManagerDashboard } from '../../ui/layouts/dashboards/manager-dashboard';
-import { AuthGuard } from '../../ui/utils/Auth-guard';
+import { AuthGuard } from '../../ui/utils/auth-guard';
 import { Routes } from './routes';
 
 export const routesSchema: Array<RouteObject> = [
