@@ -20,7 +20,7 @@ root.render(
 	<StrictMode>
 		<HelmetProvider>
 			<Provider store={store}>
-				<PersistGate loading={<>loading redux state</>} persistor={persistor}>
+				<PersistGate loading={null} persistor={persistor}>
 					<BrowserRouter>
 						<CssBaseline enableColorScheme />
 						<SnackbarProvider maxSnack={3}>

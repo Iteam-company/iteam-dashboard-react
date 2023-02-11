@@ -1,9 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
-import { KeysOfLocalStorage } from '../../constants/utils/local-storage/keys-of-local-storage';
+import { Roles } from '../../constants/roles';
+import { Routes } from '../../constants/routes/routes';
+import { rolestRoutes } from '../../constants/routes/routes-schemas';
+// import { KeysOfLocalStorage } from '../../constants/utils/local-storage/keys-of-local-storage';
 import { SignInDto } from '../../types/api/auth/sign-in.dto';
 import { AuthSliceStoreType } from '../../types/store/slices/auth-slice-store-type';
-import { LocalStorageWorker } from '../../utils/local-storage/local-storage-worker';
+// import { LocalStorageWorker } from '../../utils/local-storage/local-storage-worker';
 
 const initialState: AuthSliceStoreType = {
 	user: null,
@@ -17,23 +20,23 @@ const authSlice = createSlice({
 		setCredentials(state, action: PayloadAction<SignInDto>) {
 			const { user, tokens } = action.payload;
 			state.user = user;
-			LocalStorageWorker.writeToLocalStorage(
-				KeysOfLocalStorage.ACCESS_TOKEN,
-				tokens.accessToken,
-			);
+			// LocalStorageWorker.writeToLocalStorage(
+			// 	KeysOfLocalStorage.ACCESS_TOKEN,
+			// 	tokens.accessToken,
+			// );
 			state.accessToken = tokens.accessToken;
 		},
 		setAccesToken(state, action: PayloadAction<{ accessToken: string }>) {
 			state.accessToken = action.payload.accessToken;
-			LocalStorageWorker.writeToLocalStorage(
-				KeysOfLocalStorage.ACCESS_TOKEN,
-				action.payload.accessToken,
-			);
+			// LocalStorageWorker.writeToLocalStorage(
+			// 	KeysOfLocalStorage.ACCESS_TOKEN,
+			// 	action.payload.accessToken,
+			// );
 		},
 		removeCredentials(state) {
 			state.user = null;
 			state.accessToken = null;
-			LocalStorageWorker.removeItem(KeysOfLocalStorage.ACCESS_TOKEN);
+			// LocalStorageWorker.removeItem(KeysOfLocalStorage.ACCESS_TOKEN);
 		},
 	},
 });
@@ -45,5 +48,11 @@ export const selectUser = (state: RootState) => state.auth.user;
 export const selectAccessToken = (state: RootState) => state.auth.accessToken;
 export const selectIsAuthenticated = (state: RootState) =>
 	!!state.auth.user && state.auth.accessToken;
+
+export const selectRoutesSchemaByUserRole = (state: RootState) => {
+	const role = (state?.auth?.user?.roles[0].value ?? Roles.GUEST) as Roles;
+
+	return rolestRoutes[role];
+};
 
 export const authReducer = authSlice.reducer;
