@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -29,7 +29,7 @@ const initialValues = {
 	// surname: '',
 };
 
-export const SignUp = () => {
+export const SignUp = memo(() => {
 	const dispatch = useDispatch();
 
 	const [registration, { isLoading: isSignUpLoading, isError: isSignUpError }] =
@@ -184,4 +184,6 @@ export const SignUp = () => {
 			</Container>
 		</ThemeProvider>
 	);
-};
+});
+
+SignUp.displayName = 'SignUp';

@@ -17,7 +17,7 @@ import { useSignInMutation } from '../../../api/auth';
 import { useAppDispatch } from '../../../hooks/store/use-app-dispatch-hook';
 import { useFormik } from 'formik';
 import { setCredentials } from '../../../store/slices/auth-slice';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
 import { Error as ApiError } from '../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
@@ -30,7 +30,6 @@ const initialValues = {
 export const SignIn = memo(() => {
 	const dispatch = useAppDispatch();
 	const { showSnackbar } = useNotifySnackbar();
-	const navigate = useNavigate();
 	const [signIn, { isLoading: isLoginLoading, isError: isLoginError }] =
 		useSignInMutation();
 
