@@ -3,5 +3,5 @@ import { Tokens } from "../../common/api/user/user-tokens";
 
 export interface SignInDto {
 	tokens: Tokens;
-	user: User; // there we need type
+	user: User;
 }
