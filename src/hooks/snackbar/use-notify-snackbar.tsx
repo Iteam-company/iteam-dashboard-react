@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useSnackbar, VariantType } from 'notistack';
 import { Box } from '@mui/material';
 
@@ -20,12 +20,8 @@ export const useNotifySnackbar = () => {
 		</Box>
 	);
 
-	const showSnackbar = useCallback(
-		(message: string, variant: VariantType, withAction = false) => {
+	const showSnackbar = (message: string, variant: VariantType, withAction = false) => {
 			enqueueSnackbar(message, { variant, action: withAction ? action : null });
-		},
-		[enqueueSnackbar, action],
-	);
-
+		}
 	return { showSnackbar };
 };
