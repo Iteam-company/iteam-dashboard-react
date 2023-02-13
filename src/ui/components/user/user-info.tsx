@@ -99,10 +99,13 @@ export const UserInfo = () => {
 							<Typography component={'div'} variant='caption'>
 								Lorem ipsum dolor sit amet.
 							</Typography>
-							<Link href="https://www.google.com.ua/?hl=ru" variant='caption' target='_blank'>Projects</Link>
-							<Typography
-								component={'div'}
-								variant='caption'>
+							<Link
+								href='https://www.google.com.ua/?hl=ru'
+								variant='caption'
+								target='_blank'>
+								Projects
+							</Link>
+							<Typography component={'div'} variant='caption'>
 								English
 							</Typography>
 						</Box>
