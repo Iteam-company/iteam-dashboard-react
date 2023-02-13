@@ -1,6 +1,7 @@
-import { User } from '../../common/api/user/user';
+import { User } from "../../common/api/user";
+import { Tokens } from "../../common/api/user/user-tokens";
 
 export interface SignInDto {
-	tokens: { accessToken: string };
+	tokens: Tokens;
 	user: User; // there we need type
 }
