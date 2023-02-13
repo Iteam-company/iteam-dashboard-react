@@ -1,24 +1,20 @@
 import {
 	Badge,
 	Box,
-	Container,
 	Divider,
-	Grid,
 	IconButton,
-	Paper,
 	Toolbar,
 	Typography,
 } from '@mui/material';
 import { Notifications, Menu, ChevronLeft } from '@mui/icons-material';
 import React from 'react';
-import { Copyright } from '../../components/reusable/copyright';
+
 import { AppBar } from '../../components/mocked/app-bar';
-import Chart from '../../components/mocked/chart';
-import Deposits from '../../components/mocked/deposit';
-import Orders from '../../components/mocked/orders';
+
 import { Drawer } from '../../components/mocked/drawer';
 import { DashboardSidebarNav } from '../../components/dasboard-sidebar-nav';
 import { SidebarNavigationListItems } from '../../components/manager-dashboard/dasboard-sidebar/sidebar-navigation-list-items';
+import { Outlet } from 'react-router-dom';
 
 export const ManagerDashboard = () => {
 	const [open, setOpen] = React.useState(true);
@@ -85,43 +81,13 @@ export const ManagerDashboard = () => {
 					flexGrow: 1,
 					height: '100vh',
 					overflow: 'auto',
+					display: 'flex',
+					flexDirection: 'column',
 				}}>
 				<Toolbar />
-				<Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
-					<Grid container spacing={3}>
-						{/* Chart */}
-						<Grid item xs={12} md={8} lg={9}>
-							<Paper
-								sx={{
-									p: 2,
-									display: 'flex',
-									flexDirection: 'column',
-									height: 240,
-								}}>
-								<Chart />
-							</Paper>
-						</Grid>
-						{/* Recent Deposits */}
-						<Grid item xs={12} md={4} lg={3}>
-							<Paper
-								sx={{
-									p: 2,
-									display: 'flex',
-									flexDirection: 'column',
-									height: 240,
-								}}>
-								<Deposits />
-							</Paper>
-						</Grid>
-						{/* Recent Orders */}
-						<Grid item xs={12}>
-							<Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-								<Orders />
-							</Paper>
-						</Grid>
-					</Grid>
-					<Copyright sx={{ pt: 4 }} />
-				</Container>
+				<Box flexGrow={1}>
+					<Outlet />
+				</Box>
 			</Box>
 		</Box>
 	);
