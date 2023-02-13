@@ -1,4 +1,4 @@
-import { User } from '../../common/api/user';
+import { User } from '../../common/api/user/user';
 
 export interface SignInDto {
 	tokens: { accessToken: string };
