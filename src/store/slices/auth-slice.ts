@@ -5,6 +5,7 @@ import { Routes } from '../../constants/routes/routes';
 import { rolestRoutes } from '../../constants/routes/routes-schemas';
 // import { KeysOfLocalStorage } from '../../constants/utils/local-storage/keys-of-local-storage';
 import { SignInDto } from '../../types/api/auth/sign-in.dto';
+import { Tokens } from '../../types/common/api/user/user-tokens';
 import { AuthSliceStoreType } from '../../types/store/slices/auth-slice-store-type';
 // import { LocalStorageWorker } from '../../utils/local-storage/local-storage-worker';
 
@@ -26,7 +27,7 @@ const authSlice = createSlice({
 			// );
 			state.accessToken = tokens.accessToken;
 		},
-		setAccesToken(state, action: PayloadAction<{ accessToken: string }>) {
+		setAccesToken(state, action: PayloadAction<Tokens>) {
 			state.accessToken = action.payload.accessToken;
 			// LocalStorageWorker.writeToLocalStorage(
 			// 	KeysOfLocalStorage.ACCESS_TOKEN,
