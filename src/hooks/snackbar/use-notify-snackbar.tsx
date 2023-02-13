@@ -11,13 +11,11 @@ export const useNotifySnackbar = () => {
 				height: '30px',
 				cursor: 'pointer',
 				position: 'absolute',
-				left: '5%'
+				left: '5%',
 			}}
 			onClick={() => {
 				closeSnackbar(snackbarId);
-			}}>
-
-		</Box >
+			}}></Box>
 	);
 
 	const showSnackbar = useCallback(
