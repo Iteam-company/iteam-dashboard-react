@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 
 export const useNotifySnackbar = () => {
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
 	const action = (snackbarId: string | number) => (
 		<Box
 			sx={{
@@ -11,16 +12,17 @@ export const useNotifySnackbar = () => {
 				height: '30px',
 				cursor: 'pointer',
 				position: 'absolute',
-				left: '5%',
+				left: '5%'
 			}}
 			onClick={() => {
 				closeSnackbar(snackbarId);
-			}}></Box>
+			}}>
+		</Box>
 	);
 
 	const showSnackbar = useCallback(
-		(message: string, variant: VariantType) => {
-			enqueueSnackbar(message, { variant, action });
+		(message: string, variant: VariantType, withAction = false) => {
+			enqueueSnackbar(message, { variant, action: withAction ? action : null });
 		},
 		[enqueueSnackbar, action],
 	);
