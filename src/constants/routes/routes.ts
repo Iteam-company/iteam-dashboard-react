@@ -1,8 +1,16 @@
 export enum Routes {
-	ROOT_PATH = '/',
+	// auth
 	SIGN_IN = 'sign-in',
 	SIGN_UP = 'sign-up',
-	LOG_OUT = 'logout',
 	FORGOT_PASSWORD = 'forgot-password',
+
+	// dashboard routes
+	ROOT_PATH = '/',
+	ORDERS = 'orders',
+	CUSTOMERS = 'customers',
+	REPORTS = 'reports',
+	INTEGRATIONS = 'integrations',
+
+	// develop routes
 	DEVELOP_UI_ROUTE = 'develop-ui',
 }
