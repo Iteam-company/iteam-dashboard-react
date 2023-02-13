@@ -5,7 +5,6 @@ import {
 	Divider,
 	Grid,
 	IconButton,
-	List,
 	Paper,
 	Toolbar,
 	Typography,
@@ -14,14 +13,12 @@ import { Notifications, Menu, ChevronLeft } from '@mui/icons-material';
 import React from 'react';
 import { Copyright } from '../../components/reusable/copyright';
 import { AppBar } from '../../components/mocked/app-bar';
-import {
-	mainListItems,
-	secondaryListItems,
-} from '../../components/mocked/list-items';
 import Chart from '../../components/mocked/chart';
 import Deposits from '../../components/mocked/deposit';
 import Orders from '../../components/mocked/orders';
 import { Drawer } from '../../components/mocked/drawer';
+import { DashboardSidebarNav } from '../../components/dasboard-sidebar-nav';
+import { SidebarNavigationListItems } from '../../components/manager-dashboard/dasboard-sidebar/sidebar-navigation-list-items';
 
 export const ManagerDashboard = () => {
 	const [open, setOpen] = React.useState(true);
@@ -74,11 +71,9 @@ export const ManagerDashboard = () => {
 					</IconButton>
 				</Toolbar>
 				<Divider />
-				<List component='nav'>
-					{mainListItems}
-					<Divider sx={{ my: 1 }} />
-					{secondaryListItems}
-				</List>
+				<DashboardSidebarNav>
+					<SidebarNavigationListItems />
+				</DashboardSidebarNav>
 			</Drawer>
 			<Box
 				component='main'
