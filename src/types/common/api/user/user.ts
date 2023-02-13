@@ -2,7 +2,8 @@ import { Roles } from "./user-roles";
 import { Tokens } from "./user-tokens";
 import { WorkType } from "./user-work-type";
 
-export interface User extends Tokens {
+export interface User {
+	tokens: Tokens,
 	user: {
 		id: number;
 		email: string;
