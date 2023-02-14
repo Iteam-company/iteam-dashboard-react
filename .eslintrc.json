@@ -21,9 +21,11 @@
 	},
 	"plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
 	"rules": {
-		"react/prop-types": "off"
+		"react/prop-types": "off",
+		"indent": ["error", "tab"],
+		"react/react-in-jsx-scope": "off",
+		"react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }]
 	},
-	"indent": ["error", "tab"],
 	"settings": {
 		"import/resolver": {
 			"typescript": {}
