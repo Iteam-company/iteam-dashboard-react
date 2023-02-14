@@ -12,16 +12,19 @@ export const useNotifySnackbar = () => {
 				height: '30px',
 				cursor: 'pointer',
 				position: 'absolute',
-				left: '5%'
+				left: '5%',
 			}}
 			onClick={() => {
 				closeSnackbar(snackbarId);
-			}}>
-		</Box>
+			}}></Box>
 	);
 
-	const showSnackbar = (message: string, variant: VariantType, withAction = false) => {
-			enqueueSnackbar(message, { variant, action: withAction ? action : null });
-		}
+	const showSnackbar = (
+		message: string,
+		variant: VariantType,
+		withAction = false,
+	) => {
+		enqueueSnackbar(message, { variant, action: withAction ? action : null });
+	};
 	return { showSnackbar };
 };
