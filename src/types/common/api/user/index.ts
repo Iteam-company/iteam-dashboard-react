@@ -1,9 +1,9 @@
-import { Roles } from "./user-roles";
-import { Tokens } from "./user-tokens";
-import { WorkType } from "./user-work-type";
+import { Roles } from './user-roles';
+import { Tokens } from './user-tokens';
+import { WorkType } from './user-work-type';
 
 export interface User {
-	tokens: Tokens,
+	tokens: Tokens;
 	user: {
 		id: number;
 		email: string;
