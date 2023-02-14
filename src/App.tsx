@@ -1,4 +1,4 @@
-import { Button, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 import React, { memo, useMemo, FC, PropsWithChildren } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { ColorMode } from './constants/theme/theme-color';

@@ -21,7 +21,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
 import { Error as ApiError } from '../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
-import { setDarkTheme } from '../../../store/slices/theme-slice';
 
 const initialValues = {
 	email: 'example@gmail.com',
