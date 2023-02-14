@@ -18,4 +18,4 @@ reducers: {
 
 export const ThemeReducer = ThemeSlice.reducer;
 export const { setDarkTheme } = ThemeSlice.actions;
-export const darkTheme = (state: RootState) => state.theme.isDark
+export const darkTheme = (state: RootState) => state.theme.isDark;
