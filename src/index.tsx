@@ -23,7 +23,7 @@ root.render(
 				<PersistGate loading={null} persistor={persistor}>
 					<BrowserRouter>
 						<CssBaseline enableColorScheme />
-						<SnackbarProvider maxSnack={3}>
+						<SnackbarProvider maxSnack={3} hideIconVariant>
 							<App />
 						</SnackbarProvider>
 					</BrowserRouter>

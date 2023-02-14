@@ -46,7 +46,7 @@ export const SignIn = memo(() => {
 				// }
 			} catch (error) {
 				const typedError = error as ApiError;
-				showSnackbar(typedError.data.message, 'error', true);
+				showSnackbar(typedError.data.message, 'error');
 			}
 		},
 		validationSchema: Yup.object().shape({
