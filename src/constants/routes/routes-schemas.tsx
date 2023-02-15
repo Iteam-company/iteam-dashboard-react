@@ -1,4 +1,3 @@
-import React from 'react';
 import { RouteObject } from 'react-router-dom';
 import { UserSettings } from '../../ui/views/user/user-settings';
 import { ViewDefaultPage } from '../../ui/components/view-default-page';
@@ -120,6 +119,48 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 					<ManagerDashboard />
 				</AuthGuard>
 			),
+			children: [
+				{
+					path: Routes.ROOT_PATH,
+					element: (
+						<ViewDefaultPage tabTitle='Dashboard'>
+							<Default />
+						</ViewDefaultPage>
+					),
+				},
+				{
+					path: Routes.ORDERS,
+					element: (
+						<ViewDefaultPage tabTitle='Orders'>
+							orders example how outlet works
+						</ViewDefaultPage>
+					),
+				},
+				{
+					path: Routes.CUSTOMERS,
+					element: (
+						<ViewDefaultPage tabTitle='CUSTOMERS'>
+							<UserPage />
+						</ViewDefaultPage>
+					),
+				},
+				{
+					path: Routes.REPORTS,
+					element: (
+						<ViewDefaultPage tabTitle='REPORTS'>
+							reports example how outlet works
+						</ViewDefaultPage>
+					),
+				},
+				{
+					path: Routes.INTEGRATIONS,
+					element: (
+						<ViewDefaultPage tabTitle='INTEGRATIONS'>
+							integrations example how outlet works
+						</ViewDefaultPage>
+					),
+				},
+			],
 		},
 	],
 };
