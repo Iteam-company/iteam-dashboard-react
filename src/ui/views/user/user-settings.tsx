@@ -18,11 +18,12 @@ export const UserSettings = () => {
 	const [subtitle] = useState('Lorem, ipsum dolor.');
 	const [englishLevelTitle] = useState('Рівень Англійської');
 	const [userExperienceTitle] = useState('Досвід роботи')
+	const [userSallaryTitle] = useState('Зарплатні очікування');
 	return (
 		<Container maxWidth='md' sx={{ mt: 6 }}>
 			<Grid container spacing={2} sx={{ alignItems: 'center' }}>
 				<UserSettingsTextField title={positionTitle} />
-				<UserSettingsSalary />
+				<UserSettingsSalary title={userSallaryTitle}/>
 				<UserSettingsExperience title={userExperienceTitle}/>
 				<UserSettingsSelect title={country} />
 				<UserSettingsTextField title={city} subtitle={subtitle} />

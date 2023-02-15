@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Grid, TextField, Typography } from '@mui/material';
 
 type Props = {
@@ -5,7 +6,7 @@ type Props = {
 	subtitle?: string;
 };
 
-export const UserSettingsTextField: React.FC<Props> = ({ title, subtitle }) => {
+export const UserSettingsTextField: FC<Props> = ({ title, subtitle }) => {
 	return (
 		<>
 			<Grid item xs={4}>

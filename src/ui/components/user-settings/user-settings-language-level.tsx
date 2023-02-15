@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import RadioButtonCheckedOutlinedIcon from '@mui/icons-material/RadioButtonCheckedOutlined';
 import RadioButtonUncheckedOutlinedIcon from '@mui/icons-material/RadioButtonUncheckedOutlined';
 import { Box, Checkbox, Grid, Typography } from '@mui/material';
@@ -7,7 +7,7 @@ type Props = {
   title: string;
 }
 
-export const UserSettingsLanguagelevel:React.FC<Props> = ({title}) => {
+export const UserSettingsLanguagelevel:FC<Props> = ({title}) => {
 	const [englishLevels] = useState<string[]>([
 		'No English',
 		'Beginner',
