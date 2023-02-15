@@ -1,3 +1,3 @@
 export interface ThemeSliceStoreType {
-  isDark: boolean
+	isDark: boolean;
 }
