@@ -1,20 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
-	Box,
 	Container,
-	FormControl,
-	FormControlLabel,
 	Grid,
-	Input,
-	InputAdornment,
-	InputLabel,
-	MenuItem,
-	OutlinedInput,
-	Radio,
-	Select,
-	Slider,
-	TextField,
-	Typography,
 } from '@mui/material';
 import { UserSettingsTextField } from '../../components/user-settings/user-settings-textfield';
 import { UserSettingsSalary } from '../../components/user-settings/user-settings-salary';
@@ -29,17 +16,19 @@ export const UserSettings = () => {
 	const [skills] = useState('Навички');
 	const [category] = useState('Категорії');
 	const [subtitle] = useState('Lorem, ipsum dolor.');
+	const [englishLevelTitle] = useState('Рівень Англійської');
+	const [userExperienceTitle] = useState('Досвід роботи')
 	return (
 		<Container maxWidth='md' sx={{ mt: 6 }}>
 			<Grid container spacing={2} sx={{ alignItems: 'center' }}>
 				<UserSettingsTextField title={positionTitle} />
 				<UserSettingsSalary />
-				<UserSettingsExperience />
+				<UserSettingsExperience title={userExperienceTitle}/>
 				<UserSettingsSelect title={country} />
 				<UserSettingsTextField title={city} subtitle={subtitle} />
 				<UserSettingsTextField title={skills} subtitle={subtitle} />
 				<UserSettingsSelect title={category} />
-				<UserSettingsLanguagelevel />
+				<UserSettingsLanguagelevel title={englishLevelTitle} />
 			</Grid>
 		</Container>
 	);

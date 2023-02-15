@@ -1,15 +1,14 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
-import React from 'react';
 
 type Props = {
-  title: string;
-}
+	title: string;
+};
 
-export const UserSettingsSelect: React.FC<Props> = ({title}) => {
+export const UserSettingsSelect: React.FC<Props> = ({ title }) => {
 	return (
 		<>
 			<Grid item xs={4}>
-      {title}
+				{title}
 			</Grid>
 			<Grid item xs={8}>
 				<FormControl fullWidth>
