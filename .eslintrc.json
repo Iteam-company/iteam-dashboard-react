@@ -23,7 +23,6 @@
 	"rules": {
 		"react/prop-types": "off"
 	},
-	"indent": ["error", "tab"],
 	"settings": {
 		"import/resolver": {
 			"typescript": {}

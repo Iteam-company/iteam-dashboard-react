@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
+import { UserSettings } from '../../ui/views/user/user-settings';
 import { ViewDefaultPage } from '../../ui/components/view-default-page';
 import { ForgotPassword } from '../../ui/layouts/authorization/forgot-password';
 import { SignIn } from '../../ui/layouts/authorization/sign-in';
@@ -17,7 +18,7 @@ const commonRoutes: Array<RouteObject> = [
 		path: `${Routes.ROOT_PATH}/${Routes.SIGN_IN}`,
 		element: (
 			<GuestGuard>
-				<SignIn />
+				<UserSettings />
 			</GuestGuard>
 		),
 	},
@@ -37,6 +38,7 @@ const commonRoutes: Array<RouteObject> = [
 			</GuestGuard>
 		),
 	},
+
 	// for developing we use there mocked routes to display components
 	{
 		path: `${Routes.ROOT_PATH}/${Routes.DEVELOP_UI_ROUTE}`,
