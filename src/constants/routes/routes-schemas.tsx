@@ -1,8 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 import { UserSettings } from '../../ui/views/user/user-settings';
 import { ViewDefaultPage } from '../../ui/components/view-default-page';
-import { ForgotPassword } from '../../ui/layouts/authorization/forgot-password';
-import { SignIn } from '../../ui/layouts/authorization/sign-in';
+import { ForgotPassword } from '../../ui/layouts/authorization/forgot-password';;
 import { SignUp } from '../../ui/layouts/authorization/sign-up';
 import { ManagerDashboard } from '../../ui/layouts/dashboards/manager-dashboard';
 import { AuthGuard } from '../../ui/utils/auth-guard';
