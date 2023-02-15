@@ -1,11 +1,14 @@
 import { Grid, Slider, Typography } from '@mui/material';
-import React from 'react';
 
-export const UserSettingsExperience = () => {
+type Props = {
+  title: string;
+}
+
+export const UserSettingsExperience:React.FC<Props> = ({title}) => {
 	return (
 		<>
 			<Grid item xs={4}>
-				<Typography>Досвід роботи</Typography>
+				<Typography>{title}</Typography>
 			</Grid>
 			<Grid item xs={8}>
 				<Slider

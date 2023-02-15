@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
 
 export const UserSettingsSalary = () => (
