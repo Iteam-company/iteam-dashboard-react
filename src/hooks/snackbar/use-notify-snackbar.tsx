@@ -7,18 +7,14 @@ export const useNotifySnackbar = () => {
 
 	const action = (snackbarId: string | number) => (
 		<Button
-		sx={{color: '#fff'}}
+			sx={{ color: '#fff' }}
 			onClick={() => {
 				closeSnackbar(snackbarId);
 			}}>
-				close
-			</Button>
+			close
+		</Button>
 	);
-	const showSnackbar = (
-		message: string,
-		variant: VariantType,
-
-	) => {
+	const showSnackbar = (message: string, variant: VariantType) => {
 		enqueueSnackbar(message, { variant, action });
 	};
 	return { showSnackbar };
