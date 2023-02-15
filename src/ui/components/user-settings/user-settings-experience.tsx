@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import { Grid, Slider, Typography } from '@mui/material';
 
 type Props = {
   title: string;
 }
 
-export const UserSettingsExperience:React.FC<Props> = ({title}) => {
+export const UserSettingsExperience:FC<Props> = ({title}) => {
 	return (
 		<>
 			<Grid item xs={4}>

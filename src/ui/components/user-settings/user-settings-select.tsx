@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 
 type Props = {
 	title: string;
 };
 
-export const UserSettingsSelect: React.FC<Props> = ({ title }) => {
+export const UserSettingsSelect: FC<Props> = ({ title }) => {
 	return (
 		<>
 			<Grid item xs={4}>

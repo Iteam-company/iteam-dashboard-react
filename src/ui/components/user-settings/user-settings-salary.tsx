@@ -1,9 +1,14 @@
+import { FC } from 'react';
 import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
 
-export const UserSettingsSalary = () => (
+type Props = {
+	title: string;
+}
+
+export const UserSettingsSalary: FC<Props> = ({title}) => (
 	<>
 		<Grid item xs={4}>
-			<Typography>Зарплатні очікування</Typography>
+			<Typography>{title}</Typography>
 		</Grid>
 		<Grid item xs={8}>
 			<TextField
