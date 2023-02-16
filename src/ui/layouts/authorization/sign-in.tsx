@@ -66,7 +66,7 @@ export const SignIn = memo(() => {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<CssBaseline />
-			<Box sx={{cursor: 'pointer', position: 'absolute', right: '5%', top: '2%'}} onClick={() => dispatch(setDarkTheme())}><Switch defaultChecked /></Box>
+			<Box sx={{cursor: 'pointer', position: 'absolute', right: '5%', top: '2%'}} onClick={() => dispatch(setDarkTheme())}><Switch /></Box>
 			<Box
 				sx={{
 					marginTop: 8,
