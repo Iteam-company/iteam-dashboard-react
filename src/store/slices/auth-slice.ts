@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
 import { Roles } from '../../constants/roles';
-import { Routes } from '../../constants/routes/routes';
 import { rolestRoutes } from '../../constants/routes/routes-schemas';
 // import { KeysOfLocalStorage } from '../../constants/utils/local-storage/keys-of-local-storage';
 import { SignInDto } from '../../types/api/auth/sign-in.dto';
