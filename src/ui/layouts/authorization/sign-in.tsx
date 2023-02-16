@@ -21,6 +21,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
 import { Error as ApiError } from '../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { useAppSelector } from '../../../hooks/store/use-app-selector-hook';
+import { setDarkTheme, userSetDarkTheme } from '../../../store/slices/theme-slice';
+import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
+import { Switch } from '@mui/material';
 
 const initialValues = {
 	email: 'example@gmail.com',
@@ -32,6 +37,7 @@ export const SignIn = memo(() => {
 	const { showSnackbar } = useNotifySnackbar();
 	const [signIn, { isLoading: isLoginLoading, isError: isLoginError }] =
 		useSignInMutation();
+	const mode = useAppSelector(userSetDarkTheme);
 
 	const formik = useFormik({
 		initialValues,
@@ -64,6 +70,7 @@ export const SignIn = memo(() => {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<CssBaseline />
+			<Box sx={{cursor: 'pointer', position: 'absolute', right: '5%', top: '2%'}} onClick={() => dispatch(setDarkTheme())}><Switch defaultChecked /></Box>
 			<Box
 				sx={{
 					marginTop: 8,
