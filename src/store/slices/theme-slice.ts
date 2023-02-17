@@ -1,25 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
-import { ModeColor } from '../../types/theme-mode/theme-mode';
 import { ThemeSliceStoreType } from '../../types/store/slices/theme-slice';
+import { themes } from '../../constants/themes';
+import { ThemeNames } from '../../constants/themes/theme-names';
 
-const colorWhichUserUse = window.matchMedia('(prefers-color-scheme: dark)').matches
-	? 'dark'
-	: 'light';
+const initialThemeName = window.matchMedia('(prefers-color-scheme: dark)')
+	.matches
+	? ThemeNames.DARK
+	: ThemeNames.LIGHT;
 
 const initialState: ThemeSliceStoreType = {
-	colorTheme: colorWhichUserUse,
+	themeName: ThemeNames.CUSTOM,
 };
 
 const ThemeSlice = createSlice({
 	name: 'theme',
 	initialState,
 	reducers: {
-		setColorOfTheme(state, action: PayloadAction<ModeColor>) {
-			state.colorTheme = action.payload;
+		setThemeName(state, action: PayloadAction<ThemeNames>) {
+			state.themeName = action.payload;
 		},
 	},
 });
 
+export const { setThemeName } = ThemeSlice.actions;
+
 export const ThemeReducer = ThemeSlice.reducer;
-export const colorTheme = (state: RootState) => state.theme.colorTheme;
+export const selectTheme = (state: RootState) => themes[state.theme.themeName];

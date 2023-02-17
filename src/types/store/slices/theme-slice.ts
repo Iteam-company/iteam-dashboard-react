@@ -1,5 +1,5 @@
-import { ModeColor } from "../../theme-mode/theme-mode";
+import { ThemeNames } from '../../../constants/themes/theme-names';
 
 export interface ThemeSliceStoreType {
-	colorTheme: ModeColor;
+	themeName: ThemeNames;
 }
