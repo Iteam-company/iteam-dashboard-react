@@ -1,3 +1,5 @@
+import { ModeColor } from "../../theme-mode/theme-mode";
+
 export interface ThemeSliceStoreType {
-	isDark: boolean;
+	colorTheme: ModeColor;
 }

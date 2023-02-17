@@ -21,8 +21,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
 import { Error as ApiError } from '../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
-import { setDarkTheme } from '../../../store/slices/theme-slice';
-import { Switch } from '@mui/material';
 
 const initialValues = {
 	email: 'example@gmail.com',
@@ -66,7 +64,6 @@ export const SignIn = memo(() => {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<CssBaseline />
-			<Box sx={{cursor: 'pointer', position: 'absolute', right: '5%', top: '2%'}} onClick={() => dispatch(setDarkTheme())}><Switch /></Box>
 			<Box
 				sx={{
 					marginTop: 8,
