@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container } from '@mui/material';
 import { UserInfo } from '../../components/user/user-info';
 import { UserAbout } from '../../components/user/user-about';

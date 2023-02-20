@@ -21,6 +21,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Routes } from '../../../constants/routes/routes';
 import { Error as ApiError } from '../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
+import { useGetAllUsersQuery } from '../../../api/users';
 
 const initialValues = {
 	email: 'example@gmail.com',
