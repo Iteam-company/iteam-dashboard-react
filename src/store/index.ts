@@ -6,10 +6,12 @@ import { baseApiService } from '../api/base-query';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
+import { ThemeReducer } from './slices/theme-slice';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
 	[baseApiService.reducerPath]: baseApiService.reducer,
+	theme: ThemeReducer,
 });
 
 const persistConfig = {
