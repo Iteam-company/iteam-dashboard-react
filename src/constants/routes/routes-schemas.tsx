@@ -1,4 +1,3 @@
-import React from 'react';
 import { RouteObject } from 'react-router-dom';
 import { ViewDefaultPage } from '../../ui/components/view-default-page';
 import { ForgotPassword } from '../../ui/layouts/authorization/forgot-password';
@@ -8,6 +7,9 @@ import { ManagerDashboard } from '../../ui/layouts/dashboards/manager-dashboard'
 import { AuthGuard } from '../../ui/utils/auth-guard';
 import { GuestGuard } from '../../ui/utils/guest-guard';
 import Default from '../../ui/views/default';
+import { Integration } from '../../ui/views/integrations/integrations';
+import { OrdersBox } from '../../ui/views/orders/orders-box';
+import { Reports } from '../../ui/views/reports/reports';
 import { UserPage } from '../../ui/views/user/user-summary';
 import { Roles } from '../roles';
 import { Routes } from './routes';
@@ -57,11 +59,7 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 			children: [
 				{
 					path: Routes.ROOT_PATH,
-					element: (
-						<ViewDefaultPage tabTitle='Dashboard'>
-							<Default />
-						</ViewDefaultPage>
-					),
+					element: <Default />,
 				},
 				{
 					path: Routes.ORDERS,
@@ -72,7 +70,7 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 					),
 				},
 				{
-					path: Routes.CUSTOMERS,
+					path: Routes.USERS,
 					element: (
 						<ViewDefaultPage tabTitle='CUSTOMERS'>
 							<UserPage />
@@ -121,43 +119,23 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 			children: [
 				{
 					path: Routes.ROOT_PATH,
-					element: (
-						<ViewDefaultPage tabTitle='Dashboard'>
-							<Default />
-						</ViewDefaultPage>
-					),
+					element: <Default />,
 				},
 				{
 					path: Routes.ORDERS,
-					element: (
-						<ViewDefaultPage tabTitle='Orders'>
-							orders example how outlet works
-						</ViewDefaultPage>
-					),
+					element: <OrdersBox />,
 				},
 				{
-					path: Routes.CUSTOMERS,
-					element: (
-						<ViewDefaultPage tabTitle='CUSTOMERS'>
-							<UserPage />
-						</ViewDefaultPage>
-					),
+					path: Routes.USERS,
+					element: <UserPage />,
 				},
 				{
 					path: Routes.REPORTS,
-					element: (
-						<ViewDefaultPage tabTitle='REPORTS'>
-							reports example how outlet works
-						</ViewDefaultPage>
-					),
+					element: <Reports />,
 				},
 				{
 					path: Routes.INTEGRATIONS,
-					element: (
-						<ViewDefaultPage tabTitle='INTEGRATIONS'>
-							integrations example how outlet works
-						</ViewDefaultPage>
-					),
+					element: <Integration />,
 				},
 			],
 		},
