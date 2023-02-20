@@ -1,7 +1,8 @@
 import { Box, Container, Typography } from '@mui/material';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
+import { FC } from 'react';
 
-export const UserSkillsItem: React.FC = () => {
+export const UserSkillsItem: FC = () => {
 	return (
 		<>
 			<Typography>React.js</Typography>
