@@ -57,11 +57,7 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 			children: [
 				{
 					path: Routes.ROOT_PATH,
-					element: (
-						<ViewDefaultPage tabTitle='Dashboard'>
-							<Default />
-						</ViewDefaultPage>
-					),
+					element: <Default />,
 				},
 				{
 					path: Routes.ORDERS,
@@ -121,11 +117,7 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 			children: [
 				{
 					path: Routes.ROOT_PATH,
-					element: (
-						<ViewDefaultPage tabTitle='Dashboard'>
-							<Default />
-						</ViewDefaultPage>
-					),
+					element: <Default />,
 				},
 				{
 					path: Routes.ORDERS,
