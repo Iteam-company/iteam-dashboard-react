@@ -54,7 +54,7 @@ export const SignIn = memo(() => {
 				.email('Must be a valid email')
 				.max(50)
 				.required('Email is required'),
-			password: Yup.string().min(8).max(20).required('Password is required'),
+			password: Yup.string().min(8).max(16).required('Password is required'),
 		}),
 		validateOnBlur: false,
 	});
