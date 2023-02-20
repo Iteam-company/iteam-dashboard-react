@@ -13,7 +13,10 @@ export const ViewDefaultPage: FC<Props> = memo(({ children, tabTitle }) => {
 			<Helmet>
 				<title>{tabTitle}</title>
 			</Helmet>
-			<Box>{children}</Box>
+			<Box>
+				<Box>{tabTitle}</Box>
+				{children}
+			</Box>
 		</>
 	);
 });
