@@ -9,11 +9,11 @@
 	"requirePragma": false,
 	"useTabs": true,
 	"vueIndentScriptAndStyle": false,
-  "semi": true,
-  "tabWidth": 2,
-  "printWidth": 80,
-  "singleQuote": true,
-  "trailingComma": "all",
-  "jsxSingleQuote": true,
-  "bracketSpacing": true
+	"semi": true,
+	"tabWidth": 2,
+	"printWidth": 80,
+	"singleQuote": true,
+	"trailingComma": "all",
+	"jsxSingleQuote": true,
+	"bracketSpacing": true
 }
