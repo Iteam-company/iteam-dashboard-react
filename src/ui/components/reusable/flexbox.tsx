@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { Box, BoxProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { PropsWithChildren } from 'react';
 
-const Flexbox = styled(Box)<React.PropsWithChildren<BoxProps>>(({ theme }) => ({
+const Flexbox = styled(Box)<PropsWithChildren<BoxProps>>(({ theme }) => ({
 	display: 'flex',
 }));
 

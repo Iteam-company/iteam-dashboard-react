@@ -1,6 +1,6 @@
 import { Box, Button, CssBaseline, Grid, Link, TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import Typography from '@mui/material/Typography';
 import { Routes } from '../../../constants/routes/routes';
 import { Link as RouterLink } from 'react-router-dom';

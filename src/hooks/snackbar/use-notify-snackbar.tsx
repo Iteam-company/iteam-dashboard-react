@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSnackbar, VariantType } from 'notistack';
 import { Button } from '@mui/material';
 
