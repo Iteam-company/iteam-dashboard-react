@@ -1,11 +1,11 @@
-import * as React from 'react';
 import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from './title';
+import { useState } from 'react';
+import { CommonAppBar } from '../reusable/app-bar';
 
 // Generate Order Data
 function createData(
@@ -66,10 +66,9 @@ function preventDefault(event: React.MouseEvent) {
 	event.preventDefault();
 }
 
-export default function Orders() {
+export const Orders = () => {
 	return (
-		<React.Fragment>
-			<Title>Recent Orders</Title>
+		<>
 			<Table size='small'>
 				<TableHead>
 					<TableRow>
@@ -95,6 +94,6 @@ export default function Orders() {
 			<Link color='primary' href='#' onClick={preventDefault} sx={{ mt: 3 }}>
 				See more orders
 			</Link>
-		</React.Fragment>
+		</>
 	);
 }
