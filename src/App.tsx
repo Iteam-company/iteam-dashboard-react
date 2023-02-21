@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@mui/material';
-import React, { memo, FC, PropsWithChildren } from 'react';
+import { memo, FC, PropsWithChildren } from 'react';
 import { useRoutes } from 'react-router-dom';
 
 import { useAppSelector } from './hooks/store/use-app-selector-hook';

@@ -1,5 +1,4 @@
 import { Container, Grid, Paper } from '@mui/material';
-import React from 'react';
 import Chart from '../components/mocked/chart';
 import Deposits from '../components/mocked/deposit';
 import Orders from '../components/mocked/orders';

@@ -7,7 +7,6 @@ import {
 	Typography,
 } from '@mui/material';
 import { Notifications, Menu, ChevronLeft } from '@mui/icons-material';
-import React from 'react';
 
 import { AppBar } from '../../components/mocked/app-bar';
 
@@ -15,9 +14,10 @@ import { Drawer } from '../../components/mocked/drawer';
 import { DashboardSidebarNav } from '../../components/dasboard-sidebar-nav';
 import { SidebarNavigationListItems } from '../../components/manager-dashboard/dasboard-sidebar/sidebar-navigation-list-items';
 import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
 
 export const ManagerDashboard = () => {
-	const [open, setOpen] = React.useState(true);
+	const [open, setOpen] = useState(true);
 	const toggleDrawer = () => {
 		setOpen(!open);
 	};

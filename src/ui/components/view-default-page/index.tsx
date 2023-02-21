@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import React, { memo, PropsWithChildren, FC } from 'react';
+import { memo, PropsWithChildren, FC } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
