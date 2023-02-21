@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserInfo } from '../../components/user/user-info';
