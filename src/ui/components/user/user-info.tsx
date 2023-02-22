@@ -1,6 +1,5 @@
 import {
 	Box,
-	Button,
 	Card,
 	Container,
 	CssBaseline,
@@ -10,7 +9,7 @@ import {
 
 export const UserInfo = () => {
 	return (
-		<Card sx={{ mt: 6, p: 2, mb: 2 }}>
+		<Card sx={{ mt: 1, p: 2, mb: 2 }}>
 			<CssBaseline />
 			<Container
 				sx={{

@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useState } from 'react';
-import { CommonAppBar } from '../reusable/app-bar';
+import { ViewDefaultPage } from '../view-default-page';
 
 // Generate Order Data
 function createData(
@@ -67,8 +67,9 @@ function preventDefault(event: React.MouseEvent) {
 }
 
 export const Orders = () => {
+	const [title] = useState('Orders');
 	return (
-		<>
+		<ViewDefaultPage title={title} tabtitle={title}>
 			<Table size='small'>
 				<TableHead>
 					<TableRow>
@@ -94,6 +95,6 @@ export const Orders = () => {
 			<Link color='primary' href='#' onClick={preventDefault} sx={{ mt: 3 }}>
 				See more orders
 			</Link>
-		</>
+		</ViewDefaultPage>
 	);
-}
+};

@@ -1,5 +1,5 @@
-import { User } from "../../common/api/user";
+import { User } from '../../common/api/user';
 
 export interface UsersSliceStoreType {
-	users: null | User[];
+	allUsers: User[];
 }

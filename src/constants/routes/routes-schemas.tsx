@@ -1,5 +1,5 @@
-import { RouteObject } from 'react-router-dom';
-import { ViewDefaultPage } from '../../ui/components/view-default-page';
+import { Outlet, RouteObject } from 'react-router-dom';
+import { Orders } from '../../ui/components/mocked/orders';
 import { ForgotPassword } from '../../ui/layouts/authorization/forgot-password';
 import { SignIn } from '../../ui/layouts/authorization/sign-in';
 import { SignUp } from '../../ui/layouts/authorization/sign-up';
@@ -8,7 +8,6 @@ import { AuthGuard } from '../../ui/utils/auth-guard';
 import { GuestGuard } from '../../ui/utils/guest-guard';
 import Default from '../../ui/views/default';
 import { Integration } from '../../ui/views/integrations/integrations';
-import { OrdersBox } from '../../ui/views/orders/orders-box';
 import { Reports } from '../../ui/views/reports/reports';
 import { UserPage } from '../../ui/views/user/user-summary';
 import { Roles } from '../roles';
@@ -63,35 +62,19 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 				},
 				{
 					path: Routes.ORDERS,
-					element: (
-						<ViewDefaultPage tabTitle='Orders'>
-							orders example how outlet works
-						</ViewDefaultPage>
-					),
+					element: <Outlet />,
 				},
 				{
 					path: Routes.USERS,
-					element: (
-						<ViewDefaultPage tabTitle='CUSTOMERS'>
-							<UserPage />
-						</ViewDefaultPage>
-					),
+					element: <Outlet />,
 				},
 				{
 					path: Routes.REPORTS,
-					element: (
-						<ViewDefaultPage tabTitle='REPORTS'>
-							reports example how outlet works
-						</ViewDefaultPage>
-					),
+					element: <Outlet />,
 				},
 				{
 					path: Routes.INTEGRATIONS,
-					element: (
-						<ViewDefaultPage tabTitle='INTEGRATIONS'>
-							integrations example how outlet works
-						</ViewDefaultPage>
-					),
+					element: <Outlet />,
 				},
 			],
 		},
@@ -123,7 +106,7 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 				},
 				{
 					path: Routes.ORDERS,
-					element: <OrdersBox />,
+					element: <Orders />,
 				},
 				{
 					path: Routes.USERS,
