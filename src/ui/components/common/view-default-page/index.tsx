@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Container, Paper, Typography } from '@mui/material';
 import { memo, PropsWithChildren, FC } from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -14,9 +14,11 @@ export const ViewDefaultPage: FC<Props> = memo(({ children, tabTitle }) => {
 				<title>{tabTitle}</title>
 			</Helmet>
 			<Box>
-				<Paper>
-					<Typography color='text'>{tabTitle}123</Typography>
-				</Paper>
+				<Container>
+					<Paper sx={{ padding: 3 }}>
+						<Typography color='text'>{tabTitle}</Typography>
+					</Paper>
+				</Container>
 				{children}
 			</Box>
 		</>
