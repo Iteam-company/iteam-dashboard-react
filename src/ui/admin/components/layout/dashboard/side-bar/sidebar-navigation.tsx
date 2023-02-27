@@ -10,6 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import { CommontRoutes } from '../../../../../../constants/routes/application-routes/common-routes';
 import { AdminRoutes } from '../../../../../../constants/routes/application-routes/admin-routes';
+import { List } from '@mui/material';
 
 const sidebarOptionsDescription = [
 	{
@@ -39,7 +40,7 @@ const sidebarOptionsDescription = [
 	},
 ];
 
-export const AdminSidebarNavigationListItems = memo(() => {
+export const AdminSidebarNavigation = memo(() => {
 	const navigate = useNavigate();
 
 	const handleClick = useCallback(
@@ -49,15 +50,15 @@ export const AdminSidebarNavigationListItems = memo(() => {
 		[navigate],
 	);
 	return (
-		<>
+		<List component='nav'>
 			{sidebarOptionsDescription.map(({ text, icon, route }, index) => (
 				<ListItemButton key={text + index} onClick={() => handleClick(route)}>
 					<ListItemIcon>{icon}</ListItemIcon>
 					<ListItemText primary={text} />
 				</ListItemButton>
 			))}
-		</>
+		</List>
 	);
 });
 
-AdminSidebarNavigationListItems.displayName = 'SidebarNavigationListItems';
+AdminSidebarNavigation.displayName = 'SidebarNavigationListItems';
