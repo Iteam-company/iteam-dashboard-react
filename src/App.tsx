@@ -13,7 +13,6 @@ export const App: FC<PropsWithChildren> = memo(() => {
 
 	// in the future we get theme from redux store and make it extendable
 	const routesByRole = useAppSelector(selectRoutesSchemaByUserRole);
-	// console.log(routesByRole, 'routesByRoleroutesByRole');
 	const content = useRoutes(routesByRole);
 	return <ThemeProvider theme={theme}>{content}</ThemeProvider>;
 });
