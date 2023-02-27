@@ -1,7 +1,7 @@
 import { Container, Grid, Paper } from '@mui/material';
 import Chart from '../components/mocked/chart';
 import Deposits from '../components/mocked/deposit';
-import Orders from '../components/mocked/orders';
+import { Orders } from '../components/mocked/orders';
 import { Copyright } from '../components/reusable/copyright';
 import { ViewDefaultPage } from '../components/view-default-page';
 

@@ -17,14 +17,14 @@ const sidebarOptionsDescription = [
 		route: Routes.ROOT_PATH,
 	},
 	{
+		text: 'Users',
+		icon: <PeopleIcon />,
+		route: Routes.USERS,
+	},
+	{
 		text: 'Orders',
 		icon: <ShoppingCartIcon />,
 		route: Routes.ORDERS,
-	},
-	{
-		text: 'Customers',
-		icon: <PeopleIcon />,
-		route: Routes.CUSTOMERS,
 	},
 	{
 		text: 'Reports',
