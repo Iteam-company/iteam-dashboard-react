@@ -7,7 +7,7 @@ export enum Routes {
 	// dashboard routes
 	ROOT_PATH = '/',
 	ORDERS = 'orders',
-	CUSTOMERS = 'customers',
+	USERS = 'users',
 	REPORTS = 'reports',
 	INTEGRATIONS = 'integrations',
 

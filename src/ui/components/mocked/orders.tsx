@@ -66,7 +66,7 @@ function preventDefault(event: MouseEvent) {
 	event.preventDefault();
 }
 
-export default function Orders() {
+export const Orders = () => {
 	return (
 		<>
 			<Title>Recent Orders</Title>
@@ -97,4 +97,4 @@ export default function Orders() {
 			</Link>
 		</>
 	);
-}
+};

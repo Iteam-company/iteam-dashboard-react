@@ -4,10 +4,10 @@ import RadioButtonUncheckedOutlinedIcon from '@mui/icons-material/RadioButtonUnc
 import { Box, Checkbox, Grid, Typography } from '@mui/material';
 
 type Props = {
-  title: string;
-}
+	title: string;
+};
 
-export const UserSettingsLanguagelevel:FC<Props> = ({title}) => {
+export const UserSettingsLanguagelevel: FC<Props> = ({ title }) => {
 	const [englishLevels] = useState<string[]>([
 		'No English',
 		'Beginner',
