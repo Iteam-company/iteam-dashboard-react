@@ -4,8 +4,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useState } from 'react';
-import { CommonAppBar } from '../reusable/app-bar';
+import { MouseEvent } from 'react';
+import Title from './title';
 
 // Generate Order Data
 function createData(
@@ -62,13 +62,14 @@ const rows = [
 	),
 ];
 
-function preventDefault(event: React.MouseEvent) {
+function preventDefault(event: MouseEvent) {
 	event.preventDefault();
 }
 
 export const Orders = () => {
 	return (
 		<>
+			<Title>Recent Orders</Title>
 			<Table size='small'>
 				<TableHead>
 					<TableRow>
@@ -96,4 +97,4 @@ export const Orders = () => {
 			</Link>
 		</>
 	);
-}
+};

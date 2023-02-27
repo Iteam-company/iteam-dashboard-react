@@ -10,7 +10,7 @@ const initialThemeName = window.matchMedia('(prefers-color-scheme: dark)')
 	: ThemeNames.LIGHT;
 
 const initialState: ThemeSliceStoreType = {
-	themeName: ThemeNames.CUSTOM,
+	themeName: initialThemeName,
 };
 
 const ThemeSlice = createSlice({
