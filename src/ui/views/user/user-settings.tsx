@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import {
-	Container,
-	Grid,
-} from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import { UserSettingsTextField } from '../../components/user-settings/user-settings-textfield';
 import { UserSettingsSalary } from '../../components/user-settings/user-settings-salary';
 import { UserSettingsExperience } from '../../components/user-settings/user-settings-experience';
@@ -17,14 +14,14 @@ export const UserSettings = () => {
 	const [category] = useState('Категорії');
 	const [subtitle] = useState('Lorem, ipsum dolor.');
 	const [englishLevelTitle] = useState('Рівень Англійської');
-	const [userExperienceTitle] = useState('Досвід роботи')
+	const [userExperienceTitle] = useState('Досвід роботи');
 	const [userSallaryTitle] = useState('Зарплатні очікування');
 	return (
 		<Container maxWidth='md' sx={{ mt: 6 }}>
 			<Grid container spacing={2} sx={{ alignItems: 'center' }}>
 				<UserSettingsTextField title={positionTitle} />
-				<UserSettingsSalary title={userSallaryTitle}/>
-				<UserSettingsExperience title={userExperienceTitle}/>
+				<UserSettingsSalary title={userSallaryTitle} />
+				<UserSettingsExperience title={userExperienceTitle} />
 				<UserSettingsSelect title={country} />
 				<UserSettingsTextField title={city} subtitle={subtitle} />
 				<UserSettingsTextField title={skills} subtitle={subtitle} />
