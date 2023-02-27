@@ -3,9 +3,9 @@ import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
 
 type Props = {
 	title: string;
-}
+};
 
-export const UserSettingsSalary: FC<Props> = ({title}) => (
+export const UserSettingsSalary: FC<Props> = ({ title }) => (
 	<>
 		<Grid item xs={4}>
 			<Typography>{title}</Typography>
