@@ -13,4 +13,5 @@ export enum Routes {
 
 	// develop routes
 	DEVELOP_UI_ROUTE = 'develop-ui',
+	USER_TABLE = 'users-table'
 }

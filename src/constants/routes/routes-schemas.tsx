@@ -10,6 +10,7 @@ import Default from '../../ui/views/default';
 import { Integration } from '../../ui/views/integrations/integrations';
 import { Reports } from '../../ui/views/reports/reports';
 import { UserPage } from '../../ui/views/user/user-summary';
+import { UsersTable } from '../../ui/views/users/users-table';
 import { Roles } from '../roles';
 import { Routes } from './routes';
 
@@ -119,6 +120,10 @@ export const rolestRoutes: { [key in Roles]: Array<RouteObject> } = {
 				{
 					path: Routes.INTEGRATIONS,
 					element: <Integration />,
+				},
+				{
+					path: Routes.USER_TABLE,
+					element: <UsersTable />,
 				},
 			],
 		},
