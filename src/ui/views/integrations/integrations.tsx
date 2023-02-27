@@ -1,14 +1,8 @@
-import { memo, useState } from 'react';
-import { CommonAppBar } from '../../components/reusable/app-bar';
+import { memo } from 'react';
 import { ViewDefaultPage } from '../../components/view-default-page';
 
 export const Integration = memo(() => {
-	const [title] = useState('Integrations');
-	return (
-		<ViewDefaultPage tabTitle={title}>
-			<CommonAppBar title={title} />
-		</ViewDefaultPage>
-	);
+	return <ViewDefaultPage tabTitle='Integrations'></ViewDefaultPage>;
 });
 
 Integration.displayName = 'Integration';

@@ -1,5 +1,5 @@
 import { List } from '@mui/material';
-import React, { memo, PropsWithChildren, FC } from 'react';
+import { memo, PropsWithChildren, FC } from 'react';
 
 export const DashboardSidebarNav: FC<PropsWithChildren> = memo(
 	({ children }) => {

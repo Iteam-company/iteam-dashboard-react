@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import React from 'react';
 
 type Props = {
 	children?: JSX.Element;

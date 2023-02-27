@@ -1,5 +1,5 @@
 import { Card } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { UserCardTop } from './user-card-top';
 import { UserAboutItem } from './user-about-item';
 
