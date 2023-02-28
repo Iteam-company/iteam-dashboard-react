@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-
 import { memo, useCallback, useState } from 'react';
 import { AppBar } from '../../components/layout/dashboard/app-bar';
 import { AdminSidebar } from '../../components/layout/dashboard/side-bar';

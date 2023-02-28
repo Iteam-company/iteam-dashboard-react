@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { CommontRoutes } from '../../../../../../constants/routes/application-routes/common-routes';
 import { AdminRoutes } from '../../../../../../constants/routes/application-routes/admin-routes';
 import { List } from '@mui/material';
+import TableRowsIcon from '@mui/icons-material/TableRows';
 
 const sidebarOptionsDescription = [
 	{
@@ -37,6 +38,11 @@ const sidebarOptionsDescription = [
 		text: 'Integrations',
 		icon: <LayersIcon />,
 		route: AdminRoutes.INTEGRATIONS,
+	},
+	{
+		text: 'Users Table',
+		icon: <TableRowsIcon />,
+		route: AdminRoutes.USERS_TABLE,
 	},
 ];
 

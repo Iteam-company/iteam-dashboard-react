@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { ViewDefaultPage } from '../../../components/common/view-default-page';
 import { UserAbout } from '../../components/view/user/user-summary/user-about';
 import { UserEducation } from '../../components/view/user/user-summary/user-education';
@@ -8,8 +8,9 @@ import { UserInfo } from '../../components/view/user/user-summary/user-info';
 import { UserSkills } from '../../components/view/user/user-summary/user-skills';
 
 export const UserSummary = memo(() => {
+	const [title] = useState('Users')
 	return (
-		<ViewDefaultPage tabTitle='Users'>
+		<ViewDefaultPage tabTitle={title} title={title}>
 			<Container maxWidth='md'>
 				<UserInfo />
 				<UserAbout />

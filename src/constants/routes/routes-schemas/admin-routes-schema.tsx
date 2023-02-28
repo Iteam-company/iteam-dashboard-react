@@ -5,6 +5,7 @@ import { Integration } from '../../../ui/admin/view/integrations/integrations';
 import { OrdersBox } from '../../../ui/admin/view/orders/orders-box';
 import { Reports } from '../../../ui/admin/view/reports/reports';
 import { UserSummary } from '../../../ui/admin/view/user/user-summary';
+import { UsersTable } from '../../../ui/admin/view/users-table/users-table';
 import { AuthGuard } from '../../../ui/utils/auth-guard';
 import { AdminRoutes } from '../application-routes/admin-routes';
 import { CommontRoutes } from '../application-routes/common-routes';
@@ -36,6 +37,10 @@ export const adminRoutesSchema: RouteObject = {
 		{
 			path: AdminRoutes.INTEGRATIONS,
 			element: <Integration />,
+		},
+		{
+			path: AdminRoutes.USERS_TABLE,
+			element: <UsersTable />,
 		},
 	],
 };

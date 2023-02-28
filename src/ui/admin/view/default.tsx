@@ -4,13 +4,15 @@ import Deposits from '../../components/common/mocked/deposit';
 import { Orders } from '../../components/common/mocked/orders';
 import { Copyright } from '../../components/common/mocked/copyright';
 import { ViewDefaultPage } from '../../components/common/view-default-page';
+import { useState } from 'react';
 
 export const Default = () => {
+	const [title] = useState('Dashboard');
 	return (
-		<ViewDefaultPage tabTitle='Dashboard'>
+		<ViewDefaultPage tabTitle={title} title={title}>
 			<Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
 				<Grid container spacing={3}>
-					{/* Chart */}
+					{/*Chart*/}
 					<Grid item xs={12} md={8} lg={9}>
 						<Paper
 							sx={{
