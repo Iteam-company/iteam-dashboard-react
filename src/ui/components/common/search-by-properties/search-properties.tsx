@@ -31,7 +31,7 @@ export const SearchByProperties: FC<Props> = memo(({ children }) => {
 						<Typography sx={{ fontSize: '12px', ml: 1 }}>
 							Property List
 						</Typography>
-						<Select size='small' displayEmpty sx={{ width: '150px' }}>
+						<Select size='small' sx={{ width: '150px' }} label='age'>
 							{columns?.map((column, index) => (
 								<MenuItem value={column.title} key={`${column} - ${index}`}>
 									{column.title}

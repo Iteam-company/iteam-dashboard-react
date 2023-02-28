@@ -1,5 +1,5 @@
 export interface Items {
 	label: string;
-	onclick: () => void;
+	onClick: () => void;
 	element: JSX.Element;
 }
