@@ -7,8 +7,8 @@ import { StyledMenu } from '../mocked/styled-menu';
 
 type Props = {
 	actions?: Actions;
+	
 };
-
 export const ButtonActions: FC<Props> = ({ actions }) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
@@ -41,7 +41,7 @@ export const ButtonActions: FC<Props> = ({ actions }) => {
 				open={open}
 				onClose={handleClose}>
 				{actions?.items?.map((item, i) => (
-					<MenuItem key={`${item} - ${i}`} onClick={item.onclick} disableRipple>
+					<MenuItem key={`${item} - ${i}`} onClick={item.onClick} disableRipple>
 						{actions.title}
 					</MenuItem>
 				))}
