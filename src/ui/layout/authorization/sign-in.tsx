@@ -20,7 +20,7 @@ import { setCredentials } from '../../../store/slices/auth-slice';
 import { Link as RouterLink } from 'react-router-dom';
 import { Error as ApiError } from '../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
-import { CommontRoutes } from '../../../constants/routes/application-routes/common-routes';
+import { CommontRoutes } from '../../../constants/common/routes/common-routes';
 
 const initialValues = {
 	email: 'example@gmail.com',

@@ -1,9 +1,12 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { ViewDefaultPage } from '../../../components/common/view-default-page';
 
 export const Integration = memo(() => {
-	const [title] = useState('Integrations');
-	return <ViewDefaultPage tabTitle={title} title={title}></ViewDefaultPage>;
+	return (
+		<ViewDefaultPage
+			tabTitle='Integrations'
+			title='Integrations'></ViewDefaultPage>
+	);
 });
 
 Integration.displayName = 'Integration';

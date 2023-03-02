@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
-import { Roles } from '../../constants/roles';
-import { rolesRoutesSchemas } from '../../constants/routes/routes-schemas';
+import { Roles } from '../../constants/common/roles';
+import { rolesRoutesSchemas } from '../../constants/common/routes/routes-schemas';
 import { SignInDto } from '../../types/api/auth/sign-in.dto';
-import { Tokens } from '../../types/common/api/user/user-tokens';
+import { Tokens } from '../../types/common/api/user/tokens';
 import { AuthSliceStoreType } from '../../types/store/slices/auth-slice-store-type';
 
 const initialState: AuthSliceStoreType = {

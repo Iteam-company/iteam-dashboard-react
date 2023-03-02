@@ -1,13 +1,13 @@
-import { Attachments } from './user-attachments';
-import { Client } from './user-clients';
-import { Cv } from './user-cv';
-import { EducationInfo } from './user-education-info';
-import { Projects } from './user-projects';
-import { Roles } from './user-roles';
-import { Status } from './user-status';
-import { Technology } from './user-technology';
-import { workHistoryInfo } from './user-work-history-info';
-import { WorkType } from './user-work-type';
+import { Attachments } from './attachments';
+import { Client } from './clients';
+import { Cv } from './cv';
+import { EducationInfo } from './education';
+import { Project } from './project';
+import { Roles } from './roles';
+import { Status } from './status';
+import { Technology } from './technology';
+import { workHistoryInfo } from './work-history-info';
+import { WorkType } from './work-type';
 import { workHistory } from './work-history';
 
 export interface User {
@@ -35,7 +35,7 @@ export interface User {
 	endDate: null | string;
 	workType: null | WorkType;
 	roles: null | Roles;
-	leadingInProjects: Array<Projects>;
+	leadingInProjects: Array<Project>;
 	teamSize: string;
 	ourCompanyResponsibility: string;
 	pricingModel: string;
@@ -50,7 +50,7 @@ export interface User {
 	demoCredentialsPassword: 'string';
 	mainParticipant: string;
 	secondaryParticipants: Array<string>;
-	participatingInProjects: Array<Projects>;
+	participatingInProjects: Array<Project>;
 	attachedAttachments: Attachments;
 	publishedAttachments: Attachments;
 	techStack: null | Technology;
