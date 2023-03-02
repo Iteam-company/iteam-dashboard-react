@@ -1,18 +1,18 @@
 import { USERS_ENDPOINTS } from '../constants/api/users-endpoints-urls/users-endpoints';
-import { User } from '../types/common/api/user';
+import { UsersResponse } from '../types/common/api/users';
 import { baseApiService } from './base-query';
 
 export const usersApiService = baseApiService.injectEndpoints({
 	endpoints: (builder) => ({
-		getAllUsers: builder.query<Array<User> | null, void>({
+		getAllUsers: builder.query<UsersResponse | null, void>({
 			query: (credentials) => ({
 				url: USERS_ENDPOINTS.USERS,
 				body: credentials,
 			}),
 			providesTags: (result) =>
-				result
+				result?.data
 					? [
-						...result.map(({ id }) => ({ type: 'Users' as const, id })),
+						...result.data.map(({ id }) => ({ type: 'Users' as const, id })),
 
 						'Users',
 					  ]

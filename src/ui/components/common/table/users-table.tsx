@@ -1,18 +1,17 @@
-import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
 import { Column } from '../../../../types/admin/column';
 import { User } from '../../../../types/common/api/user';
-import { UsersResponse } from '../../../../types/common/api/users';
 
 type Props = {
-	data?: UsersResponse | null;
+	data?: User[] | null;
 	columns?: Array<Column>;
 	button?: JSX.Element;
 };
 
-export const Table: FC<Props> = ({ data, columns = [], button }) => {
+export const UsersTable: FC<Props> = ({ data, columns = [], button }) => {
 	return (
-		<>
+		<Table>
 			<TableHead>
 				<TableRow>
 					{columns.map((column, i) => (
@@ -24,7 +23,7 @@ export const Table: FC<Props> = ({ data, columns = [], button }) => {
 				</TableRow>
 			</TableHead>
 			<TableBody>
-				{data?.data?.map((user: User) => (
+				{data?.map((user: User) => (
 					<TableRow key={user.id}>
 						{columns.map((column, index) => (
 							<TableCell key={user.id + index}>
@@ -35,6 +34,6 @@ export const Table: FC<Props> = ({ data, columns = [], button }) => {
 					</TableRow>
 				))}
 			</TableBody>{' '}
-		</>
+		</Table>
 	);
 };
