@@ -1,19 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 // import { setupListeners } from '@reduxjs/toolkit/query';
-import { isProd } from '../constants/env';
+import { isProd } from '../constants/common/env';
 import { authReducer } from './slices/auth-slice';
 import { baseApiService } from '../api/base-query';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import { ThemeReducer } from './slices/theme-slice';
-import { usersReducer } from './slices/users-slice';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
 	[baseApiService.reducerPath]: baseApiService.reducer,
 	theme: ThemeReducer,
-	users: usersReducer,
 });
 
 const persistConfig = {

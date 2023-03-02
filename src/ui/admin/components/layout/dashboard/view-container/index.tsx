@@ -1,5 +1,5 @@
 import { Box, Toolbar } from '@mui/material';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Outlet } from 'react-router-dom';
 
 export const ViewContainer = memo(() => {

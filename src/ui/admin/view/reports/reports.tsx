@@ -1,9 +1,8 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { ViewDefaultPage } from '../../../components/common/view-default-page';
 
 export const Reports = memo(() => {
-	const [title] = useState('Reports')
-	return <ViewDefaultPage tabTitle={title} title={title}></ViewDefaultPage>;
+	return <ViewDefaultPage tabTitle='Reports' title='Reports'></ViewDefaultPage>;
 });
 
 Reports.displayName = 'Reports';

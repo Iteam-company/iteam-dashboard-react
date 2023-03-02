@@ -3,7 +3,7 @@ import { Flexbox } from '../../../../../components/common/mocked/flexbox';
 
 export const UserExperienceItem = () => {
 	return (
-		<Flexbox sx={{ mb: 2 }}>
+		<Flexbox>
 			<Box
 				component='img'
 				alt='user-avatar'

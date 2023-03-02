@@ -1,4 +1,4 @@
-import { Attachments } from './user-attachments';
+import { Attachments } from './attachments';
 
 export interface workHistory {
 	id: number;
@@ -8,6 +8,6 @@ export interface workHistory {
 	endDate: string;
 	positionOnProject: string;
 	responsibility: string;
-	showCaseAttachments: Attachments;
+	showCaseAttachments: Array<Attachments>;
 	defaultCoverLetter: string;
 }

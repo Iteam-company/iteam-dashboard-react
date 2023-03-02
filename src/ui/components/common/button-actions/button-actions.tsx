@@ -9,7 +9,7 @@ type Props = {
 	actions?: Actions;
 	
 };
-export const ButtonActions: FC<Props> = ({ actions }) => {
+export const ButtonWithSelectActions: FC<Props> = ({ actions }) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {

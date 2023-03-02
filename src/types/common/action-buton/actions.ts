@@ -1,6 +1,6 @@
-import { Items } from "./items";
+import { Item } from "./item";
 
 export interface Actions {
 	title?: string;
-	items?: Array<Items>;
+	items?: Array<Item>;
 }

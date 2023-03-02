@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import { Navigate } from 'react-router-dom';
-import { CommontRoutes } from '../../constants/routes/application-routes/common-routes';
+import { CommontRoutes } from '../../constants/common/routes/common-routes';
 import { useAuth } from '../../hooks/auth/use-auth';
 
 export const AuthGuard: FC<PropsWithChildren> = ({ children }) => {

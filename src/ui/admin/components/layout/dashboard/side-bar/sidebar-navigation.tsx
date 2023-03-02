@@ -8,10 +8,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
-import { CommontRoutes } from '../../../../../../constants/routes/application-routes/common-routes';
-import { AdminRoutes } from '../../../../../../constants/routes/application-routes/admin-routes';
 import { List } from '@mui/material';
-import TableRowsIcon from '@mui/icons-material/TableRows';
+import { AdminRoutes } from '../../../../../../constants/admin/admin-routes';
+import { CommontRoutes } from '../../../../../../constants/common/routes/common-routes';
 
 const sidebarOptionsDescription = [
 	{
@@ -38,11 +37,6 @@ const sidebarOptionsDescription = [
 		text: 'Integrations',
 		icon: <LayersIcon />,
 		route: AdminRoutes.INTEGRATIONS,
-	},
-	{
-		text: 'Users Table',
-		icon: <TableRowsIcon />,
-		route: AdminRoutes.USERS_TABLE,
 	},
 ];
 
