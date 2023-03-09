@@ -1,40 +1,22 @@
-import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { FC } from 'react';
+import { Table as MuiTableable } from '@mui/material';
+import { FC, memo } from 'react';
 import { Column } from '../../../../types/admin/column';
-import { User } from '../../../../types/common/api/user';
-import { UsersResponse } from '../../../../types/common/api/users';
+import { UsersResponse } from '../../../../types/admin/users';
+import { BodyOfTable } from './body-of-table';
+import { HeadOfTable } from './head-of-table';
 
 type Props = {
-	data?: UsersResponse | null;
 	columns?: Array<Column>;
-	button?: JSX.Element;
+	data?: UsersResponse;
 };
 
-export const Table: FC<Props> = ({ data, columns = [], button }) => {
+export const Table: FC<Props> = memo(({ columns, data }) => {
 	return (
-		<>
-			<TableHead>
-				<TableRow>
-					{columns.map((column, i) => (
-						<TableCell key={`${column} - ${i}`} align='center'>
-							{column.title}
-						</TableCell>
-					))}
-					<TableCell>settings</TableCell>
-				</TableRow>
-			</TableHead>
-			<TableBody>
-				{data?.data?.map((user: User) => (
-					<TableRow key={user.id}>
-						{columns.map((column, index) => (
-							<TableCell key={user.id + index}>
-								{column.generateColumn(user)}
-							</TableCell>
-						))}
-						<TableCell>{button}</TableCell>
-					</TableRow>
-				))}
-			</TableBody>{' '}
-		</>
+		<MuiTableable>
+			<HeadOfTable columns={columns} />
+			<BodyOfTable data={data} />
+		</MuiTableable>
 	);
-};
+});
+
+Table.displayName = 'Table';

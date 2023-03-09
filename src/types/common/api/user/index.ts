@@ -6,9 +6,10 @@ import { Project } from './project';
 import { Roles } from './roles';
 import { Status } from './status';
 import { Technology } from './technology';
-import { workHistoryInfo } from './work-history-info';
 import { WorkType } from './work-type';
 import { workHistory } from './work-history';
+import { leadingInProject } from './leading-in-projects';
+import { Token } from './token';
 
 export interface User {
 	id: number;
@@ -33,23 +34,10 @@ export interface User {
 	cv: null | Cv;
 	startDate: null | string;
 	endDate: null | string;
+	workTypeId: string | null;
 	workType: null | WorkType;
+	leadingInProjects: Array<leadingInProject>;
 	roles: null | Roles;
-	leadingInProjects: Array<Project>;
-	teamSize: string;
-	ourCompanyResponsibility: string;
-	pricingModel: string;
-	averageHoursPerMonth: number;
-	hourlyRate: number;
-	fixedPrice: number;
-	client: Client;
-	workHistories: null | workHistory;
-	projectDeploymentStatus: 'string';
-	projectLink: 'string';
-	demoCredentialsLogin: 'string';
-	demoCredentialsPassword: 'string';
-	mainParticipant: string;
-	secondaryParticipants: Array<string>;
 	participatingInProjects: Array<Project>;
 	attachedAttachments: Attachments;
 	publishedAttachments: Attachments;
@@ -72,7 +60,5 @@ export interface User {
 	defaultCoverLetter: null | string;
 	createdAt: string;
 	updatedAt: string;
-	workHistoryInfoId: number;
-	workHistoryInfo: null | workHistoryInfo;
-	token: null;
+	token: Token;
 }

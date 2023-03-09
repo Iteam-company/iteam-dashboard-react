@@ -1,18 +1,20 @@
-import { Table as CommonTable } from '@mui/material';
-import { memo } from 'react';
 import { useGetAllUsersQuery } from '../../../../../api/users';
 import { columns } from '../../../../../constants/admin/columns-schema';
-import { ContextMenuDropDown } from '../../../../components/common/context-menu-dropdown';
+import { useAppSelector } from '../../../../../hooks/store/use-app-selector-hook';
+import { userSearch } from '../../../../../store/slices/user-search-slice';
+import { Loader } from '../../../../components/common/loader';
 import { Table } from '../../../../components/common/table';
 
-export const UsersTable = memo(() => {
-	const { data } = useGetAllUsersQuery();
+export const UsersTable = () => {
+	const searchParams = useAppSelector(userSearch);
+	const { data, isLoading: isLoading } = useGetAllUsersQuery(searchParams);
+	console.log(isLoading)
 
 	return (
-		<CommonTable sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
-			<Table data={data} columns={columns} button={<ContextMenuDropDown />} />
-		</CommonTable>
+		<>
+			<Loader isLoading={isLoading} />
+			{/*change logic*/}
+			<Table data={data} columns={columns} />
+		</>
 	);
-});
-
-UsersTable.displayName = 'UsersTable';
+};

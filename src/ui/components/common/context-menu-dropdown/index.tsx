@@ -1,6 +1,5 @@
-import { IconButton, Menu, MenuItem } from "@mui/material";
-import { useState } from "react";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+import { useState } from 'react';
 
 const options = ['edit'];
 
@@ -24,9 +23,7 @@ export const ContextMenuDropDown = () => {
 				aria-controls={open ? 'long-menu' : undefined}
 				aria-expanded={open ? 'true' : undefined}
 				aria-haspopup='true'
-				onClick={handleClick}>
-				<MoreVertIcon />
-			</IconButton>
+				onClick={handleClick}></IconButton>
 			<Menu
 				id='long-menu'
 				MenuListProps={{

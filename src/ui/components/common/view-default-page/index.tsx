@@ -20,12 +20,12 @@ export const ViewDefaultPage: FC<Props> = memo(
 	({ children, title, navigateRoute, actions, tabTitle }) => {
 		return (
 			<>
-				<Paper sx={{ m: 3, position: 'relative', height: '80px' }}>
+				<Paper sx={{ position: 'relative', minHeight: '70px' }}>
 					<DefaultTabtitle tabTitle={tabTitle} />
-					<Box>
+					<Box sx={{mb: 3}}>
 						<ButtonBack />
 					</Box>
-					<Box sx={{ ml: 2, mt: 1 }}>
+					<Box sx={{ml: 2, pb: 1}}>
 						<DefaultTitle title={title} />
 					</Box>
 					<DefaultPageToolbar navigateRoute={navigateRoute} />
