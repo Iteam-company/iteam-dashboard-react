@@ -1,10 +1,11 @@
 import { RouteObject } from 'react-router-dom';
-import { UserSummary } from '../../../ui/admin/view/user/user-summary';
-import { ForgotPassword } from '../../../ui/layout/authorization/forgot-password';
-import { SignIn } from '../../../ui/layout/authorization/sign-in';
-import { SignUp } from '../../../ui/layout/authorization/sign-up';
-import { GuestGuard } from '../../../ui/utils/guest-guard';
-import { CommontRoutes } from '../application-routes/common-routes';
+import { UserSummary } from '../../../../ui/admin/view/user/subviews/user-summary';
+import { ForgotPassword } from '../../../../ui/layout/authorization/forgot-password';
+import { SignIn } from '../../../../ui/layout/authorization/sign-in';
+import { SignUp } from '../../../../ui/layout/authorization/sign-up';
+import { GuestGuard } from '../../../../ui/utils/guest-guard';
+
+import { CommontRoutes } from '../common-routes';
 
 export const commonRoutesSchema: Array<RouteObject> = [
 	{

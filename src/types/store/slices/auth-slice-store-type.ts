@@ -1,4 +1,6 @@
+import { User } from "../../common/api/user";
+
 export interface AuthSliceStoreType {
-	user: any | null;
+	user: User | null;
 	accessToken: string | null;
 }

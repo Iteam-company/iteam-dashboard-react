@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Container, Grid } from '@mui/material';
-import { UserSettingsTextField } from '../../components/view/user/user-settings/user-settings-textfield';
-import { UserSettingsSalary } from '../../components/view/user/user-settings/user-settings-salary';
-import { UserSettingsExperience } from '../../components/view/user/user-settings/user-settings-experience';
-import { UserSettingsSelect } from '../../components/view/user/user-settings/user-settings-select';
-import { UserSettingsLanguagelevel } from '../../components/view/user/user-settings/user-settings-language-level';
+import { UserSettingsTextField } from '../../../components/view/user/user-settings/user-settings-textfield';
+import { UserSettingsSalary } from '../../../components/view/user/user-settings/user-settings-salary';
+import { UserSettingsExperience } from '../../../components/view/user/user-settings/user-settings-experience';
+import { UserSettingsSelect } from '../../../components/view/user/user-settings/user-settings-select';
+import { UserSettingsLanguagelevel } from '../../../components/view/user/user-settings/user-settings-language-level';
 
 export const UserSettings = () => {
 	const [positionTitle] = useState('Посада');

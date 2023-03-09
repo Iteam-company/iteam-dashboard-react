@@ -4,10 +4,10 @@ import { Default } from '../../../ui/admin/view/default';
 import { Integration } from '../../../ui/admin/view/integrations/integrations';
 import { OrdersBox } from '../../../ui/admin/view/orders/orders-box';
 import { Reports } from '../../../ui/admin/view/reports/reports';
-import { UserSummary } from '../../../ui/admin/view/user/user-summary';
+import { Users } from '../../../ui/admin/view/users';
 import { AuthGuard } from '../../../ui/utils/auth-guard';
-import { AdminRoutes } from '../application-routes/admin-routes';
-import { CommontRoutes } from '../application-routes/common-routes';
+import { AdminRoutes } from '../admin-routes';
+import { CommontRoutes } from '../../common/routes/common-routes';
 
 export const adminRoutesSchema: RouteObject = {
 	path: CommontRoutes.ROOT_PATH,
@@ -27,7 +27,7 @@ export const adminRoutesSchema: RouteObject = {
 		},
 		{
 			path: AdminRoutes.USERS,
-			element: <UserSummary />,
+			element: <Users />,
 		},
 		{
 			path: AdminRoutes.REPORTS,

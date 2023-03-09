@@ -2,13 +2,14 @@ import { Box, Card, Container, Link, Typography } from '@mui/material';
 
 export const UserInfo = () => {
 	return (
-		<Card sx={{ mt: 6, p: 2, mb: 2 }}>
+		<Card>
 			<Container
 				sx={{
 					display: 'flex',
 					flexWrap: { md: 'nowrap', xs: 'wrap' },
 					justifyContent: { xs: 'center' },
 					alignItems: 'center',
+					p: 3,
 				}}>
 				<Box
 					sx={{

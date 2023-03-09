@@ -8,7 +8,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { RequestHeaders } from '../constants/api/request-headers';
 import { StatusCodes } from '../constants/api/status-codes';
-import { apiURL as baseUrl } from '../constants/env';
+import { apiURL as baseUrl } from '../constants/common/env';
 import { RootState } from '../store';
 import { removeCredentials, setCredentials } from '../store/slices/auth-slice';
 import { AUTH_ENDPOINTS } from '../constants/api/auth-endpoints-urls/auth-endpoints';
@@ -62,7 +62,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 
 export const baseApiService = createApi({
 	reducerPath: 'api',
-	tagTypes: ['User'],
+	tagTypes: ['User', 'Users'],
 	baseQuery: baseQueryWithReauth,
 	endpoints: () => ({}),
 });
