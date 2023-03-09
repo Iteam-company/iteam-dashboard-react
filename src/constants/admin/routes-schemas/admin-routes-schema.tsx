@@ -6,7 +6,6 @@ import { OrdersBox } from '../../../ui/admin/view/orders/orders-box';
 import { Reports } from '../../../ui/admin/view/reports/reports';
 import { Users } from '../../../ui/admin/view/users';
 import { AuthGuard } from '../../../ui/utils/auth-guard';
-
 import { AdminRoutes } from '../admin-routes';
 import { CommontRoutes } from '../../common/routes/common-routes';
 

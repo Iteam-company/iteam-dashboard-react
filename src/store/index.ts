@@ -7,11 +7,13 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import { ThemeReducer } from './slices/theme-slice';
+import { userSearchReducer } from './slices/user-search-slice';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
 	[baseApiService.reducerPath]: baseApiService.reducer,
 	theme: ThemeReducer,
+	userSearch: userSearchReducer,
 });
 
 const persistConfig = {

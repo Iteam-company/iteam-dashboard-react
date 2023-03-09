@@ -7,6 +7,6 @@ export interface Technology {
 	description: string;
 	officialDocsHref: string;
 	icon: string;
-	projects: Array<Project>;
+	projects: Array<Project> | null;
 	users: Array<User>;
 }

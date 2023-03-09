@@ -39,7 +39,7 @@ export const selectIsAuthenticated = (state: RootState) =>
 	!!state.auth.user && state.auth.accessToken;
 
 export const selectRoutesSchemaByUserRole = (state: RootState) => {
-	const role = (state?.auth?.user?.roles[0].value ?? Roles.GUEST) as Roles;
+	const role = (state?.auth?.user?.roles?.value ?? Roles.GUEST) as Roles;
 
 	return rolesRoutesSchemas[role];
 };
