@@ -1,6 +1,5 @@
-import { Item } from "./item";
-
 export interface Actions {
-	title?: string;
-	items?: Array<Item>;
+	title: string;
+	onClick: () => void;
+	element: JSX.Element;
 }

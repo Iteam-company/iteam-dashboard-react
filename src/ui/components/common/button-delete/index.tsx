@@ -1,7 +1,7 @@
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { Box } from '@mui/material';
 import { useState } from 'react';
-import { DeleteUserModal } from '../modal';
+import { DeleteUserModal } from '../delete-user-modal';
 
 export const ButtonDelete = () => {
 	const [open, setOpen] = useState(false);

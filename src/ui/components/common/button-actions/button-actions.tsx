@@ -1,23 +1,43 @@
-import { FC, useState } from 'react';
+import { Fragment, useState } from 'react';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Actions } from '../../../../types/common/action-buton/actions';
 import { StyledMenu } from '../mocked/styled-menu';
+import { Box } from '@mui/system';
+import { UsersActionTitle } from '../user-action-title';
+import { AddUserModal } from '../add-user-modal';
+import { AddUserAction } from '../add-user-action';
 
-type Props = {
-	actions?: Actions;
-	
-};
-export const ButtonWithSelectActions: FC<Props> = ({ actions }) => {
+export const ButtonWithSelectActions = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [openModalAddUser, setOpenModalAddUser] = useState(false);
 	const open = Boolean(anchorEl);
+
+	const handleCloseModalAddUser = () => {
+		setOpenModalAddUser(false);
+	};
+	const handleOpenModalAddUser = () => {
+		setOpenModalAddUser(true);
+	};
+
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+	const usersActions = [
+		{
+			title: 'Add User',
+			onClick: () => handleOpenModalAddUser(),
+			element: (
+				<AddUserAction
+					open={openModalAddUser}
+					handleOpen={handleOpenModalAddUser}
+					handleClose={handleCloseModalAddUser}
+				/>
+			),
+		},
+	];
 
 	return (
 		<>
@@ -30,7 +50,7 @@ export const ButtonWithSelectActions: FC<Props> = ({ actions }) => {
 				disableElevation
 				onClick={handleClick}
 				endIcon={<KeyboardArrowDownIcon />}>
-				{actions?.title || 'actions'}
+				actions
 			</Button>
 			<StyledMenu
 				id='action-button'
@@ -40,12 +60,11 @@ export const ButtonWithSelectActions: FC<Props> = ({ actions }) => {
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}>
-				{actions?.items?.map((item, i) => (
-					<MenuItem key={`${item} - ${i}`} onClick={item.onClick} disableRipple>
-						{actions.title}
-					</MenuItem>
-				))}
+				<Box onClick={handleClose}>
+					<UsersActionTitle usersActions={usersActions} />
+				</Box>
 			</StyledMenu>
+			<AddUserModal usersActions={usersActions} />
 		</>
 	);
 };
