@@ -28,7 +28,7 @@ type Props = {
 
 export const DeleteUserModal: FC<Props> = ({ open = false, handleClose }) => {
 	return (
-		<div>
+		<>
 			<Modal
 				keepMounted
 				open={open}
@@ -66,6 +66,6 @@ export const DeleteUserModal: FC<Props> = ({ open = false, handleClose }) => {
 					</Box>
 				</Box>
 			</Modal>
-		</div>
+		</>
 	);
 };
