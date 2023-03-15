@@ -11,7 +11,9 @@ export const UsersActionTitle: FC<Props> = ({ usersActions }) => {
 		<>
 			{usersActions?.map((item, i) => (
 				<MenuItem key={`${item} - ${i}`} onClick={item.onClick} disableRipple>
-					<Button fullWidth variant="contained">{item.title}</Button>
+					<Button variant='contained' fullWidth>
+						{item.title}
+					</Button>
 				</MenuItem>
 			))}
 		</>
