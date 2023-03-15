@@ -1,10 +1,14 @@
-import { Box, Button, FormControl, Modal, TextField } from '@mui/material';
+import { Box, FormControl, Modal } from '@mui/material';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { FC } from 'react';
 import { Error as ApiError } from '../../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../../hooks/snackbar/use-notify-snackbar';
 import { useSignUpMutation } from '../../../../api/auth';
+import { CloseButton } from '../mocked/modal-buttons/close';
+import { AddButton } from '../mocked/modal-buttons/add';
+import { EmailTextField } from '../modal-textfields/email-text-field';
+import { PasswordTextField } from '../modal-textfields/password-text-field';
 
 const style = {
 	position: 'absolute' as const,
@@ -35,6 +39,7 @@ const initialValues = {
 export const AddUserModal: FC<Props> = ({ open, handleClose }) => {
 	const [signUp] = useSignUpMutation();
 	const { showSnackbar } = useNotifySnackbar();
+
 	const formik = useFormik({
 		initialValues,
 		onSubmit: async (data) => {
@@ -70,38 +75,26 @@ export const AddUserModal: FC<Props> = ({ open, handleClose }) => {
 				<form onSubmit={handleSubmit}>
 					<FormControl sx={style}>
 						<Box>
-							<TextField
-								required
-								fullWidth
-								id='email'
-								label='Email Address'
-								name='email'
-								autoComplete='email'
-								autoFocus
-								value={values.email}
-								onChange={handleChange}
-								error={touched.email && Boolean(errors.email)}
-								helperText={touched.email && errors.email}
+							<EmailTextField
+								email={values.email}
+								handleChange={handleChange}
+								touched={touched}
+								errors={errors}
 							/>
 						</Box>
 						<Box>
-							<TextField
-								id='password'
-								label='Password'
-								variant='outlined'
-								type='password'
-								fullWidth
-								value={values.password}
-								onChange={handleChange}
-								helperText={touched.password && errors.password}
-								error={touched.password && Boolean(errors.password)}
-								required
+							<PasswordTextField
+								values={values}
+								handleChange={handleChange}
+								touched={touched}
+								errors={errors}
 							/>
 						</Box>
 						<Box sx={{ textAlign: 'center' }}>
-							<Button variant='contained' color='primary' type='submit'>
-								Add User
-							</Button>
+							<Box sx={{ display: 'inline-block', mr: 2 }}>
+								<AddButton text='Add User' />
+							</Box>
+							<CloseButton handleClose={handleClose} />
 						</Box>
 					</FormControl>
 				</form>

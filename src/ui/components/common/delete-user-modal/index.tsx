@@ -2,9 +2,11 @@ import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CloseIcon from '@mui/icons-material/Close';
+import { useUpdateUserMutation } from '../../../../api/user';
+import { Status } from '../../../../types/common/api/user/status';
+import { Loader } from '../loader';
+import { CloseButton } from '../mocked/modal-buttons/close';
+import { DeleteButton } from '../mocked/modal-buttons/delete';
 
 const style = {
 	position: 'absolute' as const,
@@ -24,9 +26,26 @@ const style = {
 type Props = {
 	open?: boolean;
 	handleClose?: () => void;
+	id: number;
 };
 
-export const DeleteUserModal: FC<Props> = ({ open = false, handleClose }) => {
+export const DeleteUserModal: FC<Props> = ({
+	open = false,
+	handleClose,
+	id,
+}) => {
+	const [archive, { isLoading }] = useUpdateUserMutation();
+
+	const archiveUser = () => {
+		const statusArchived = {
+			status: Status.ARCHIVED,
+		};
+		archive({ id, ...statusArchived });
+	};
+	if (isLoading && handleClose) {
+		handleClose();
+		return <Loader isLoading={isLoading} />;
+	}
 	return (
 		<>
 			<Modal
@@ -49,20 +68,8 @@ export const DeleteUserModal: FC<Props> = ({ open = false, handleClose }) => {
 							justifyContent: 'center',
 							alignItems: 'center',
 						}}>
-						<Button
-							variant='contained'
-							startIcon={<DeleteIcon />}
-							sx={{ mr: 2, height: '100%' }}>
-							Delete
-						</Button>
-						<Button
-							size='medium'
-							variant='contained'
-							startIcon={<CloseIcon />}
-							onClick={handleClose}
-							sx={{ height: '100%' }}>
-							Close
-						</Button>
+						<DeleteButton handleDelete={archiveUser} />
+						<CloseButton handleClose={handleClose} />
 					</Box>
 				</Box>
 			</Modal>

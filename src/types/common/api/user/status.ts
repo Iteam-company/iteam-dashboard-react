@@ -1,4 +1,4 @@
 export enum Status {
-	ACTIVE = 'active',
-	DEACTIVATED = 'deactivated',
+	UNARCHIVED = 'unarchived',
+	ARCHIVED = 'archived',
 }
