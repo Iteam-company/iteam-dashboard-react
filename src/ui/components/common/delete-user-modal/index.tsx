@@ -29,43 +29,7 @@ type Props = {
 export const DeleteUserModal: FC<Props> = ({ open = false, handleClose }) => {
 	return (
 		<>
-			<Modal
-				keepMounted
-				open={open}
-				onClose={handleClose}
-				aria-labelledby='keep-mounted-modal-title'
-				aria-describedby='keep-mounted-modal-description'>
-				<Box sx={style}>
-					<Typography
-						id='keep-mounted-modal-title'
-						variant='h6'
-						component='h2'
-						sx={{ textAlign: 'center' }}>
-						Do you really want to delete?
-					</Typography>
-					<Box
-						sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-						}}>
-						<Button
-							variant='contained'
-							startIcon={<DeleteIcon />}
-							sx={{ mr: 2, height: '100%' }}>
-							Delete
-						</Button>
-						<Button
-							size='medium'
-							variant='contained'
-							startIcon={<CloseIcon />}
-							onClick={handleClose}
-							sx={{ height: '100%' }}>
-							Close
-						</Button>
-					</Box>
-				</Box>
-			</Modal>
+
 		</>
 	);
 };

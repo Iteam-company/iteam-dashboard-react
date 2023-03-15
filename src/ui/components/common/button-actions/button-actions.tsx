@@ -4,12 +4,14 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { StyledMenu } from '../mocked/styled-menu';
 import { Box } from '@mui/system';
 import { UsersActionTitle } from '../user-action-title';
+import { UserActionsModals } from '../user-actions-modals';
 import { AddUserModal } from '../add-user-modal';
-import { AddUserAction } from '../add-user-action';
+import { AddEmailInWhiteListModal } from '../add-email-in-white-list-modal';
 
 export const ButtonWithSelectActions = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [openModalAddUser, setOpenModalAddUser] = useState(false);
+	const [openModalAddEmail, setOpenModalAddEmail] = useState(false);
 	const open = Boolean(anchorEl);
 
 	const handleCloseModalAddUser = () => {
@@ -25,12 +27,31 @@ export const ButtonWithSelectActions = () => {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	const handleOpenModalAddEmail = () => {
+		setOpenModalAddEmail(true);
+	};
+
+	const handleCloseModalAddEmail = () => {
+		setOpenModalAddEmail(false);
+	};
 	const usersActions = [
+		{
+			title: 'Add Email To White List',
+			onClick: () => handleOpenModalAddEmail(),
+			element: (
+				<AddEmailInWhiteListModal
+					open={openModalAddEmail}
+					handleOpen={handleOpenModalAddEmail}
+					handleClose={handleCloseModalAddEmail}
+				/>
+			),
+		},
 		{
 			title: 'Add User',
 			onClick: () => handleOpenModalAddUser(),
 			element: (
-				<AddUserAction
+				<AddUserModal
 					open={openModalAddUser}
 					handleOpen={handleOpenModalAddUser}
 					handleClose={handleCloseModalAddUser}
@@ -64,7 +85,7 @@ export const ButtonWithSelectActions = () => {
 					<UsersActionTitle usersActions={usersActions} />
 				</Box>
 			</StyledMenu>
-			<AddUserModal usersActions={usersActions} />
+			<UserActionsModals usersActions={usersActions} />
 		</>
 	);
 };

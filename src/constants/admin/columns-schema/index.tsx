@@ -35,7 +35,7 @@ export const columns = [
 		title: 'CV',
 	},
 	{
-		generateColumn: () => (
+		generateColumn: (user: User) => (
 			<UserTableSettings
 				ButtonEdit={<ButtonEdit />}
 				ButtonDelete={<ButtonDelete />}
