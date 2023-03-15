@@ -13,7 +13,14 @@ export const userApiService = baseApiService.injectEndpoints({
 			}),
 			invalidatesTags: ['Users'],
 		}),
+		updateUser: builder.mutation<User, Pick<User, 'id'> & Partial<User>>({
+			query: ({ id, ...patch }) => ({
+				url: `${USERS_ENDPOINTS.USERS}/${id}`,
+				method: 'PATCH',
+				body: patch,
+			}),
+		}),
 	}),
 });
 
-export const { useCreateUserMutation } = userApiService;
+export const { useCreateUserMutation, useUpdateUserMutation } = userApiService;
