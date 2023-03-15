@@ -1,10 +1,13 @@
-import { Box, Button, FormControl, Modal, TextField } from '@mui/material';
+import { Box, FormControl, Modal } from '@mui/material';
 import { FC } from 'react';
 import { useAddEmailToWhiteListMutation } from '../../../../api/email';
 import { useNotifySnackbar } from '../../../../hooks/snackbar/use-notify-snackbar';
 import { Error as ApiError } from '../../../../types/common/api/error';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import { CloseButton } from '../mocked/modal-buttons/close';
+import { AddButton } from '../mocked/modal-buttons/add';
+import { EmailTextField } from '../modal-textfields/email-text-field';
 
 const style = {
 	position: 'absolute' as const,
@@ -67,24 +70,18 @@ export const AddEmailInWhiteListModal: FC<Props> = ({ open, handleClose }) => {
 			<form onSubmit={handleSubmit}>
 				<FormControl sx={style}>
 					<Box>
-						<TextField
-							autoFocus
-							required
-							fullWidth
-							id='email'
-							label='Email Address'
-							name='email'
-							autoComplete='email'
-							value={values.email}
-							onChange={handleChange}
-							error={touched.email && Boolean(errors.email)}
-							helperText={touched.email && errors.email}
+						<EmailTextField
+							email={values.email}
+							handleChange={handleChange}
+							touched={touched}
+							errors={errors}
 						/>
 					</Box>
 					<Box sx={{ textAlign: 'center' }}>
-						<Button variant='contained' color='primary' type='submit'>
-							Add Email
-						</Button>
+						<Box sx={{ display: 'inline-block', mr: 2 }}>
+							<AddButton text='Add Email' />
+						</Box>
+						<CloseButton handleClose={handleClose} />
 					</Box>
 				</FormControl>
 			</form>

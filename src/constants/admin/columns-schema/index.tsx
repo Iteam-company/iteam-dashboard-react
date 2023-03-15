@@ -3,7 +3,7 @@ import { UserTableSettings } from '../../../ui/admin/components/view/users/users
 import { ButtonDelete } from '../../../ui/components/common/button-delete';
 import { ButtonEdit } from '../../../ui/components/common/button-edit';
 import { UserCv } from '../../../ui/components/common/cv/user-cv';
-import { Projects } from '../../../ui/components/common/projects-field/projects';
+import { Projects } from '../../../ui/components/common/mocked/projects-field/projects';
 
 export const columns = [
 	{
@@ -21,7 +21,7 @@ export const columns = [
 		title: 'Email',
 	},
 	{
-		generateColumn: (user: User) => user?.status ?? 'N/A',
+		generateColumn: (user: User) => user.status ?? 'N/A',
 		title: 'Status',
 	},
 	{
@@ -38,7 +38,7 @@ export const columns = [
 		generateColumn: (user: User) => (
 			<UserTableSettings
 				ButtonEdit={<ButtonEdit />}
-				ButtonDelete={<ButtonDelete />}
+				ButtonDelete={<ButtonDelete id={user.id} />}
 			/>
 		),
 		title: 'Settings',

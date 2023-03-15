@@ -3,8 +3,8 @@ import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { StyledMenu } from '../mocked/styled-menu';
 import { Box } from '@mui/system';
-import { UsersActionTitle } from '../user-action-title';
-import { UserActionsModals } from '../user-actions-modals';
+import { UsersActionTitle } from '../mocked/user-action-title';
+import { UserActionsModals } from '../mocked/user-actions-modals';
 import { AddUserModal } from '../add-user-modal';
 import { AddEmailInWhiteListModal } from '../add-email-in-white-list-modal';
 

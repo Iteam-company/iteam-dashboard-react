@@ -19,6 +19,7 @@ export const userApiService = baseApiService.injectEndpoints({
 				method: 'PATCH',
 				body: patch,
 			}),
+			invalidatesTags: ['Users'],
 		}),
 	}),
 });
