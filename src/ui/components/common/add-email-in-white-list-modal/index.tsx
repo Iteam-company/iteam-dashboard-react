@@ -68,13 +68,13 @@ export const AddEmailInWhiteListModal: FC<Props> = ({ open, handleClose }) => {
 				<FormControl sx={style}>
 					<Box>
 						<TextField
+							autoFocus
 							required
 							fullWidth
 							id='email'
 							label='Email Address'
 							name='email'
 							autoComplete='email'
-							autoFocus
 							value={values.email}
 							onChange={handleChange}
 							error={touched.email && Boolean(errors.email)}
