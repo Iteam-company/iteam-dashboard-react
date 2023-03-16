@@ -10,6 +10,7 @@ import { User } from '../../../../types/common/api/user';
 import { useUpdateUserMutation } from '../../../../api/user';
 import { NameTextField } from '../modal-textfields/name-text-field';
 import { SurnameTextField } from '../modal-textfields/surname-text-fields';
+import { Loader } from '../loader';
 
 const style = {
 	position: 'absolute' as const,
@@ -39,7 +40,7 @@ export const EditUserModal: FC<Props> = ({
 	handleClose,
 	user,
 }) => {
-	const [update] = useUpdateUserMutation();
+	const [update, { isLoading }] = useUpdateUserMutation();
 	const { showSnackbar } = useNotifySnackbar();
 	const formik = useFormik({
 		initialValues: {
@@ -69,6 +70,10 @@ export const EditUserModal: FC<Props> = ({
 		}),
 		validateOnBlur: false,
 	});
+
+	if (isLoading) {
+		return <Loader isLoading={isLoading} />
+	}
 
 	const { errors, touched, values, handleChange, handleSubmit } = formik;
 	return (
