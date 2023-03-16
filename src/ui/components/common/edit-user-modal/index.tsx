@@ -72,7 +72,7 @@ export const EditUserModal: FC<Props> = ({
 	});
 
 	if (isLoading) {
-		return <Loader isLoading={isLoading} />
+		return <Loader isLoading={isLoading} />;
 	}
 
 	const { errors, touched, values, handleChange, handleSubmit } = formik;

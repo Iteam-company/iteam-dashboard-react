@@ -17,7 +17,6 @@ export const SurnameTextField: FC<Props> = ({
 }) => {
 	return (
 		<TextField
-			required
 			fullWidth
 			id='surname'
 			label='surname'
