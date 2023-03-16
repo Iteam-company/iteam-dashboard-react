@@ -1,13 +1,14 @@
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { Box } from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 import { FC, useState } from 'react';
-import { DeleteUserModal } from '../delete-user-modal';
+import { ArchiveUserModal } from '../archive-user-modal';
 
 type Props = {
 	id: number;
+	text?: string;
 };
 
-export const ButtonDelete: FC<Props> = ({ id }) => {
+export const ButtonDelete: FC<Props> = ({ id, text = 'Delete' }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => {
 		setOpen(true);
@@ -16,9 +17,11 @@ export const ButtonDelete: FC<Props> = ({ id }) => {
 	return (
 		<>
 			<Box sx={{ cursor: 'pointer' }} onClick={handleOpen}>
-				<DeleteOutlineOutlinedIcon />
+				<Tooltip title={text}>
+					<DeleteOutlineOutlinedIcon />
+				</Tooltip>
 			</Box>
-			<DeleteUserModal open={open} handleClose={handleClose} id={id} />
+			<ArchiveUserModal open={open} handleClose={handleClose} id={id} />
 		</>
 	);
 };
