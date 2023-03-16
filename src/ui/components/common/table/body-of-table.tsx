@@ -15,11 +15,12 @@ export const BodyOfTable: FC<Props> = memo(({ data }) => {
 					{columns.map((column, index) => (
 						<TableCell
 							key={user.id + index}
-							sx={
-								user.name && user.email
-									? { textAlign: 'center' }
-									: { textAlign: 'left' }
-							}>
+							//sx={
+							//	user.name && user.email
+							//		? { textAlign: 'center' }
+							//		: { textAlign: 'left' }
+							//}>
+						>
 							{column.generateColumn(user)}
 						</TableCell>
 					))}
