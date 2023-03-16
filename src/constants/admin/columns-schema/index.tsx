@@ -9,7 +9,15 @@ export const columns = [
 	{
 		generateColumn: (user: User) => {
 			if (user.name && user.surname) {
-				return user.name, user.surname;
+				return `${user.name} ${user.surname}`;
+			}
+
+			if (user.name) {
+				return `${user.name} N/A`;
+			}
+
+			if (user.surname) {
+				return `N/A ${user.surname}`;
 			}
 
 			return 'N/A';
