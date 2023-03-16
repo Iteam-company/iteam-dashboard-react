@@ -17,7 +17,6 @@ export const NameTextField: FC<Props> = ({
 }) => {
 	return (
 		<TextField
-			required
 			fullWidth
 			id='name'
 			label='name'
