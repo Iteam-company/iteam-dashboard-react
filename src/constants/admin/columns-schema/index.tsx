@@ -37,8 +37,8 @@ export const columns = [
 	{
 		generateColumn: (user: User) => (
 			<UserTableSettings
-				ButtonEdit={<ButtonEdit />}
-				ButtonDelete={<ButtonDelete id={user.id} />}
+				ButtonEdit={<ButtonEdit user={user} text='Edit' />}
+				ButtonDelete={<ButtonDelete id={user.id} text='Archive' />}
 			/>
 		),
 		title: 'Settings',

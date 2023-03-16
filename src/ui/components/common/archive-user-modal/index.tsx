@@ -29,7 +29,7 @@ type Props = {
 	id: number;
 };
 
-export const DeleteUserModal: FC<Props> = ({
+export const ArchiveUserModal: FC<Props> = ({
 	open = false,
 	handleClose,
 	id,
@@ -68,7 +68,7 @@ export const DeleteUserModal: FC<Props> = ({
 							justifyContent: 'center',
 							alignItems: 'center',
 						}}>
-						<DeleteButton handleDelete={archiveUser} />
+						<DeleteButton handleDelete={archiveUser} text={'archive'}/>
 						<CloseButton handleClose={handleClose} />
 					</Box>
 				</Box>
