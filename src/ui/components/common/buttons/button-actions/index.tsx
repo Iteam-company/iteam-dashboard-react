@@ -1,12 +1,12 @@
 import { Fragment, useState } from 'react';
 import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { StyledMenu } from '../mocked/styled-menu';
+import { StyledMenu } from '../../mocked/styled-menu';
 import { Box } from '@mui/system';
-import { UsersActionTitle } from '../mocked/user-action-title';
-import { UserActionsModals } from '../mocked/user-actions-modals';
-import { AddUserModal } from '../add-user-modal';
-import { AddEmailInWhiteListModal } from '../add-email-in-white-list-modal';
+import { UsersActionTitle } from '../../mocked/user-action-title';
+import { UserActionsModals } from '../../mocked/user-actions-modals';
+import { AddUserModal } from '../../add-user-modal';
+import { AddEmailInWhiteListModal } from '../../add-email-in-white-list-modal';
 
 export const ButtonWithSelectActions = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

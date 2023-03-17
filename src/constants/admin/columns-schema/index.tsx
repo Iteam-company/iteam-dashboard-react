@@ -1,7 +1,7 @@
 import { User } from '../../../types/common/api/user';
 import { UserTableSettings } from '../../../ui/admin/components/view/users/users-table-settings';
-import { ButtonDelete } from '../../../ui/components/common/button-delete';
-import { ButtonEdit } from '../../../ui/components/common/button-edit';
+import { ButtonDelete } from '../../../ui/components/common/buttons/button-delete';
+import { ButtonEdit } from '../../../ui/components/common/buttons/button-edit';
 import { UserCv } from '../../../ui/components/common/cv/user-cv';
 import { Projects } from '../../../ui/components/common/mocked/projects-field/projects';
 
