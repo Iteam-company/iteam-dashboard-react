@@ -3,10 +3,10 @@ import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { StyledMenu } from '../../mocked/styled-menu';
 import { Box } from '@mui/system';
-import { UsersActionTitle } from '../../mocked/user-action-title';
-import { UserActionsModals } from '../../mocked/user-actions-modals';
-import { AddUserModal } from '../../add-user-modal';
-import { AddEmailInWhiteListModal } from '../../add-email-in-white-list-modal';
+import { UsersActionTitle } from '../../user-action-title';
+import { UserActionsModals } from '../../modals/user-actions-modals';
+import { AddUserModal } from '../../modals/add-user';
+import { AddEmailInWhiteListModal } from '../../modals/add-email-in-white-list';
 
 export const ButtonWithSelectActions = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

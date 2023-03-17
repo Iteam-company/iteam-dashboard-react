@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import { FormikErrors, FormikTouched } from 'formik';
 import { FC } from 'react';
-import { AuthCredentials } from '../../../../types/common/client/auth-credentials';
+import { AuthCredentials } from '../../../../../types/common/client/auth-credentials';
 
 type Props = {
 	values?: AuthCredentials;

@@ -1,6 +1,6 @@
 import { Box, Paper } from '@mui/material';
-import { ButtonWithSelectActions } from '../../../components/common/buttons/button-actions';
-import { ButtonBack } from '../../../components/common/buttons/button-back';
+import { ButtonWithSelectActions } from '../../../components/common/buttons/actions';
+import { ButtonBack } from '../../../components/common/buttons/back';
 import { SearchByProperties } from '../../../components/common/search-by-properties';
 import { ViewDefaultPage } from '../../../components/common/view-default-page';
 import { UsersTable } from '../../components/view/users/users-table';
