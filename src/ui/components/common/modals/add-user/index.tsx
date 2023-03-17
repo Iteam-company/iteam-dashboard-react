@@ -9,21 +9,7 @@ import { CloseButton } from '../modal-buttons/close';
 import { AddButton } from '../modal-buttons/add';
 import { EmailTextField } from '../modal-textfields/email-text-field';
 import { PasswordTextField } from '../modal-textfields/password-text-field';
-
-const style = {
-	position: 'absolute' as const,
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	width: 400,
-	bgcolor: 'background.paper',
-	boxShadow: 14,
-	p: 4,
-	display: 'flex',
-	flexDirection: 'column',
-	gap: '20px',
-	outline: 'none',
-};
+import { style } from '../../../../../styles/modal-style';
 
 type Props = {
 	open: boolean;

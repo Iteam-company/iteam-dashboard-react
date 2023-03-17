@@ -1,5 +1,5 @@
 import { Box, Modal } from '@mui/material';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
 import { AddButton } from '../modal-buttons/add';
 import { CloseButton } from '../modal-buttons/close';
@@ -7,30 +7,19 @@ import * as Yup from 'yup';
 import { Error as ApiError } from '../../../../../types/common/api/error';
 import { useFormik } from 'formik';
 import { User } from '../../../../../types/common/api/user';
-import { useUpdateUserMutation } from '../../../../../api/user';
+import {
+	useUpdateUserMutation,
+	useUploadUserCVMutation,
+} from '../../../../../api/user';
 import { NameTextField } from '../modal-textfields/name-text-field';
 import { SurnameTextField } from '../modal-textfields/surname-text-fields';
 import { Loader } from '../../loader';
 import { FileUpload } from '../../file-upload';
-
-const style = {
-	position: 'absolute' as const,
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	width: 400,
-	bgcolor: 'background.paper',
-	boxShadow: 14,
-	p: 4,
-	display: 'flex',
-	flexDirection: 'column',
-	gap: '20px',
-	outline: 'none',
-};
+import { style } from '../../../../../styles/modal-style';
 
 type Props = {
 	open: boolean;
-	handleOpen: () => void;
+	handleOpen?: () => void;
 	handleClose: () => void;
 	user: User;
 };
@@ -72,6 +61,27 @@ export const EditUserModal: FC<Props> = ({
 		}),
 		validateOnBlur: false,
 	});
+	const [file, setFile] = useState<File | null>(null);
+	const [data] = useUploadUserCVMutation();
+
+	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.files && event.target.files.length > 0) {
+			setFile(event.target.files[0]);
+		}
+
+		return;
+	};
+
+	function handleUploadClick() {
+		if (user && file) {
+			const formData = new FormData();
+			formData.append('file', file);
+			formData.append('userId', user.id.toString());
+			data(formData);
+			setFile(null);
+		}
+		return;
+	}
 
 	if (isLoading) {
 		return <Loader isLoading={isLoading} />;
@@ -103,10 +113,10 @@ export const EditUserModal: FC<Props> = ({
 								errors={errors}
 							/>
 						</Box>
-						<FileUpload />
+						<FileUpload file={file} handleFileUpload={handleFileUpload} />
 						<Box sx={{ textAlign: 'center' }}>
 							<Box sx={{ display: 'inline-block', mr: 2 }}>
-								<AddButton text='edit user' />
+								<AddButton text='edit user' handleClick={handleUploadClick} />
 							</Box>
 							<CloseButton handleClose={handleClose} />
 						</Box>
