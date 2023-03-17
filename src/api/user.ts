@@ -21,7 +21,14 @@ export const userApiService = baseApiService.injectEndpoints({
 			}),
 			invalidatesTags: ['Users'],
 		}),
+		uploadUserCV: builder.mutation<User, FormData>({
+			query: (formData) => ({
+				url: `${USERS_ENDPOINTS.USERS}${USERS_ENDPOINTS.CV}`,
+				method: 'POST',
+				body: formData,
+			}),
+		}),
 	}),
 });
 
-export const { useCreateUserMutation, useUpdateUserMutation } = userApiService;
+export const { useCreateUserMutation, useUpdateUserMutation, useUploadUserCVMutation} = userApiService;
