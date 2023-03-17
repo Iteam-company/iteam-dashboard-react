@@ -47,6 +47,7 @@ export const EditUserModal: FC<Props> = ({
 		initialValues: {
 			name: user.name || '',
 			surname: user.surname || '',
+
 			id: user.id,
 		},
 		onSubmit: async (data) => {

@@ -11,6 +11,7 @@ type Props = {
 export const ButtonFileUpload: FC<Props> = ({ text = 'Add Cv' }) => {
 	const [file, setFile] = useState<File | null>(null);
 	const user = useAppSelector(selectUser);
+	const [data] = useUploadUserCVMutation();
 
 	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.files && event.target.files.length > 0) {
@@ -25,6 +26,7 @@ export const ButtonFileUpload: FC<Props> = ({ text = 'Add Cv' }) => {
 			const formData = new FormData();
 			formData.append('file', file);
 			formData.append('userId', user.id.toString());
+			data(formData);
 		}
 
 		return;
