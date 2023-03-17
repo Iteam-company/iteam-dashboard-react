@@ -10,7 +10,7 @@ export const Projects: FC<Props> = ({ leadingInProjects }) => {
 	return (
 		<>
 			{leadingInProjects
-				? leadingInProjects?.map((project) => (
+				? leadingInProjects.map((project) => (
 					<Link
 						key={project.id}
 						component={RouterLink}
