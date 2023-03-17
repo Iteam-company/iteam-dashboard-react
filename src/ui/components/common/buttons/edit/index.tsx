@@ -2,7 +2,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, Tooltip } from '@mui/material';
 import { FC, useState } from 'react';
 import { User } from '../../../../../types/common/api/user';
-import { EditUserModal } from '../../edit-user-modal';
+import { EditUserModal } from '../../modals/edit-user';
 
 type Props = {
 	user: User;

@@ -1,7 +1,7 @@
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { Box, Tooltip } from '@mui/material';
 import { FC, useState } from 'react';
-import { ArchiveUserModal } from '../../archive-user-modal';
+import { ArchiveUserModal } from '../../modals/archive-user';
 
 type Props = {
 	id: number;

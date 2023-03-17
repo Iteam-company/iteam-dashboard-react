@@ -1,17 +1,17 @@
 import { Box, Modal } from '@mui/material';
 import { FC } from 'react';
-import { useNotifySnackbar } from '../../../../hooks/snackbar/use-notify-snackbar';
-import { AddButton } from '../mocked/modal-buttons/add';
-import { CloseButton } from '../mocked/modal-buttons/close';
+import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
+import { AddButton } from '../modal-buttons/add';
+import { CloseButton } from '../modal-buttons/close';
 import * as Yup from 'yup';
-import { Error as ApiError } from '../../../../types/common/api/error';
+import { Error as ApiError } from '../../../../../types/common/api/error';
 import { useFormik } from 'formik';
-import { User } from '../../../../types/common/api/user';
-import { useUpdateUserMutation } from '../../../../api/user';
+import { User } from '../../../../../types/common/api/user';
+import { useUpdateUserMutation } from '../../../../../api/user';
 import { NameTextField } from '../modal-textfields/name-text-field';
 import { SurnameTextField } from '../modal-textfields/surname-text-fields';
-import { Loader } from '../loader';
-import { ButtonFileUpload } from '../buttons/button-file-upload';
+import { Loader } from '../../loader';
+import { FileUpload } from '../../file-upload';
 
 const style = {
 	position: 'absolute' as const,
@@ -103,7 +103,7 @@ export const EditUserModal: FC<Props> = ({
 								errors={errors}
 							/>
 						</Box>
-						<ButtonFileUpload />
+						<FileUpload />
 						<Box sx={{ textAlign: 'center' }}>
 							<Box sx={{ display: 'inline-block', mr: 2 }}>
 								<AddButton text='edit user' />

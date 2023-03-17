@@ -1,6 +1,6 @@
 import { Button, MenuItem } from '@mui/material';
 import { FC, Fragment } from 'react';
-import { Actions } from '../../../../../types/common/action-buton/actions';
+import { Actions } from '../../../../types/common/action-buton/actions';
 
 type Props = {
 	usersActions: Array<Actions>;

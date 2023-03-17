@@ -1,12 +1,12 @@
 import { Box, FormControl, Modal } from '@mui/material';
 import { FC } from 'react';
-import { useAddEmailToWhiteListMutation } from '../../../../api/email';
-import { useNotifySnackbar } from '../../../../hooks/snackbar/use-notify-snackbar';
-import { Error as ApiError } from '../../../../types/common/api/error';
+import { useAddEmailToWhiteListMutation } from '../../../../../api/email';
+import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
+import { Error as ApiError } from '../../../../../types/common/api/error';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { CloseButton } from '../mocked/modal-buttons/close';
-import { AddButton } from '../mocked/modal-buttons/add';
+import { CloseButton } from '../modal-buttons/close';
+import { AddButton } from '../modal-buttons/add';
 import { EmailTextField } from '../modal-textfields/email-text-field';
 
 const style = {

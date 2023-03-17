@@ -28,7 +28,6 @@ export const SearchByProperties = memo(() => {
 
 	useEffect(() => {
 		dispatch(setSearchValue(debouncedValue));
-		console.log(searchProps.critery)
 	}, [debouncedValue]);
 
 	const handleChageValue = (

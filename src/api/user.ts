@@ -27,8 +27,13 @@ export const userApiService = baseApiService.injectEndpoints({
 				method: 'POST',
 				body: formData,
 			}),
+			invalidatesTags: ['Users'],
 		}),
 	}),
 });
 
-export const { useCreateUserMutation, useUpdateUserMutation, useUploadUserCVMutation} = userApiService;
+export const {
+	useCreateUserMutation,
+	useUpdateUserMutation,
+	useUploadUserCVMutation,
+} = userApiService;

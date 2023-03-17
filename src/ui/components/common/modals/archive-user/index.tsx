@@ -2,11 +2,11 @@ import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import { useUpdateUserMutation } from '../../../../api/user';
-import { Status } from '../../../../types/common/api/user/status';
-import { Loader } from '../loader';
-import { CloseButton } from '../mocked/modal-buttons/close';
-import { DeleteButton } from '../mocked/modal-buttons/delete';
+import { useUpdateUserMutation } from '../../../../../api/user';
+import { Status } from '../../../../../types/common/api/user/status';
+import { Loader } from '../../loader';
+import { CloseButton } from '../modal-buttons/close';
+import { DeleteButton } from '../modal-buttons/delete';
 
 const style = {
 	position: 'absolute' as const,
@@ -68,7 +68,7 @@ export const ArchiveUserModal: FC<Props> = ({
 							justifyContent: 'center',
 							alignItems: 'center',
 						}}>
-						<DeleteButton handleDelete={archiveUser} text={'archive'}/>
+						<DeleteButton handleDelete={archiveUser} text={'archive'} />
 						<CloseButton handleClose={handleClose} />
 					</Box>
 				</Box>
