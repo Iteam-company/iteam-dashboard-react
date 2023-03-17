@@ -7,21 +7,7 @@ import { Status } from '../../../../../types/common/api/user/status';
 import { Loader } from '../../loader';
 import { CloseButton } from '../modal-buttons/close';
 import { DeleteButton } from '../modal-buttons/delete';
-
-const style = {
-	position: 'absolute' as const,
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	width: 400,
-	bgcolor: 'background.paper',
-	boxShadow: 14,
-	p: 4,
-	display: 'flex',
-	flexDirection: 'column',
-	gap: '20px',
-	outline: 'none',
-};
+import { style } from '../../../../../styles/modal-style';
 
 type Props = {
 	open?: boolean;

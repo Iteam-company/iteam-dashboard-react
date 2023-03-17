@@ -1,44 +1,19 @@
-import { FC, useState } from 'react';
-import { useUploadUserCVMutation } from '../../../../api/user';
+import { FC } from 'react';
 import { User } from '../../../../types/common/api/user';
-import { UserCv } from '../cv/user-cv';
 import { ChooseFileButton } from '../buttons/file-choose';
-import { FileUploadButton } from '../buttons/file-upload';
 
 type Props = {
 	text?: string;
 	user?: User;
+	file?: File | null;
+	handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const FileUpload: FC<Props> = ({ user }) => {
-	const [file, setFile] = useState<File | null>(null);
-	const [data] = useUploadUserCVMutation();
-
-	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.files && event.target.files.length > 0) {
-			setFile(event.target.files[0]);
-		}
-
-		return;
-	};
-
-	function handleUploadClick() {
-		if (user && file) {
-			const formData = new FormData();
-			formData.append('file', file);
-			formData.append('userId', user.id.toString());
-			data(formData);
-		}
-
-		return;
-	}
+export const FileUpload: FC<Props> = ({ user, file, handleFileUpload }) => {
 	return (
 		<>
-			{file || user?.cv ? (
-				<>
-					<UserCv cv={user?.cv} file={file} />
-					<FileUploadButton handleUploadClick={handleUploadClick} />
-				</>
+			{file ? (
+				<>{file.name.toUpperCase()}</>
 			) : (
 				<ChooseFileButton handleFileUpload={handleFileUpload} />
 			)}
