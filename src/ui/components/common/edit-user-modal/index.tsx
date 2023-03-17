@@ -11,7 +11,7 @@ import { useUpdateUserMutation } from '../../../../api/user';
 import { NameTextField } from '../modal-textfields/name-text-field';
 import { SurnameTextField } from '../modal-textfields/surname-text-fields';
 import { Loader } from '../loader';
-import { ButtonFileDownload } from '../buttons/button-file-download';
+import { ButtonFileUpload } from '../buttons/button-file-upload';
 
 const style = {
 	position: 'absolute' as const,
@@ -102,7 +102,7 @@ export const EditUserModal: FC<Props> = ({
 								errors={errors}
 							/>
 						</Box>
-						<ButtonFileDownload />
+						<ButtonFileUpload />
 						<Box sx={{ textAlign: 'center' }}>
 							<Box sx={{ display: 'inline-block', mr: 2 }}>
 								<AddButton text='edit user' />
