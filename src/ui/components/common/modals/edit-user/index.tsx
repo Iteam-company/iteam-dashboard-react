@@ -18,9 +18,9 @@ import { FileUpload } from '../../file-upload';
 import { style } from '../../../../../styles/modal-style';
 
 type Props = {
-	open: boolean;
+	open?: boolean;
 	handleOpen?: () => void;
-	handleClose: () => void;
+	handleClose?: () => void;
 	user: User;
 };
 
@@ -30,7 +30,9 @@ export const EditUserModal: FC<Props> = ({
 	handleClose,
 	user,
 }) => {
-	const [update, { isLoading }] = useUpdateUserMutation();
+	const [file, setFile] = useState<File | null>(null);
+	const [data] = useUploadUserCVMutation();
+	const [update, { isLoading, isSuccess }] = useUpdateUserMutation();
 	const { showSnackbar } = useNotifySnackbar();
 	const formik = useFormik({
 		initialValues: {
@@ -45,7 +47,6 @@ export const EditUserModal: FC<Props> = ({
 			try {
 				const response = await update({ id, name, surname }).unwrap();
 				showSnackbar('successfully updated', 'success');
-				handleClose();
 			} catch (error) {
 				const typedError = error as ApiError;
 				showSnackbar(typedError.data.message, 'error');
@@ -61,14 +62,11 @@ export const EditUserModal: FC<Props> = ({
 		}),
 		validateOnBlur: false,
 	});
-	const [file, setFile] = useState<File | null>(null);
-	const [data] = useUploadUserCVMutation();
 
 	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.files && event.target.files.length > 0) {
 			setFile(event.target.files[0]);
 		}
-
 		return;
 	};
 
@@ -86,12 +84,15 @@ export const EditUserModal: FC<Props> = ({
 	if (isLoading) {
 		return <Loader isLoading={isLoading} />;
 	}
+	if (isSuccess && handleClose) {
+		handleClose();
+	}
 
 	const { errors, touched, values, handleChange, handleSubmit } = formik;
 	return (
 		<>
 			<Modal
-				open={open}
+				open={open || false}
 				onClose={handleClose}
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'>

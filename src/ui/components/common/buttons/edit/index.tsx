@@ -1,14 +1,14 @@
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, Tooltip } from '@mui/material';
-import { FC, useState } from 'react';
+import { FC, useState, cloneElement } from 'react';
 import { User } from '../../../../../types/common/api/user';
-import { EditUserModal } from '../../modals/edit-user';
 
 type Props = {
-	user: User;
 	text?: string;
+	modal: JSX.Element;
+	user?: User;
 };
-export const ButtonEdit: FC<Props> = ({ user, text = 'Edit' }) => {
+export const ButtonEdit: FC<Props> = ({ text = 'Edit', modal }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => {
 		setOpen(true);
@@ -25,12 +25,7 @@ export const ButtonEdit: FC<Props> = ({ user, text = 'Edit' }) => {
 				</Tooltip>
 			</Box>
 
-			<EditUserModal
-				user={user}
-				open={open}
-				handleOpen={handleOpen}
-				handleClose={handleClose}
-			/>
+			{modal && cloneElement(modal, { open, handleOpen, handleClose })}
 		</>
 	);
 };
