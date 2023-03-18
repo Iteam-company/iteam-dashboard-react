@@ -8,7 +8,6 @@ import { Table } from '../../../../components/common/table';
 export const UsersTable = () => {
 	const searchParams = useAppSelector(userSearch);
 	const { data, isLoading: isLoading } = useGetAllUsersQuery(searchParams);
-	console.log(data);
 	return (
 		<>
 			<Loader isLoading={isLoading} />
