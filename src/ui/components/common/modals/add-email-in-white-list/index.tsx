@@ -5,11 +5,10 @@ import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snac
 import { Error as ApiError } from '../../../../../types/common/api/error';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { CloseButton } from '../modal-buttons/close';
-import { AddButton } from '../modal-buttons/add';
-import { EmailTextField } from '../modal-textfields/email-text-field';
+import { EmailTextField } from '../../modal-textfields/email-text-field';
 import { style } from '../../../../../styles/modal-style';
-
+import CloseIcon from '@mui/icons-material/Close';
+import { ModalButton } from '../../buttons/modals-button';
 type Props = {
 	open: boolean;
 	handleOpen?: () => void;
@@ -21,15 +20,16 @@ const initialValues = {
 };
 
 export const AddEmailInWhiteListModal: FC<Props> = ({ open, handleClose }) => {
-	const [addEmail] = useAddEmailToWhiteListMutation();
+	const [addEmail, { isLoading }] = useAddEmailToWhiteListMutation();
 	const { showSnackbar } = useNotifySnackbar();
 	const formik = useFormik({
 		initialValues,
-		onSubmit: async (data) => {
+		onSubmit: async (data, { resetForm }) => {
 			const { email } = data;
 			try {
 				const response = await addEmail({ email }).unwrap();
 				showSnackbar('successfully added', 'success');
+				resetForm({ values: { email: '' } });
 				handleClose();
 			} catch (error) {
 				const typedError = error as ApiError;
@@ -46,6 +46,7 @@ export const AddEmailInWhiteListModal: FC<Props> = ({ open, handleClose }) => {
 	});
 
 	const { errors, touched, values, handleChange, handleSubmit } = formik;
+
 	return (
 		<Modal
 			open={open}
@@ -63,10 +64,14 @@ export const AddEmailInWhiteListModal: FC<Props> = ({ open, handleClose }) => {
 						/>
 					</Box>
 					<Box sx={{ textAlign: 'center' }}>
-						<Box sx={{ display: 'inline-block', mr: 2 }}>
-							<AddButton text='Add Email' />
+						<Box sx={{ display: 'inline-block', mr: 2, height: '39px' }}>
+							<ModalButton text='Add Email' loading={isLoading} />
 						</Box>
-						<CloseButton handleClose={handleClose} />
+						<ModalButton
+							text='Close'
+							handleClick={handleClose}
+							icon={<CloseIcon />}
+						/>
 					</Box>
 				</FormControl>
 			</form>

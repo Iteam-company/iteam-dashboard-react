@@ -1,12 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import ChevronLeftOutlinedIcon from '@mui/icons-material/ChevronLeftOutlined';
 import { Button } from '@mui/material';
+import { FC } from 'react';
 import { CommontRoutes } from '../../../../../constants/common/routes/common-routes';
 
-export const ButtonBack = () => {
+type Props = {
+	linkToPage?: string;
+};
+
+export const ButtonBack: FC<Props> = ({
+	linkToPage = `${CommontRoutes.ROOT_PATH}`,
+}) => {
 	const navigate = useNavigate();
 	return (
-		<Button onClick={() => navigate(`${CommontRoutes.ROOT_PATH}`)}>
+		<Button onClick={() => navigate(linkToPage)}>
 			<ChevronLeftOutlinedIcon />
 			back
 		</Button>

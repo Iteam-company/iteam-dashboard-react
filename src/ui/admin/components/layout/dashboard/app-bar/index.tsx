@@ -34,8 +34,8 @@ const StypedAppBar = styled(MuiAppBar, {
 }));
 
 interface AppBarProps extends PropsWithChildren {
-	toggleDrawer: MouseEventHandler<HTMLButtonElement>;
-	isDrawerOpen: boolean;
+	toggleDrawer?: MouseEventHandler<HTMLButtonElement>;
+	isDrawerOpen?: boolean;
 }
 
 export const AppBar: FC<AppBarProps> = memo(

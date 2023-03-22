@@ -1,3 +1,4 @@
+import React, { memo, useEffect, useRef, useState } from 'react';
 import {
 	Box,
 	MenuItem,
@@ -6,7 +7,6 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import React, { memo, useEffect, useState } from 'react';
 import { Flexbox } from '../mocked/flexbox';
 import SearchIcon from '@mui/icons-material/Search';
 import {
@@ -25,10 +25,14 @@ export const SearchByProperties = memo(() => {
 	const dispatch = useAppDispatch();
 	const [value, setValue] = useState('');
 	const debouncedValue = useDebounce<string>(value, 500);
+	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	useEffect(() => {
 		dispatch(setSearchValue(debouncedValue));
-	}, [debouncedValue]);
+		if (searchProps.critery && inputRef.current) {
+			inputRef.current.focus();
+		}
+	}, [debouncedValue, searchProps.critery]);
 
 	const handleChageValue = (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -47,10 +51,9 @@ export const SearchByProperties = memo(() => {
 				<TextField
 					sx={{ maxWidth: '150px', mr: 5 }}
 					id='outlined-multiline-flexible'
-					label=''
+					inputRef={inputRef}
 					size='small'
-					multiline
-					maxRows={4}
+					maxRows={2}
 					onChange={(e) => handleChageValue(e)}
 					InputProps={{
 						startAdornment: <SearchIcon />,

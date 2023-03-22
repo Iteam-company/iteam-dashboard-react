@@ -1,4 +1,4 @@
-import { Link } from '@mui/material';
+import { Box, Link } from '@mui/material';
 import { FC } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { User } from '../../../../types/common/api/user';
@@ -13,14 +13,13 @@ type Props = {
 export const UserCv: FC<Props> = ({ cv = null, user, file }) => {
 	return (
 		<>
-			{file?.name}
-			{/*{cv ? (
+			{cv ? (
 				<Link component={RouterLink} to={cv.fileUrl}>
-					{cv.originalName}
+					<Box>{cv.originalName}</Box>
 				</Link>
 			) : (
 				'N/A'
-			)}*/}
+			)}
 		</>
 	);
 };

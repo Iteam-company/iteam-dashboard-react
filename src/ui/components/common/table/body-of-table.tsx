@@ -3,6 +3,7 @@ import { FC, memo } from 'react';
 import { columns } from '../../../../constants/admin/columns-schema';
 import { User } from '../../../../types/common/api/user';
 import { UsersResponse } from '../../../../types/admin/users';
+import { Status } from '../../../../types/common/api/user/status';
 
 type Props = {
 	data?: UsersResponse;
@@ -15,12 +16,11 @@ export const BodyOfTable: FC<Props> = memo(({ data }) => {
 					{columns.map((column, index) => (
 						<TableCell
 							key={user.id + index}
-							//sx={
-							//	user.name && user.email
-							//		? { textAlign: 'center' }
-							//		: { textAlign: 'left' }
-							//}>
-						>
+							sx={
+								user.status === Status.ARCHIVED
+									? { background: '#d3d3d3', borderBottom: '2px solid #fff' }
+									: { background: '#fff' }
+							}>
 							{column.generateColumn(user)}
 						</TableCell>
 					))}

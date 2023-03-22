@@ -32,8 +32,6 @@ export const commonRoutesSchema: Array<RouteObject> = [
 			</GuestGuard>
 		),
 	},
-
-	// for developing we use there mocked routes to display components
 	{
 		path: `${CommontRoutes.ROOT_PATH}/${CommontRoutes.DEVELOP_UI_ROUTE}`,
 		element: <UserSummary />,

@@ -7,7 +7,6 @@ import { UserExperience } from '../../../components/view/user/user-summary/user-
 import { UserInfo } from '../../../components/view/user/user-summary/user-info';
 import { UserSkills } from '../../../components/view/user/user-summary/user-skills';
 
-
 export const UserSummary = memo(() => {
 	const [title] = useState('Users');
 	return (

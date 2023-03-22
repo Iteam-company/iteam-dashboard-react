@@ -1,37 +1,30 @@
 import { User } from '../../../types/common/api/user';
 import { UserTableSettings } from '../../../ui/admin/components/view/users/users-table-settings';
-import { ButtonDelete } from '../../../ui/components/common/buttons/delete';
-import { ButtonEdit } from '../../../ui/components/common/buttons/edit';
 import { UserCv } from '../../../ui/components/common/cv/user-cv';
-import { ArchiveUserModal } from '../../../ui/components/common/modals/archive-user';
+import { Projects } from '../../../ui/admin/components/view/users/projects';
+import { UserNameSurname } from '../../../ui/admin/components/view/users/name-surname';
+import { UserEmail } from '../../../ui/admin/components/view/users/user-email';
+import { UserStatus } from '../../../ui/admin/components/view/users/status';
+import { SettingsButton } from '../../../ui/components/common/buttons/settings-button';
+import { Status } from '../../../types/common/api/user/status';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { EditUserModal } from '../../../ui/components/common/modals/edit-user';
-import { Projects } from '../../../ui/components/common/projects-field/projects';
+import { ArchiveUserModal } from '../../../ui/components/common/modals/archive-user';
+import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
+import RestoreIcon from '@mui/icons-material/Restore';
+import { RestoreUserModal } from '../../../ui/components/common/modals/restore-user';
 
 export const columns = [
 	{
-		generateColumn: (user: User) => {
-			if (user.name && user.surname) {
-				return `${user.name} ${user.surname}`;
-			}
-
-			if (user.name) {
-				return `${user.name} N/A`;
-			}
-
-			if (user.surname) {
-				return `N/A ${user.surname}`;
-			}
-
-			return 'N/A';
-		},
+		generateColumn: (user: User) => <UserNameSurname user={user} />,
 		title: 'Name, Surname',
 	},
 	{
-		generateColumn: (user: User) => user.email,
+		generateColumn: (user: User) => <UserEmail user={user} />,
 		title: 'Email',
 	},
 	{
-		generateColumn: (user: User) => user.status ?? 'N/A',
+		generateColumn: (user: User) => <UserStatus user={user} />,
 		title: 'Status',
 	},
 	{
@@ -48,13 +41,29 @@ export const columns = [
 		generateColumn: (user: User) => (
 			<UserTableSettings
 				ButtonEdit={
-					<ButtonEdit text='Edit' modal={<EditUserModal user={user} />} />
+					<SettingsButton
+						user={user}
+						icon={<SettingsIcon />}
+						text='Edit'
+						modal={<EditUserModal user={user} />}
+					/>
 				}
 				ButtonDelete={
-					<ButtonDelete
-						text='Archive'
-						modal={<ArchiveUserModal id={user.id} />}
-					/>
+					user.status === Status.UNARCHIVED ? (
+						<SettingsButton
+							user={user}
+							icon={<ArchiveOutlinedIcon />}
+							text='Archive'
+							modal={<ArchiveUserModal id={user.id} />}
+						/>
+					) : (
+						<SettingsButton
+							user={user}
+							icon={<RestoreIcon />}
+							text='Restore'
+							modal={<RestoreUserModal id={user.id} />}
+						/>
+					)
 				}
 			/>
 		),

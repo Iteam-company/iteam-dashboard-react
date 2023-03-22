@@ -3,6 +3,11 @@ import { User } from '../types/common/api/user';
 import { AuthCredentials } from '../types/common/client/auth-credentials';
 import { baseApiService } from './base-query';
 
+export interface BanReq {
+	userId: number;
+	banReason: string;
+}
+
 export const userApiService = baseApiService.injectEndpoints({
 	endpoints: (builder) => ({
 		createUser: builder.mutation<User, AuthCredentials>({
@@ -29,6 +34,14 @@ export const userApiService = baseApiService.injectEndpoints({
 			}),
 			invalidatesTags: ['Users'],
 		}),
+		banUser: builder.mutation<User, BanReq>({
+			query: (params: BanReq) => ({
+				url: `${USERS_ENDPOINTS.USERS}${USERS_ENDPOINTS.BAN}`,
+				method: 'POST',
+				body: params,
+			}),
+			invalidatesTags: ['Users'],
+		}),
 	}),
 });
 
@@ -36,4 +49,5 @@ export const {
 	useCreateUserMutation,
 	useUpdateUserMutation,
 	useUploadUserCVMutation,
+	useBanUserMutation,
 } = userApiService;

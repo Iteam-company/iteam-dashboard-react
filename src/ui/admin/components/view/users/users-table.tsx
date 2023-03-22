@@ -7,12 +7,16 @@ import { Table } from '../../../../components/common/table';
 
 export const UsersTable = () => {
 	const searchParams = useAppSelector(userSearch);
-	const { data, isLoading: isLoading } = useGetAllUsersQuery(searchParams);
+	const {
+		data,
+		isLoading: isLoading,
+		isFetching,
+	} = useGetAllUsersQuery(searchParams);
 	return (
 		<>
 			<Loader isLoading={isLoading} />
-			{/*change logic*/}
-			<Table data={data} columns={columns} />
+
+			<Table data={data} columns={columns} reFetching={isFetching} />
 		</>
 	);
 };

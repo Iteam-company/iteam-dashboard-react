@@ -16,26 +16,26 @@ type Props = {
 	text?: string;
 };
 
-export const ArchiveUserModal: FC<Props> = ({
+export const RestoreUserModal: FC<Props> = ({
 	open = false,
 	handleClose,
 	id,
-	text = 'Do you really want to archive?',
+	text = 'Do you really want to restore?',
 }) => {
 	const [archive, { isLoading, isSuccess }] = useUpdateUserMutation();
 	const { showSnackbar } = useNotifySnackbar();
 	useEffect(() => {
 		if (isSuccess) {
-			showSnackbar('successfully archive', 'success');
+			showSnackbar('successfully restore', 'success');
 		}
 	}, [isSuccess]);
+
 	const archiveUser = () => {
 		const statusArchived = {
-			status: Status.ARCHIVED,
+			status: Status.UNARCHIVED,
 		};
 		archive({ id, ...statusArchived });
 	};
-
 	if (isSuccess && handleClose) {
 		handleClose();
 	}
@@ -65,7 +65,7 @@ export const ArchiveUserModal: FC<Props> = ({
 						<Box sx={{ mr: 2 }}>
 							<ModalButton
 								handleClick={archiveUser}
-								text={'archive'}
+								text={'restore'}
 								loading={isLoading}
 							/>
 						</Box>

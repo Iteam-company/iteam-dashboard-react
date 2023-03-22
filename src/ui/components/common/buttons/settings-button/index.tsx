@@ -1,14 +1,14 @@
-import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, Tooltip } from '@mui/material';
-import { FC, useState, cloneElement } from 'react';
+import { cloneElement, FC, ReactElement, useState } from 'react';
 import { User } from '../../../../../types/common/api/user';
 
 type Props = {
-	text?: string;
-	modal: JSX.Element;
 	user?: User;
+	modal: JSX.Element;
+	icon: ReactElement;
+	text?: string;
 };
-export const ButtonEdit: FC<Props> = ({ text = 'Edit', modal }) => {
+export const SettingsButton: FC<Props> = ({ modal, icon, text }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => {
 		setOpen(true);
@@ -20,9 +20,7 @@ export const ButtonEdit: FC<Props> = ({ text = 'Edit', modal }) => {
 	return (
 		<>
 			<Box sx={{ cursor: 'pointer' }} onClick={handleOpen}>
-				<Tooltip title={text}>
-					<SettingsIcon />
-				</Tooltip>
+				<Tooltip title={text}>{icon}</Tooltip>
 			</Box>
 
 			{modal && cloneElement(modal, { open, handleOpen, handleClose })}
