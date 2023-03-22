@@ -8,6 +8,7 @@ import { Users } from '../../../ui/admin/view/users';
 import { AuthGuard } from '../../../ui/utils/auth-guard';
 import { AdminRoutes } from '../admin-routes';
 import { CommontRoutes } from '../../common/routes/common-routes';
+import { UserSummary } from '../../../ui/admin/view/user/subviews/user-summary';
 
 export const adminRoutesSchema: RouteObject = {
 	path: CommontRoutes.ROOT_PATH,
@@ -36,6 +37,10 @@ export const adminRoutesSchema: RouteObject = {
 		{
 			path: AdminRoutes.INTEGRATIONS,
 			element: <Integration />,
+		},
+		{
+			path: `${AdminRoutes.USERS}/:id`,
+			element: <UserSummary />,
 		},
 	],
 };

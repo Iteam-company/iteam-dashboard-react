@@ -5,11 +5,11 @@ import { FC } from 'react';
 import { Error as ApiError } from '../../../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
 import { useSignUpMutation } from '../../../../../api/auth';
-import { CloseButton } from '../modal-buttons/close';
-import { AddButton } from '../modal-buttons/add';
-import { EmailTextField } from '../modal-textfields/email-text-field';
-import { PasswordTextField } from '../modal-textfields/password-text-field';
+import { ModalButton } from '../../buttons/modals-button';
+import { EmailTextField } from '../../modal-textfields/email-text-field';
+import { PasswordTextField } from '../../modal-textfields/password-text-field';
 import { style } from '../../../../../styles/modal-style';
+import CloseIcon from '@mui/icons-material/Close';
 
 type Props = {
 	open: boolean;
@@ -23,7 +23,7 @@ const initialValues = {
 };
 
 export const AddUserModal: FC<Props> = ({ open, handleClose }) => {
-	const [signUp] = useSignUpMutation();
+	const [create, { isLoading }] = useSignUpMutation();
 	const { showSnackbar } = useNotifySnackbar();
 
 	const formik = useFormik({
@@ -31,7 +31,7 @@ export const AddUserModal: FC<Props> = ({ open, handleClose }) => {
 		onSubmit: async (data) => {
 			const { email, password } = data;
 			try {
-				const response = await signUp({ email, password }).unwrap();
+				const response = await create({ email, password }).unwrap();
 				showSnackbar('successfully created', 'success');
 				handleClose();
 			} catch (error) {
@@ -78,9 +78,13 @@ export const AddUserModal: FC<Props> = ({ open, handleClose }) => {
 						</Box>
 						<Box sx={{ textAlign: 'center' }}>
 							<Box sx={{ display: 'inline-block', mr: 2 }}>
-								<AddButton text='Add User' />
+								<ModalButton text='Add User' loading={isLoading} />
 							</Box>
-							<CloseButton handleClose={handleClose} />
+							<ModalButton
+								text='Close'
+								handleClick={handleClose}
+								icon={<CloseIcon />}
+							/>
 						</Box>
 					</FormControl>
 				</form>

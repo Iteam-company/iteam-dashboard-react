@@ -35,6 +35,7 @@ export const ButtonWithSelectActions = () => {
 	const handleCloseModalAddEmail = () => {
 		setOpenModalAddEmail(false);
 	};
+
 	const usersActions = [
 		{
 			title: 'Add Email To White List',

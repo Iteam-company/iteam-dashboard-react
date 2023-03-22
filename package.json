@@ -6,11 +6,14 @@
 		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.10.6",
+		"@emotion/styled": "^11.10.6",
 		"@fontsource/roboto": "^4.5.8",
 		"@mui/icons-material": "^5.11.0",
-		"@mui/material": "^5.11.2",
+		"@mui/lab": "^5.0.0-alpha.123",
+		"@mui/material": "^5.11.13",
 		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
-		"@mui/styled-engine-sc": "^5.11.0",
+		"@mui/styled-engine-sc": "^5.11.11",
 		"@reduxjs/toolkit": "^1.9.1",
 		"formik": "^2.2.9",
 		"notistack": "^2.0.8",
@@ -25,7 +28,7 @@
 		"recharts": "^2.2.0",
 		"redux-persist": "^6.0.0",
 		"redux-thunk": "^2.4.2",
-		"styled-components": "^5.3.6",
+		"styled-components": "^5.3.9",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {

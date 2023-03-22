@@ -1,8 +1,7 @@
 import { Box, Modal } from '@mui/material';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
-import { AddButton } from '../modal-buttons/add';
-import { CloseButton } from '../modal-buttons/close';
+import { ModalButton } from '../../buttons/modals-button';
 import * as Yup from 'yup';
 import { Error as ApiError } from '../../../../../types/common/api/error';
 import { useFormik } from 'formik';
@@ -11,12 +10,11 @@ import {
 	useUpdateUserMutation,
 	useUploadUserCVMutation,
 } from '../../../../../api/user';
-import { NameTextField } from '../modal-textfields/name-text-field';
-import { SurnameTextField } from '../modal-textfields/surname-text-fields';
-import { Loader } from '../../loader';
+import { NameTextField } from '../../modal-textfields/name-text-field';
+import { SurnameTextField } from '../../modal-textfields/surname-text-fields';
 import { FileUpload } from '../../file-upload';
 import { style } from '../../../../../styles/modal-style';
-
+import CloseIcon from '@mui/icons-material/Close';
 type Props = {
 	open?: boolean;
 	handleOpen?: () => void;
@@ -30,6 +28,19 @@ export const EditUserModal: FC<Props> = ({
 	handleClose,
 	user,
 }) => {
+	const [initialValues, setInitialValues] = useState({
+		name: user.name || '',
+		surname: user.surname || '',
+		id: user.id || 0,
+	});
+
+	useEffect(() => {
+		setInitialValues({
+			name: user.name || '',
+			surname: user.surname || '',
+			id: user.id || 0,
+		});
+	}, [user]);
 	const [file, setFile] = useState<File | null>(null);
 	const [data] = useUploadUserCVMutation();
 	const [update, { isLoading, isSuccess }] = useUpdateUserMutation();
@@ -38,15 +49,24 @@ export const EditUserModal: FC<Props> = ({
 		initialValues: {
 			name: user.name || '',
 			surname: user.surname || '',
-
-			id: user.id,
+			id: user.id || 0,
 		},
-		onSubmit: async (data) => {
+		onSubmit: async (data, { resetForm }) => {
 			const { id, name, surname } = data;
+
+			if (
+				id === initialValues.id &&
+				name === initialValues.name &&
+				surname === initialValues.surname
+			) {
+				showSnackbar('nothing changed', 'error');
+				return;
+			}
 
 			try {
 				const response = await update({ id, name, surname }).unwrap();
 				showSnackbar('successfully updated', 'success');
+				resetForm({ values: { name: '', surname: '', id: 0 } });
 			} catch (error) {
 				const typedError = error as ApiError;
 				showSnackbar(typedError.data.message, 'error');
@@ -60,7 +80,7 @@ export const EditUserModal: FC<Props> = ({
 				.min(2, 'Name must be at least 2 characters')
 				.max(50, 'Name cannot exceed 50 characters'),
 		}),
-		validateOnBlur: false,
+		validateOnBlur: true,
 	});
 
 	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,6 +90,9 @@ export const EditUserModal: FC<Props> = ({
 		return;
 	};
 
+	const removeFile = () => {
+		setFile(null);
+	};
 	function handleUploadClick() {
 		if (user && file) {
 			const formData = new FormData();
@@ -81,9 +104,6 @@ export const EditUserModal: FC<Props> = ({
 		return;
 	}
 
-	if (isLoading) {
-		return <Loader isLoading={isLoading} />;
-	}
 	if (isSuccess && handleClose) {
 		handleClose();
 	}
@@ -114,12 +134,24 @@ export const EditUserModal: FC<Props> = ({
 								errors={errors}
 							/>
 						</Box>
-						<FileUpload file={file} handleFileUpload={handleFileUpload} />
+						<FileUpload
+							file={file}
+							handleFileUpload={handleFileUpload}
+							removeFile={removeFile}
+						/>
 						<Box sx={{ textAlign: 'center' }}>
 							<Box sx={{ display: 'inline-block', mr: 2 }}>
-								<AddButton text='edit user' handleClick={handleUploadClick} />
+								<ModalButton
+									text='edit user'
+									handleClick={handleUploadClick}
+									loading={isLoading}
+								/>
 							</Box>
-							<CloseButton handleClose={handleClose} />
+							<ModalButton
+								text='Close'
+								handleClick={handleClose}
+								icon={<CloseIcon />}
+							/>
 						</Box>
 					</Box>
 				</form>

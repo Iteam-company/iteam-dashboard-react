@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import { FC } from 'react';
+import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 
 type Props = {
 	handleFileUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -10,7 +11,7 @@ export const ChooseFileButton: FC<Props> = ({
 	textСhooseCv = 'choose cv',
 }) => {
 	return (
-		<Button variant='contained' component='label'>
+		<Button variant='contained' component='label' startIcon={<AttachFileOutlinedIcon />}>
 			{textСhooseCv}
 			<input
 				hidden

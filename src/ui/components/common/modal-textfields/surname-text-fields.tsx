@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import { FormikErrors, FormikTouched } from 'formik';
 import { FC } from 'react';
-import { editUser } from '../../../../../types/admin/edit-user';
+import { editUser } from '../../../../types/admin/edit-user';
 
 type Props = {
 	surname?: string;
