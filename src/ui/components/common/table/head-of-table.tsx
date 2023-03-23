@@ -1,5 +1,6 @@
-import { TableCell, TableHead, TableRow } from '@mui/material';
+import { TableHead, TableRow } from '@mui/material';
 import { FC, memo } from 'react';
+import { StyledTableCell } from '../../../../styles/table/head-style';
 import { Column } from '../../../../types/admin/column';
 
 type Props = {
@@ -11,15 +12,9 @@ export const HeadOfTable: FC<Props> = memo(({ columns = [] }) => {
 		<TableHead>
 			<TableRow>
 				{columns.map((column, i) => (
-					<TableCell
-						sx={
-							column.title === 'name' || column.title === 'email'
-								? { textAlign: 'center' }
-								: { textAlign: 'left' }
-						}
-						key={`${column} - ${i}`}>
+					<StyledTableCell key={`${column} - ${i}`}>
 						{column.title}
-					</TableCell>
+					</StyledTableCell>
 				))}
 			</TableRow>
 		</TableHead>

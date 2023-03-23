@@ -2,22 +2,22 @@ import { User } from '../../../types/common/api/user';
 import { UserTableSettings } from '../../../ui/admin/components/view/users/users-table-settings';
 import { UserCv } from '../../../ui/components/common/cv/user-cv';
 import { Projects } from '../../../ui/admin/components/view/users/projects';
-import { UserNameSurname } from '../../../ui/admin/components/view/users/name-surname';
+import { FullName } from '../../../ui/admin/components/view/users/full-name';
 import { UserEmail } from '../../../ui/admin/components/view/users/user-email';
 import { UserStatus } from '../../../ui/admin/components/view/users/status';
 import { SettingsButton } from '../../../ui/components/common/buttons/settings-button';
 import { Status } from '../../../types/common/api/user/status';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { EditUserModal } from '../../../ui/components/common/modals/edit-user';
 import { ArchiveUserModal } from '../../../ui/components/common/modals/archive-user';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
-import RestoreIcon from '@mui/icons-material/Restore';
 import { RestoreUserModal } from '../../../ui/components/common/modals/restore-user';
+import { ButtonFileDownload } from '../../../ui/components/common/buttons/file-download';
+import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined';
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 
 export const columns = [
 	{
-		generateColumn: (user: User) => <UserNameSurname user={user} />,
-		title: 'Name, Surname',
+		generateColumn: (user: User) => <FullName user={user} />,
+		title: 'Full Name',
 	},
 	{
 		generateColumn: (user: User) => <UserEmail user={user} />,
@@ -29,12 +29,14 @@ export const columns = [
 	},
 	{
 		generateColumn: (user: User) => (
-			<Projects leadingInProjects={user.leadingInProjects} />
+			<Projects user={user} />
 		),
 		title: 'Projects',
 	},
 	{
-		generateColumn: (user: User) => <UserCv cv={user.cv} />,
+		generateColumn: (user: User) => (
+			<UserCv cv={user.cv} component={<ButtonFileDownload />} />
+		),
 		title: 'CV',
 	},
 	{
@@ -42,24 +44,21 @@ export const columns = [
 			<UserTableSettings
 				ButtonEdit={
 					<SettingsButton
-						user={user}
-						icon={<SettingsIcon />}
+						icon={<ModeEditOutlinedIcon sx={{ fontSize: 'medium' }} />}
 						text='Edit'
-						modal={<EditUserModal user={user} />}
+						user={user}
 					/>
 				}
 				ButtonDelete={
 					user.status === Status.UNARCHIVED ? (
 						<SettingsButton
-							user={user}
-							icon={<ArchiveOutlinedIcon />}
+							icon={<ArchiveOutlinedIcon sx={{ fontSize: 'medium' }} />}
 							text='Archive'
 							modal={<ArchiveUserModal id={user.id} />}
 						/>
 					) : (
 						<SettingsButton
-							user={user}
-							icon={<RestoreIcon />}
+							icon={<UnarchiveOutlinedIcon sx={{ fontSize: 'medium' }} />}
 							text='Restore'
 							modal={<RestoreUserModal id={user.id} />}
 						/>

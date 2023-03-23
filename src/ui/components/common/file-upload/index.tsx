@@ -29,7 +29,9 @@ export const FileUpload: FC<Props> = ({
 						<Box sx={{ mr: 1, cursor: 'pointer' }} onClick={removeFile}>
 							<ClearOutlinedIcon />
 						</Box>
-						<Box sx={{ mr: 2 }}>{file.name}</Box>
+						<Box sx={{ mr: 2, maxWidth: '100px', overflow: 'hidden' }}>
+							{file.name.length > 14 ? `${file.name.slice(0, 14)}...` : file.name}
+						</Box>
 					</Box>
 				</>
 			) : (

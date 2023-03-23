@@ -9,9 +9,17 @@ type Props = {
 
 export const UserStatus: FC<Props> = ({ user }) => {
 	const { status } = user;
-	const color = status === Status.UNARCHIVED ? '#38CA54' : '#F55467';
+
 	return (
-		<Typography sx={{ color: color, textTransform: 'capitalize' }}>
+		<Typography
+			sx={{
+				color: (theme) =>
+					status === Status.ARCHIVED
+						? theme.palette.error.light
+						: theme.palette.success.light,
+				textTransform: 'capitalize',
+				fontSize: 'inherit',
+			}}>
 			{status}
 		</Typography>
 	);

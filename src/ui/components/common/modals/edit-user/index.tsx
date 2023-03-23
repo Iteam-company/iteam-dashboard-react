@@ -15,6 +15,7 @@ import { SurnameTextField } from '../../modal-textfields/surname-text-fields';
 import { FileUpload } from '../../file-upload';
 import { style } from '../../../../../styles/modal-style';
 import CloseIcon from '@mui/icons-material/Close';
+import { Loader } from '../../loader';
 type Props = {
 	open?: boolean;
 	handleOpen?: () => void;
@@ -24,41 +25,23 @@ type Props = {
 
 export const EditUserModal: FC<Props> = ({
 	open,
-	handleOpen,
 	handleClose,
 	user,
 }) => {
-	const [initialValues, setInitialValues] = useState({
-		name: user.name || '',
-		surname: user.surname || '',
-		id: user.id || 0,
-	});
-
-	useEffect(() => {
-		setInitialValues({
-			name: user.name || '',
-			surname: user.surname || '',
-			id: user.id || 0,
-		});
-	}, [user]);
+	const [data, { isLoading: isLoadingCv }] = useUploadUserCVMutation();
+	const [update, { isLoading }] = useUpdateUserMutation();
 	const [file, setFile] = useState<File | null>(null);
-	const [data] = useUploadUserCVMutation();
-	const [update, { isLoading, isSuccess }] = useUpdateUserMutation();
+
 	const { showSnackbar } = useNotifySnackbar();
 	const formik = useFormik({
 		initialValues: {
 			name: user.name || '',
 			surname: user.surname || '',
-			id: user.id || 0,
+			id: user.id,
 		},
 		onSubmit: async (data, { resetForm }) => {
 			const { id, name, surname } = data;
-
-			if (
-				id === initialValues.id &&
-				name === initialValues.name &&
-				surname === initialValues.surname
-			) {
+			if (name === user.name && surname === user.surname) {
 				showSnackbar('nothing changed', 'error');
 				return;
 			}
@@ -66,7 +49,10 @@ export const EditUserModal: FC<Props> = ({
 			try {
 				const response = await update({ id, name, surname }).unwrap();
 				showSnackbar('successfully updated', 'success');
-				resetForm({ values: { name: '', surname: '', id: 0 } });
+				resetForm({ values: { name: '', surname: '', id } });
+				if (handleClose) {
+					handleClose();
+				}
 			} catch (error) {
 				const typedError = error as ApiError;
 				showSnackbar(typedError.data.message, 'error');
@@ -94,23 +80,21 @@ export const EditUserModal: FC<Props> = ({
 		setFile(null);
 	};
 	function handleUploadClick() {
-		if (user && file) {
+		if (user && file && handleClose) {
 			const formData = new FormData();
 			formData.append('file', file);
 			formData.append('userId', user.id.toString());
 			data(formData);
 			setFile(null);
+			handleClose();
 		}
 		return;
-	}
-
-	if (isSuccess && handleClose) {
-		handleClose();
 	}
 
 	const { errors, touched, values, handleChange, handleSubmit } = formik;
 	return (
 		<>
+			<Loader isLoading={isLoadingCv} />
 			<Modal
 				open={open || false}
 				onClose={handleClose}

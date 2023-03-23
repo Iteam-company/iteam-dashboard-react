@@ -11,4 +11,5 @@ export const style = {
 	flexDirection: 'column',
 	gap: '20px',
 	outline: 'none',
+	overflow: 'hidden',
 };
