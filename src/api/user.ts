@@ -42,6 +42,12 @@ export const userApiService = baseApiService.injectEndpoints({
 			}),
 			invalidatesTags: ['Users'],
 		}),
+		getUser: builder.query<User, string | null>({
+			query: (id) => ({
+				url: `${USERS_ENDPOINTS.USERS}/${id}`,
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -50,4 +56,5 @@ export const {
 	useUpdateUserMutation,
 	useUploadUserCVMutation,
 	useBanUserMutation,
+	useGetUserQuery,
 } = userApiService;
