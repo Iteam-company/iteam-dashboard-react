@@ -22,7 +22,6 @@ export const UserSummary = memo(() => {
 					/>
 				}>
 				<Container
-					maxWidth='md'
 					sx={{ display: 'flex', flexDirection: 'column', gap: '20px', mt: 2 }}>
 					<UserInfo />
 					<UserAbout />

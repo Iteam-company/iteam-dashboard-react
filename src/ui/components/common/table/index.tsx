@@ -1,5 +1,5 @@
-import { Table as MuiTable } from '@mui/material';
 import { FC, memo } from 'react';
+import { MuiTable } from '../../../../styles/table/mui-table';
 import { Column } from '../../../../types/admin/column';
 import { UsersResponse } from '../../../../types/admin/users';
 import { BodyOfTable } from './body-of-table';
@@ -12,13 +12,8 @@ type Props = {
 };
 
 export const Table: FC<Props> = memo(({ columns, data, reFetching }) => {
-
 	return (
-		<MuiTable
-			sx={{
-				pointerEvents: reFetching ? 'none' : 'initial',
-				opacity: reFetching ? 0.5 : 1,
-			}}>
+		<MuiTable size='small' className={reFetching ? 'disabled' : ''}>
 			<HeadOfTable columns={columns} />
 			<BodyOfTable data={data} />
 		</MuiTable>

@@ -1,22 +1,34 @@
 import { Box, Link } from '@mui/material';
-import { FC } from 'react';
+import { cloneElement, FC } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { User } from '../../../../types/common/api/user';
+import { BoxEllipsis } from '../../../../styles/box-ellipsis';
 import { Cv } from '../../../../types/common/api/user/cv';
 
 type Props = {
-	cv?: Cv | null;
-	user?: User | null;
-	file?: File | null;
+	cv: Cv | null;
+	component?: JSX.Element;
 };
 
-export const UserCv: FC<Props> = ({ cv = null, user, file }) => {
+export const UserCv: FC<Props> = ({ cv, component }) => {
+	const { originalName, fileUrl } = cv || {};
 	return (
 		<>
 			{cv ? (
-				<Link component={RouterLink} to={cv.fileUrl}>
-					<Box>{cv.originalName}</Box>
-				</Link>
+				<Box
+					sx={{
+						display: 'flex',
+						alignItems: 'center',
+						texAlign: 'center',
+					}}>
+					<BoxEllipsis width='80px'>
+						<Link noWrap component={RouterLink} to={cv.fileUrl} sx={{ mr: 1 }}>
+							{cv.originalName}
+						</Link>
+					</BoxEllipsis>
+					<Box>
+						{component && cloneElement(component, { originalName, fileUrl })}
+					</Box>
+				</Box>
 			) : (
 				'N/A'
 			)}

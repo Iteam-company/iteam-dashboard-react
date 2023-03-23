@@ -1,9 +1,11 @@
-import { TableBody, TableCell, TableRow } from '@mui/material';
+import { TableBody } from '@mui/material';
 import { FC, memo } from 'react';
 import { columns } from '../../../../constants/admin/columns-schema';
 import { User } from '../../../../types/common/api/user';
 import { UsersResponse } from '../../../../types/admin/users';
 import { Status } from '../../../../types/common/api/user/status';
+import { StyledTableCell } from '../../../../styles/table/head-style';
+import { StyledTableRow } from '../../../../styles/table/body-style';
 
 type Props = {
 	data?: UsersResponse;
@@ -12,19 +14,15 @@ export const BodyOfTable: FC<Props> = memo(({ data }) => {
 	return (
 		<TableBody>
 			{data?.data?.map((user: User) => (
-				<TableRow key={user.id}>
+				<StyledTableRow
+					key={user.id}
+					className={user.status === Status.ARCHIVED ? 'archived' : ''}>
 					{columns.map((column, index) => (
-						<TableCell
-							key={user.id + index}
-							sx={
-								user.status === Status.ARCHIVED
-									? { background: '#d3d3d3', borderBottom: '2px solid #fff' }
-									: { background: '#fff' }
-							}>
+						<StyledTableCell key={user.id + index}>
 							{column.generateColumn(user)}
-						</TableCell>
+						</StyledTableCell>
 					))}
-				</TableRow>
+				</StyledTableRow>
 			))}
 		</TableBody>
 	);

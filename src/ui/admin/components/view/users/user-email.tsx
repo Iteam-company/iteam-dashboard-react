@@ -1,27 +1,37 @@
 import { Box, Tooltip } from '@mui/material';
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BoxEllipsis } from '../../../../../styles/box-ellipsis';
+import { MyLink } from '../../../../../styles/my-link';
 import { User } from '../../../../../types/common/api/user';
+import { ButtonCopy } from '../../../../components/common/buttons/copy';
 
 type Props = {
 	user: User;
 };
 
 export const UserEmail: FC<Props> = ({ user }) => {
-	const { email } = user;
+	const { email, id } = user;
 	const navigate = useNavigate();
-	const handleNavigate = () => {
-		navigate(`${user.id}`);
-	};
+	const handleNavigate = useCallback(() => {
+		navigate(`${id}`);
+	}, []);
+
 	return (
-		<Tooltip title='click for more information'>
-			<Box
-				sx={{
-					cursor: 'pointer',
-				}}
-				onClick={handleNavigate}>
-				{email}
+		<Box
+			sx={{
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'space-between',
+			}}>
+			<Tooltip title='click for more information'>
+				<BoxEllipsis onClick={handleNavigate}>
+					<MyLink>{email}</MyLink>
+				</BoxEllipsis>
+			</Tooltip>
+			<Box sx={{ cursor: 'pointer' }}>
+				<ButtonCopy text={email} />
 			</Box>
-		</Tooltip>
+		</Box>
 	);
 };

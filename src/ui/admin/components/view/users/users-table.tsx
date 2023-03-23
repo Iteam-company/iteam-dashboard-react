@@ -9,7 +9,7 @@ export const UsersTable = () => {
 	const searchParams = useAppSelector(userSearch);
 	const {
 		data,
-		isLoading: isLoading,
+		isLoading,
 		isFetching,
 	} = useGetAllUsersQuery(searchParams);
 	return (

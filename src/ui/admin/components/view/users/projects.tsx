@@ -1,24 +1,25 @@
-import { Link } from '@mui/material';
+import { Tooltip } from '@mui/material';
 import { FC } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { leadingInProject } from '../../../../../types/common/api/user/leading-in-projects';
+import { MyLink } from '../../../../../styles/my-link';
+import { User } from '../../../../../types/common/api/user';
 
 type Props = {
-	leadingInProjects?: Array<leadingInProject>;
+	user: User;
 };
-export const Projects: FC<Props> = ({ leadingInProjects }) => {
+export const Projects: FC<Props> = ({ user }) => {
+	const { leadingInProjects, name } = user;
+	const username = name ? name?.slice(0, 1).toUpperCase() + name?.slice(1) : '';
+	console.log(leadingInProjects);
 	return (
 		<>
-			{/*{leadingInProjects
-				? leadingInProjects.map((project) => (
-					<Link
-						key={project.id}
-						component={RouterLink}
-						to={project.projectLink}>
-						{project.name}
-					</Link>
-				  ))
-				: 'N/A'}*/}
+			{leadingInProjects?.length ? (
+				<Tooltip
+					title={`click for more information about ${username} projects`}>
+					<MyLink>Projects</MyLink>
+				</Tooltip>
+			) : (
+				'N/A'
+			)}
 		</>
 	);
 };
