@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { UserCardTop } from './user-card-top';
+import { UserCardWrapper } from './user-card-wrapper';
 import { UserEducationItem } from './user-education-item';
 
 export const UserEducation = () => {
 	const [title] = useState('Education');
 	return (
-		<UserCardTop title={title}>
+		<UserCardWrapper title={title}>
 			<UserEducationItem />
-		</UserCardTop>
+		</UserCardWrapper>
 	);
 };

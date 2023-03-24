@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { UserCardTop } from './user-card-top';
+import { UserCardWrapper } from './user-card-wrapper';
 import { UserAboutItem } from './user-about-item';
 
 export const UserAbout = () => {
 	const [title] = useState('About');
 	return (
-		<UserCardTop title={title}>
+		<UserCardWrapper title={title}>
 			<UserAboutItem />
-		</UserCardTop>
+		</UserCardWrapper>
 	);
 };

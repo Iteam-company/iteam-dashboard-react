@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { UserCardTop } from './user-card-top';
+import { UserCardWrapper } from './user-card-wrapper';
 import { UserExperienceItem } from './user-experience-item';
 
 export const UserExperience = () => {
 	const [title] = useState('Experience');
 	return (
-		<UserCardTop title={title}>
+		<UserCardWrapper title={title}>
 			<UserExperienceItem />
-		</UserCardTop>
+		</UserCardWrapper>
 	);
 };

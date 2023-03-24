@@ -22,7 +22,6 @@ export const FullName: FC<Props> = memo(({ user }) => {
 				<Tooltip title='click for more information'>
 					<MyLink onClick={handleNavigate}>
 						{userName} {userSurname}
-						123
 					</MyLink>
 				</Tooltip>
 			) : (
