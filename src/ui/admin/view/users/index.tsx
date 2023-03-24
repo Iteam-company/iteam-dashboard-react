@@ -1,5 +1,5 @@
 import { Box, Paper } from '@mui/material';
-import { SearchByProperties } from '../../../components/common/search-by-properties';
+import { SearchByProperties } from './search-by-properties';
 import { ViewDefaultPage } from '../../../components/common/view-default-page';
 import { UsersTable } from '../../components/view/users/users-table';
 
