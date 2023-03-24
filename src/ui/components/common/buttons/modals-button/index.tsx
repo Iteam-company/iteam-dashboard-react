@@ -7,13 +7,13 @@ type Props = {
 	text?: string;
 	handleClick?: () => void;
 	loading?: boolean;
-	icon?: ReactElement<SvgIconTypeMap, SvgIconComponent>
+	icon?: ReactElement<SvgIconTypeMap, SvgIconComponent>;
 };
 export const ModalButton: FC<Props> = ({
 	text,
 	handleClick,
 	loading = false,
-	icon
+	icon,
 }) => {
 	return (
 		<LoadingButton
