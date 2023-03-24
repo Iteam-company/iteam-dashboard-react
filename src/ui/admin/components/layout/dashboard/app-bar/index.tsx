@@ -25,7 +25,7 @@ const StypedAppBar = styled(MuiAppBar, {
 	}),
 	...(open && {
 		marginLeft: Sizes.SIDEBAR,
-		width: `calc(100% - ${Sizes.SIDEBAR}px - 15px)`,
+		width: `calc(100% - ${Sizes.SIDEBAR}px)`,
 		transition: theme.transitions.create(['width', 'margin'], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
@@ -63,7 +63,7 @@ export const AppBar: FC<AppBarProps> = memo(
 						color='inherit'
 						noWrap
 						sx={{ flexGrow: 1 }}>
-						Dashboard
+						Here will be route
 					</Typography>
 					<IconButton color='inherit'>
 						<Badge badgeContent={4} color='secondary'>

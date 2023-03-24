@@ -12,11 +12,9 @@ export const AdminDashboard = memo(() => {
 	}, [setIsDrawerOpen]);
 	return (
 		<Box sx={{ display: 'flex' }}>
-			<ViewDefaultPage tabTitle='Dasboard'>
-				<AppBar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
-				<AdminSidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
-				<ViewContainer />
-			</ViewDefaultPage>
+			<AppBar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
+			<AdminSidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
+			<ViewContainer />
 		</Box>
 	);
 });
