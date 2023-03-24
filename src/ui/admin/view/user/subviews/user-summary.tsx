@@ -50,16 +50,16 @@ export const UserSummary = memo(() => {
 							mt: 2,
 						}}>
 						<Card>
-							<Container
+							<Box
 								sx={{
 									display: 'flex',
-									flexWrap: { md: 'nowrap', xs: 'wrap' },
-									justifyContent: { xs: 'center' },
+									flexWrap: 'nowrap',
+									justifyContent: 'space-around',
 									alignItems: 'center',
 									p: 3,
 								}}>
 								<UserInfo data={data} />
-							</Container>
+							</Box>
 						</Card>
 						<Card>
 							<Box sx={{ p: 2 }}>

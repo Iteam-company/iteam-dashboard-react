@@ -25,7 +25,7 @@ const StypedAppBar = styled(MuiAppBar, {
 	}),
 	...(open && {
 		marginLeft: Sizes.SIDEBAR,
-		width: `calc(100% - ${Sizes.SIDEBAR}px)`,
+		width: `calc(100% - ${Sizes.SIDEBAR}px - 15px)`,
 		transition: theme.transitions.create(['width', 'margin'], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
