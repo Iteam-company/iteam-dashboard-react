@@ -9,6 +9,7 @@ import { AuthGuard } from '../../../ui/utils/auth-guard';
 import { AdminRoutes } from '../admin-routes';
 import { CommontRoutes } from '../../common/routes/common-routes';
 import { UserSummary } from '../../../ui/admin/view/user/subviews/user-summary';
+import { commonRoutesSchema } from '../../common/routes/routes-schemas/common-routes-schema';
 
 export const adminRoutesSchema: RouteObject = {
 	path: CommontRoutes.ROOT_PATH,
@@ -18,6 +19,7 @@ export const adminRoutesSchema: RouteObject = {
 		</AuthGuard>
 	),
 	children: [
+		...commonRoutesSchema,
 		{
 			path: CommontRoutes.ROOT_PATH,
 			element: <Default />,
