@@ -17,3 +17,5 @@ export const SelectColumns = [
 		title: Criteries.CV,
 	},
 ];
+
+

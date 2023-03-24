@@ -2,6 +2,7 @@ import { Box, Tooltip } from '@mui/material';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BoxEllipsis } from '../../../../../styles/box-ellipsis';
+import { Flexbox } from '../../../../../styles/flex-box';
 import { MyLink } from '../../../../../styles/my-link';
 import { User } from '../../../../../types/common/api/user';
 import { ButtonCopy } from '../../../../components/common/buttons/copy';
@@ -18,12 +19,7 @@ export const UserEmail: FC<Props> = ({ user }) => {
 	}, []);
 
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'space-between',
-			}}>
+		<Flexbox alignItems={'center'} justifyContent={'space-between'}>
 			<Tooltip title='click for more information'>
 				<BoxEllipsis onClick={handleNavigate}>
 					<MyLink>{email}</MyLink>
@@ -32,6 +28,6 @@ export const UserEmail: FC<Props> = ({ user }) => {
 			<Box sx={{ cursor: 'pointer' }}>
 				<ButtonCopy text={email} />
 			</Box>
-		</Box>
+		</Flexbox>
 	);
 };

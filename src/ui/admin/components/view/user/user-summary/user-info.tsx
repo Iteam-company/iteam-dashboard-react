@@ -1,6 +1,15 @@
 import { Box, Container, Link, Typography } from '@mui/material';
+import { FC } from 'react';
+import { User } from '../../../../../../types/common/api/user';
 
-export const UserInfo = () => {
+type Props = {
+	data?: User | null;
+};
+
+export const UserInfo: FC<Props> = ({ data = null }) => {
+	const { name, surname } = data ?? {};
+
+	console.log(data);
 	return (
 		<>
 			<Box
@@ -24,7 +33,7 @@ export const UserInfo = () => {
 						color: (props) => props.palette.primary.light,
 						textAlign: { xs: 'center', md: 'left' },
 					}}>
-					Chris Pratt
+					{name} {surname}
 				</Typography>
 				<Typography
 					variant='subtitle2'

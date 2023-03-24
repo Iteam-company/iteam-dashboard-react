@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
 import { FC } from 'react';
+import { Flexbox } from '../../../../../styles/flex-box';
 type Props = {
 	ButtonEdit?: JSX.Element;
 	ButtonDelete?: JSX.Element;
@@ -7,9 +7,9 @@ type Props = {
 
 export const UserTableSettings: FC<Props> = ({ ButtonEdit, ButtonDelete }) => {
 	return (
-		<Box sx={{ display: 'flex', justifyContent: 'center' }}>
+		<Flexbox justifyContent={'center'}>
 			{ButtonEdit}
 			{ButtonDelete}
-		</Box>
+		</Flexbox>
 	);
 };
