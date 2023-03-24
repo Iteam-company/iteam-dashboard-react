@@ -7,7 +7,7 @@ type Props = {
 	title?: string;
 };
 
-export const UserCardTop: React.FC<Props> = ({ children, title }) => {
+export const UserCardWrapper: React.FC<Props> = ({ children, title }) => {
 	return (
 		<>
 			<Box
