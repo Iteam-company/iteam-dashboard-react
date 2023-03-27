@@ -8,12 +8,12 @@ import { HeadTableCell } from '../custome-table-parts/head-table-cell';
 import { StyledTableRow } from '../custome-table-parts/body-style';
 
 type Props = {
-	data?: UsersResponse;
+	data?: Array<User>;
 };
 export const BodyOfTable: FC<Props> = memo(({ data }) => {
 	return (
 		<TableBody>
-			{data?.data?.map((user: User) => (
+			{data?.map((user: User) => (
 				<StyledTableRow
 					key={user.id}
 					className={user.status === Status.ARCHIVED ? 'archived' : ''}>

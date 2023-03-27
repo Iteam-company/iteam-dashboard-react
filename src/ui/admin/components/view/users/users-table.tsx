@@ -3,7 +3,7 @@ import { columns } from '../../../../../constants/admin/columns-schema';
 import { Loader } from '../../../../components/common/loader';
 import { TableWrapper } from '../../../../components/common/table/table-wrapper';
 
-export const UsersTable = () => {
+export const CommonTable = () => {
 	const { data, isLoading, isFetching } = useGetAllUsersQuery();
 	return (
 		<>

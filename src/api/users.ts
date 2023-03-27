@@ -7,7 +7,7 @@ export const usersApiService = baseApiService.injectEndpoints({
 		getAllUsers: builder.query<UsersResponse, void>({
 			query: () => {
 				//const { pipeType, critery, value, page, limit } = params ?? {};
-				const url: string = USERS_ENDPOINTS.USERS;
+				const url = `${USERS_ENDPOINTS.USERS}?page=1&limit=1000`;
 
 				//if (pipeType && critery && value) {
 				//	url += `?pipe-type=${pipeType}&critery=${critery}&value=${value}`;
@@ -27,12 +27,12 @@ export const usersApiService = baseApiService.injectEndpoints({
 			providesTags: (response) =>
 				response
 					? [
-						...response.data.map(({ id }) => ({
-							type: 'Users' as const,
+							 ...response.data.map(({ id }) => ({
+								 type: 'Users' as const,
 
-							id,
-						})),
-						'Users',
+								 id,
+							 })),
+							 'Users',
 					  ]
 					: ['Users'],
 		}),

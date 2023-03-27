@@ -1,4 +1,6 @@
-export const style = {
+import { SxProps, Theme } from "@mui/system";
+
+export const style: SxProps<Theme> = {
 	position: 'absolute' as const,
 	top: '50%',
 	left: '50%',
