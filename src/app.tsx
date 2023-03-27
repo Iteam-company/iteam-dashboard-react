@@ -9,8 +9,6 @@ import { selectTheme } from './store/slices/theme-slice';
 export const App: FC<PropsWithChildren> = memo(() => {
 	const theme = useAppSelector(selectTheme);
 
-	console.log({ theme });
-
 	// in the future we get theme from redux store and make it extendable
 	const routesByRole = useAppSelector(selectRoutesSchemaByUserRole);
 	const content = useRoutes(routesByRole);
