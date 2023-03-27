@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
 import { ThemeSliceStoreType } from '../../types/store/slices/theme-slice';
-import { themes } from '../../constants/themes';
-import { ThemeNames } from '../../constants/themes/theme-names';
+import { themes } from '../../constants/common/themes';
+import { ThemeNames } from '../../constants/common/themes/theme-names';
 
 const initialThemeName = window.matchMedia('(prefers-color-scheme: dark)')
 	.matches
