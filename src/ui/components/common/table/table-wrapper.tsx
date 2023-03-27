@@ -5,8 +5,9 @@ import { UsersResponse } from '../../../../types/admin/users';
 import { BodyOfTable } from './body-of-table';
 import { HeadOfTable } from './head-of-table';
 import Pagination from '@mui/material/Pagination';
-import { Box, Stack } from '@mui/system';
+import { Stack } from '@mui/system';
 import { Flexbox } from '../flex-box';
+import { Box } from '@mui/material';
 
 type Props = {
 	columns?: Array<Column>;
@@ -39,21 +40,18 @@ export const TableWrapper: FC<Props> = memo(({ columns, data, reFetching }) => {
 				className={reFetching ? 'disabled' : ''}
 				sx={{ flex: '1 1 auto' }}>
 				<HeadOfTable columns={columns} />
-
 				<BodyOfTable data={currentUsers} />
 			</Table>
 			<Flexbox
 				justifyContent={'center'}
 				alignItems={'center'}
-				sx={{ mt: 2, mb: 2 }}>
-				<Stack spacing={2}>
-					<Pagination
-						shape='rounded'
-						count={count}
-						boundaryCount={0}
-						onChange={handleChange}
-					/>
-				</Stack>
+				sx={{ mb: '20px', mt: '20px' }}>
+				<Pagination
+					shape='rounded'
+					count={count}
+					boundaryCount={0}
+					onChange={handleChange}
+				/>
 			</Flexbox>
 		</Box>
 	);
