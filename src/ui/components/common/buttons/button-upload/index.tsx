@@ -3,11 +3,11 @@ import { FC } from 'react';
 
 type Props = {
 	handleUploadClick: () => void;
-	textUploadCv?: string;
+	text?: string;
 };
 
-export const FileUploadButton: FC<Props> = ({
-	textUploadCv = 'Upload Cv',
+export const UploadButton: FC<Props> = ({
+	text: textUploadCv = 'Upload Cv',
 	handleUploadClick,
 }) => {
 	return (

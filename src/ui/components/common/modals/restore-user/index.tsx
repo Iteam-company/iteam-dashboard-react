@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { useUpdateUserMutation } from '../../../../../api/user';
 import { Status } from '../../../../../types/common/api/user/status';
 import { style } from '../../../../../styles/modal-style';
-import { ModalButton } from '../../buttons/modals-button';
+import { ModalButton } from '../../buttons/modal-button';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
 

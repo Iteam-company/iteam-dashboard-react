@@ -2,16 +2,16 @@ import { Box, Paper } from '@mui/material';
 import { memo, PropsWithChildren, FC } from 'react';
 import { AdminRoutes } from '../../../../constants/admin/admin-routes';
 import { CommontRoutes } from '../../../../constants/common/routes/common-routes';
-import { Actions } from '../../../../types/common/action-buton/actions';
+import { Action } from '../../../../types/common/action-button/action';
 import { DefaultPageToolbar } from '../default-page-toolbar';
-import { DefaultTabtitle } from '../mocked/tabtitle-default';
-import { DefaultTitle } from '../mocked/title-default';
+import { DefaultTabtitle } from '../tab-title/tabtitle-default';
+import { DefaultTitle } from '../title-default';
 
 interface Props extends PropsWithChildren {
 	tabTitle?: string;
 	title?: string;
 	navigateRoute?: Array<CommontRoutes | AdminRoutes>;
-	actions?: Array<Actions>;
+	actions?: Array<Action>;
 	buttonBack?: JSX.Element;
 	ButtonWithSelectActions?: JSX.Element;
 }

@@ -1,6 +1,6 @@
 import { Project } from './project';
 
-export interface Attachments {
+export interface Attachment {
 	id: number;
 	comment: string;
 	fileId: number;

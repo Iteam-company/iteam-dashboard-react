@@ -1,8 +1,9 @@
 import { Box, Link } from '@mui/material';
 import { cloneElement, FC } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { BoxEllipsis } from '../../../../styles/box-ellipsis';
+import { BoxEllipsis } from '../box-ellipsis';
 import { Cv } from '../../../../types/common/api/user/cv';
+import { Flexbox } from '../flex-box';
 
 type Props = {
 	cv: Cv | null;
@@ -14,12 +15,7 @@ export const UserCv: FC<Props> = ({ cv, component }) => {
 	return (
 		<>
 			{cv ? (
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						texAlign: 'center',
-					}}>
+				<Flexbox alignItems={'center'} justifyContent={'center'}>
 					<BoxEllipsis width='80px'>
 						<Link noWrap component={RouterLink} to={cv.fileUrl} sx={{ mr: 1 }}>
 							{cv.originalName}
@@ -28,7 +24,7 @@ export const UserCv: FC<Props> = ({ cv, component }) => {
 					<Box>
 						{component && cloneElement(component, { originalName, fileUrl })}
 					</Box>
-				</Box>
+				</Flexbox>
 			) : (
 				'N/A'
 			)}

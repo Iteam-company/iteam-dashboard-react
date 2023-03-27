@@ -5,7 +5,7 @@ import { FC, ReactElement } from 'react';
 type Props = {
 	inputRef?: React.MutableRefObject<HTMLInputElement | null>;
 	icon?: ReactElement;
-	handleChange: (
+	handleChange?: (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => void;
 };
@@ -23,7 +23,6 @@ export const SearchInput: FC<Props> = ({
 			label='Search'
 			size='small'
 			maxRows={2}
-			onChange={(e) => handleChange(e)}
 			InputProps={{
 				startAdornment: (
 					<InputAdornment position='start' sx={{ marginLeft: '6px' }}>

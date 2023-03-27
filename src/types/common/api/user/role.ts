@@ -1,5 +1,5 @@
 import { User } from '.';
-export interface Roles {
+export interface Role {
 	id: number;
 	value: string;
 	description: string;

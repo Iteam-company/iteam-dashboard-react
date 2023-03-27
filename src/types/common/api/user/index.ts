@@ -1,15 +1,13 @@
-import { Attachments } from './attachments';
-import { Client } from './clients';
+import { Attachment } from './attachment';
 import { Cv } from './cv';
-import { EducationInfo } from './education';
+import { EducationInfo } from './education-info';
 import { Project } from './project';
-import { Roles } from './roles';
 import { Status } from './status';
 import { Technology } from './technology';
 import { WorkType } from './work-type';
-import { workHistory } from './work-history';
-import { leadingInProject } from './leading-in-projects';
+import { WorkHistory } from './work-history';
 import { Token } from './token';
+import { Role } from './role';
 
 export interface User {
 	id: number;
@@ -36,11 +34,11 @@ export interface User {
 	endDate: null | string;
 	workTypeId: string | null;
 	workType: null | WorkType;
-	leadingInProjects: Array<leadingInProject>;
-	roles: null | Roles;
+	leadingInProjects: Array<Project>;
+	roles: null | Role;
 	participatingInProjects: Array<Project>;
-	attachedAttachments: Attachments;
-	publishedAttachments: Attachments;
+	attachedAttachments: Attachment;
+	publishedAttachments: Attachment;
 	techStack: null | Technology;
 	status: Status;
 	educationInfo: Array<EducationInfo>;
@@ -56,7 +54,7 @@ export interface User {
 	individualEntrepreneurBankCode: null | number;
 	individualEntrepreneurBeneficiaryBank: null | string;
 	individualEntrepreneurSwiftCode: null | string;
-	workHistory: workHistory;
+	workHistory: WorkHistory;
 	defaultCoverLetter: null | string;
 	createdAt: string;
 	updatedAt: string;

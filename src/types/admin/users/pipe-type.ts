@@ -1,3 +1,3 @@
-export enum GetPipeType {
-	FILTER = 'filter',
-}
+//export enum GetPipeType {
+//	FILTER = 'filter',
+//}

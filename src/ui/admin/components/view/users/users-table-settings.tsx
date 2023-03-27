@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Flexbox } from '../../../../../styles/flex-box';
+import { Flexbox } from '../../../../components/common/flex-box';
 type Props = {
 	ButtonEdit?: JSX.Element;
 	ButtonDelete?: JSX.Element;

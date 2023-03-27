@@ -1,12 +1,12 @@
-import { Attachments } from './attachments';
+import { Attachment } from './attachment';
 
-export interface workHistory {
-	id: number,
-	project: string,
-	user: string,
-	startDate: string,
-	endDate: string,
-	positionOnProject: string,
-	responsibility: string,
-	showCaseAttachments: null | Array<Attachments>
+export interface WorkHistory {
+	id: number;
+	project: string;
+	user: string;
+	startDate: string;
+	endDate: string;
+	positionOnProject: string;
+	responsibility: string;
+	showCaseAttachments: null | Array<Attachment>;
 }
