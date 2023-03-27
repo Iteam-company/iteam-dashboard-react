@@ -1,4 +1,4 @@
-import { styled, Table, TableRow } from '@mui/material';
+import { styled, TableRow } from '@mui/material';
 
 export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	'&:nth-of-type(odd)': {
@@ -12,5 +12,3 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 		backgroundColor: theme.palette.action.disabledBackground,
 	},
 }));
-
-

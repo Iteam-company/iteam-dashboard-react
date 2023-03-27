@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { Error as ApiError } from '../../../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
 import { useSignUpMutation } from '../../../../../api/auth';
-import { ModalButton } from '../../buttons/modals-button';
+import { ModalButton } from '../../buttons/modal-button';
 import { EmailTextField } from '../../modal-textfields/email-text-field';
 import { PasswordTextField } from '../../modal-textfields/password-text-field';
 import { style } from '../../../../../styles/modal-style';

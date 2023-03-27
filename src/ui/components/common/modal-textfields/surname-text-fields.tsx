@@ -1,13 +1,13 @@
 import { TextField } from '@mui/material';
 import { FormikErrors, FormikTouched } from 'formik';
 import { FC } from 'react';
-import { editUser } from '../../../../types/admin/edit-user';
+import { EditUser } from '../../../../types/admin/edit-user';
 
 type Props = {
 	surname?: string;
 	handleChange: (e: React.ChangeEvent<any>) => void;
-	errors: FormikErrors<editUser>;
-	touched: FormikTouched<editUser>;
+	errors: FormikErrors<EditUser>;
+	touched: FormikTouched<EditUser>;
 };
 export const SurnameTextField: FC<Props> = ({
 	surname,

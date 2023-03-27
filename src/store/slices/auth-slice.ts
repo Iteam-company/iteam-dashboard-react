@@ -3,7 +3,7 @@ import { RootState } from '..';
 import { Roles } from '../../constants/common/roles';
 import { rolesRoutesSchemas } from '../../constants/common/routes/routes-schemas';
 import { SignInDto } from '../../types/api/auth/sign-in.dto';
-import { Tokens } from '../../types/common/api/user/tokens';
+import { Tokens } from '../../types/client/auth/tokens';
 import { AuthSliceStoreType } from '../../types/store/slices/auth-slice-store-type';
 
 const initialState: AuthSliceStoreType = {

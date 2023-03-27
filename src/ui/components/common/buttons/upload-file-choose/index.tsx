@@ -6,12 +6,15 @@ type Props = {
 	handleFileUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	textСhooseCv?: string;
 };
-export const ChooseFileButton: FC<Props> = ({
+export const UploadFileChoose: FC<Props> = ({
 	handleFileUpload,
 	textСhooseCv = 'choose cv',
 }) => {
 	return (
-		<Button variant='contained' component='label' startIcon={<AttachFileOutlinedIcon />}>
+		<Button
+			variant='contained'
+			component='label'
+			startIcon={<AttachFileOutlinedIcon />}>
 			{textСhooseCv}
 			<input
 				hidden

@@ -1,5 +1,5 @@
-import { Criteries } from '../users/criteries';
+//import { Criteries } from '../users/criteries';
 
-export interface SeacrhColumn {
-	title: Criteries;
-}
+//export interface SeacrhColumn {
+//	title: Criteries;
+//}

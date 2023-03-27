@@ -8,7 +8,7 @@ import { useFormik } from 'formik';
 import { EmailTextField } from '../../modal-textfields/email-text-field';
 import { style } from '../../../../../styles/modal-style';
 import CloseIcon from '@mui/icons-material/Close';
-import { ModalButton } from '../../buttons/modals-button';
+import { ModalButton } from '../../buttons/modal-button';
 type Props = {
 	open: boolean;
 	handleOpen?: () => void;

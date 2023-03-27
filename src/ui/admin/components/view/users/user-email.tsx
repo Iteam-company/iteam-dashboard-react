@@ -1,9 +1,9 @@
 import { Box, Tooltip } from '@mui/material';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BoxEllipsis } from '../../../../../styles/box-ellipsis';
-import { Flexbox } from '../../../../../styles/flex-box';
-import { MyLink } from '../../../../../styles/my-link';
+import { BoxEllipsis } from '../../../../components/common/box-ellipsis';
+import { Flexbox } from '../../../../components/common/flex-box';
+import { MyLink } from '../../../../components/common/my-link';
 import { User } from '../../../../../types/common/api/user';
 import { ButtonCopy } from '../../../../components/common/buttons/copy';
 

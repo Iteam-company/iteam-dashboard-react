@@ -4,8 +4,8 @@ import { columns } from '../../../../constants/admin/columns-schema';
 import { User } from '../../../../types/common/api/user';
 import { UsersResponse } from '../../../../types/admin/users';
 import { Status } from '../../../../types/common/api/user/status';
-import { StyledTableCell } from '../../../../styles/table/head-style';
-import { StyledTableRow } from '../../../../styles/table/body-style';
+import { HeadTableCell } from '../custome-table-parts/head-table-cell';
+import { StyledTableRow } from '../custome-table-parts/body-style';
 
 type Props = {
 	data?: UsersResponse;
@@ -18,9 +18,9 @@ export const BodyOfTable: FC<Props> = memo(({ data }) => {
 					key={user.id}
 					className={user.status === Status.ARCHIVED ? 'archived' : ''}>
 					{columns.map((column, index) => (
-						<StyledTableCell key={user.id + index}>
+						<HeadTableCell key={user.id + index}>
 							{column.generateColumn(user)}
-						</StyledTableCell>
+						</HeadTableCell>
 					))}
 				</StyledTableRow>
 			))}

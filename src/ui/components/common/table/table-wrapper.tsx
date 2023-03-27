@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { MuiTable } from '../../../../styles/table/mui-table';
+import { Table } from '../custome-table-parts/mui-table';
 import { Column } from '../../../../types/admin/column';
 import { UsersResponse } from '../../../../types/admin/users';
 import { BodyOfTable } from './body-of-table';
@@ -11,13 +11,13 @@ type Props = {
 	reFetching?: boolean;
 };
 
-export const Table: FC<Props> = memo(({ columns, data, reFetching }) => {
+export const TableWrapper: FC<Props> = memo(({ columns, data, reFetching }) => {
 	return (
-		<MuiTable size='small' className={reFetching ? 'disabled' : ''}>
+		<Table size='small' className={reFetching ? 'disabled' : ''}>
 			<HeadOfTable columns={columns} />
 			<BodyOfTable data={data} />
-		</MuiTable>
+		</Table>
 	);
 });
 
-Table.displayName = 'Table';
+TableWrapper.displayName = 'TableWrapper';

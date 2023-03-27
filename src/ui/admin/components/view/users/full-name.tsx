@@ -1,7 +1,7 @@
 import { Tooltip } from '@mui/material';
 import { FC, memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MyLink } from '../../../../../styles/my-link';
+import { MyLink } from '../../../../components/common/my-link';
 import { User } from '../../../../../types/common/api/user';
 
 type Props = {

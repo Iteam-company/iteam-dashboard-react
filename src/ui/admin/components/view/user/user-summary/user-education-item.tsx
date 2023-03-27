@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { Flexbox } from '../../../../../../styles/flex-box';
+import { Flexbox } from '../../../../../components/common/flex-box';
 
 export const UserEducationItem = () => {
 	return (
