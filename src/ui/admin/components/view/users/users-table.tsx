@@ -1,4 +1,4 @@
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 import { useGetAllUsersQuery } from '../../../../../api/users';
 import { columns } from '../../../../../constants/admin/columns-schema';
 import { Loader } from '../../../../components/common/loader';
