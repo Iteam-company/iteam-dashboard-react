@@ -34,6 +34,7 @@ export const TableWrapper: FC<Props> = memo(({ columns, data, reFetching }) => {
 				display: 'flex',
 				flexDirection: 'column',
 				height: '100%',
+				gap: '20px',
 			}}>
 			<Table
 				size='small'
@@ -42,12 +43,10 @@ export const TableWrapper: FC<Props> = memo(({ columns, data, reFetching }) => {
 				<HeadOfTable columns={columns} />
 				<BodyOfTable data={currentUsers} />
 			</Table>
-			<Flexbox
-				justifyContent={'center'}
-				alignItems={'center'}
-				sx={{ mb: '20px', mt: '20px' }}>
+			<Flexbox justifyContent={'center'} alignItems={'center'}>
 				<Pagination
 					shape='rounded'
+					variant='outlined'
 					count={count}
 					boundaryCount={0}
 					onChange={handleChange}
