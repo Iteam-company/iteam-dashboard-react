@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material';
-import { Flexbox } from '../../../../../components/common/mocked/flexbox';
+import { Flexbox } from '../../../../../components/common/flex-box';
 
 export const UserExperienceItem = () => {
 	return (
-		<Flexbox sx={{ mb: 2 }}>
+		<Flexbox>
 			<Box
 				component='img'
 				alt='user-avatar'

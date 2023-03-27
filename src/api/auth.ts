@@ -19,6 +19,7 @@ export const authAPIService = baseApiService.injectEndpoints({
 				method: 'POST',
 				body: credentials,
 			}),
+			invalidatesTags: ['Users'],
 		}),
 		refreshAccesToken: builder.mutation({
 			query: () => ({

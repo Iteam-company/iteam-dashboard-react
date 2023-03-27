@@ -34,8 +34,8 @@ const StypedAppBar = styled(MuiAppBar, {
 }));
 
 interface AppBarProps extends PropsWithChildren {
-	toggleDrawer: MouseEventHandler<HTMLButtonElement>;
-	isDrawerOpen: boolean;
+	toggleDrawer?: MouseEventHandler<HTMLButtonElement>;
+	isDrawerOpen?: boolean;
 }
 
 export const AppBar: FC<AppBarProps> = memo(
@@ -63,7 +63,7 @@ export const AppBar: FC<AppBarProps> = memo(
 						color='inherit'
 						noWrap
 						sx={{ flexGrow: 1 }}>
-						Dashboard
+						Here will be route
 					</Typography>
 					<IconButton color='inherit'>
 						<Badge badgeContent={4} color='secondary'>

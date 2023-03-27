@@ -4,7 +4,7 @@ import { ViewDefaultPage } from '../../../components/common/view-default-page';
 
 export const OrdersBox = memo(() => {
 	return (
-		<ViewDefaultPage tabTitle='Orders'>
+		<ViewDefaultPage tabTitle='Orders' title='Orders' >
 			<Orders />
 		</ViewDefaultPage>
 	);

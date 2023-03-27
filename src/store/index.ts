@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 // import { setupListeners } from '@reduxjs/toolkit/query';
-import { isProd } from '../constants/env';
+import { isProd } from '../constants/common/env';
 import { authReducer } from './slices/auth-slice';
 import { baseApiService } from '../api/base-query';
 import { persistReducer, persistStore } from 'redux-persist';

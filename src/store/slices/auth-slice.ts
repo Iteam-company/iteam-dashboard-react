@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
-import { Roles } from '../../constants/roles';
-import { rolesRoutesSchemas } from '../../constants/routes/routes-schemas';
+import { Roles } from '../../constants/common/roles';
+import { rolesRoutesSchemas } from '../../constants/common/routes/routes-schemas';
 import { SignInDto } from '../../types/api/auth/sign-in.dto';
-import { Tokens } from '../../types/common/api/user/user-tokens';
+import { Tokens } from '../../types/client/auth/tokens';
 import { AuthSliceStoreType } from '../../types/store/slices/auth-slice-store-type';
 
 const initialState: AuthSliceStoreType = {
@@ -39,7 +39,7 @@ export const selectIsAuthenticated = (state: RootState) =>
 	!!state.auth.user && state.auth.accessToken;
 
 export const selectRoutesSchemaByUserRole = (state: RootState) => {
-	const role = (state?.auth?.user?.roles[0].value ?? Roles.GUEST) as Roles;
+	const role = (state?.auth?.user?.roles?.value ?? Roles.GUEST) as Roles;
 
 	return rolesRoutesSchemas[role];
 };

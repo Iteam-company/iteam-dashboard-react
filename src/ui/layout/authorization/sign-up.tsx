@@ -16,7 +16,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSignUpMutation } from '../../../api/auth';
 import { Link as RouterLink } from 'react-router-dom';
-import { CommontRoutes } from '../../../constants/routes/application-routes/common-routes';
+import { CommontRoutes } from '../../../constants/common/routes/common-routes';
 
 const initialValues = {
 	email: '',
