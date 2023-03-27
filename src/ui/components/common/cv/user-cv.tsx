@@ -15,7 +15,7 @@ export const UserCv: FC<Props> = ({ cv, component }) => {
 	return (
 		<>
 			{cv ? (
-				<Flexbox alignItems={'center'} justifyContent={'center'}>
+				<Flexbox alignItems={'center'}>
 					<BoxEllipsis width='80px'>
 						<Link noWrap component={RouterLink} to={cv.fileUrl} sx={{ mr: 1 }}>
 							{cv.originalName}

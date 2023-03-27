@@ -5,7 +5,8 @@ import { UsersResponse } from '../../../../types/admin/users';
 import { BodyOfTable } from './body-of-table';
 import { HeadOfTable } from './head-of-table';
 import Pagination from '@mui/material/Pagination';
-import { Stack } from '@mui/system';
+import { Box, Stack } from '@mui/system';
+import { Flexbox } from '../flex-box';
 
 type Props = {
 	columns?: Array<Column>;
@@ -27,21 +28,34 @@ export const TableWrapper: FC<Props> = memo(({ columns, data, reFetching }) => {
 	};
 
 	return (
-		<>
-			<Table size='small' className={reFetching ? 'disabled' : ''}>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				height: '100%',
+			}}>
+			<Table
+				size='small'
+				className={reFetching ? 'disabled' : ''}
+				sx={{ flex: '1 1 auto' }}>
 				<HeadOfTable columns={columns} />
+
 				<BodyOfTable data={currentUsers} />
 			</Table>
-			<Stack spacing={2}>
-				<Pagination
-					shape='rounded'
-					count={count}
-					page={currentPage}
-					onChange={handleChange}
-					siblingCount={1}
-				/>
-			</Stack>
-		</>
+			<Flexbox
+				justifyContent={'center'}
+				alignItems={'center'}
+				sx={{ mt: 2, mb: 2 }}>
+				<Stack spacing={2}>
+					<Pagination
+						shape='rounded'
+						count={count}
+						boundaryCount={0}
+						onChange={handleChange}
+					/>
+				</Stack>
+			</Flexbox>
+		</Box>
 	);
 });
 

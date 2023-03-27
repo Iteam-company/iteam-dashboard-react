@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import { useGetAllUsersQuery } from '../../../../../api/users';
 import { columns } from '../../../../../constants/admin/columns-schema';
 import { Loader } from '../../../../components/common/loader';
@@ -7,9 +8,11 @@ export const CommonTable = () => {
 	const { data, isLoading, isFetching } = useGetAllUsersQuery();
 	return (
 		<>
-			<Loader isLoading={isLoading} />
+			<Box sx={{ height: '100%' }}>
+				<Loader isLoading={isLoading} />
 
-			<TableWrapper data={data} columns={columns} reFetching={isFetching} />
+				<TableWrapper data={data} columns={columns} reFetching={isFetching} />
+			</Box>
 		</>
 	);
 };
