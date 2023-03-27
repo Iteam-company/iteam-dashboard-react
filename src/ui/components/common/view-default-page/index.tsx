@@ -26,7 +26,7 @@ export const ViewDefaultPage: FC<Props> = memo(
 		ButtonWithSelectActions,
 	}) => {
 		return (
-			<>
+			<Box sx={{ height: '100%' }}>
 				<Paper sx={{ position: 'relative', minHeight: '70px' }}>
 					<DefaultTabtitle tabTitle={tabTitle} />
 					<Box sx={{ mb: 3 }}>{buttonBack}</Box>
@@ -45,7 +45,7 @@ export const ViewDefaultPage: FC<Props> = memo(
 					</Box>
 				</Paper>
 				{children}
-			</>
+			</Box>
 		);
 	},
 );
