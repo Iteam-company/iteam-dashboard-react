@@ -6,8 +6,9 @@ type Props = {
 };
 export const DefaultTabtitle: FC<Props> = ({ tabTitle }) => {
 	return (
-		<Helmet>
-			<title>{tabTitle}</title>
-		</Helmet>
+		// <Helmet>
+		// 	<title>{tabTitle}</title>
+		// </Helmet>
+		<></>
 	);
 };
