@@ -12,7 +12,9 @@ export const HeadOfTable: FC<Props> = memo(({ columns = [] }) => {
 		<TableHead>
 			<TableRow>
 				{columns.map((column, i) => (
-					<HeadTableCell key={`${column} - ${i}`}>{column.title}</HeadTableCell>
+					<HeadTableCell key={`${column} - ${i}`} sx={{}}>
+						{column.title}
+					</HeadTableCell>
 				))}
 			</TableRow>
 		</TableHead>

@@ -1,6 +1,6 @@
-import { createTheme, Theme } from '@mui/material';
-import { ThemeNames } from './theme-names';
+import { createTheme, PaletteOptions, Theme } from '@mui/material';
 import { green, purple } from '@mui/material/colors';
+import { ThemeNames } from './theme-names';
 
 export const themes: { [key in ThemeNames]: Theme } = {
 	[ThemeNames.DARK]: createTheme({
@@ -12,7 +12,6 @@ export const themes: { [key in ThemeNames]: Theme } = {
 		palette: {
 			mode: 'light',
 		},
-		
 	}),
 	[ThemeNames.CUSTOM]: createTheme({
 		palette: {
