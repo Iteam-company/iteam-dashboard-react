@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { saveAs } from 'file-saver';
-import { Box, Button, Tooltip } from '@mui/material';
-import BrowserUpdatedOutlinedIcon from '@mui/icons-material/BrowserUpdatedOutlined';
+import { Box, Tooltip } from '@mui/material';
 
 type Props = {
 	originalName?: string;

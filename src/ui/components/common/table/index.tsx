@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import { columns } from '../../../../constants/admin/columns-schema';
+import { columns } from '../../../../constants/admin/users-table-columns-schema';
 import { User } from '../../../../types/common/api/user';
 import { Loader } from '../loader';
 import { TableWrapper } from './table-wrapper';
