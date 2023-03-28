@@ -1,4 +1,4 @@
-import { USERS_ENDPOINTS } from '../constants/api/users-endpoints-urls/users-endpoints';
+import { USERS_ENDPOINTS } from '../constants/api/users-endpoints-urls';
 import { UsersResponse } from '../types/admin/users';
 import { baseApiService } from './base-query';
 
@@ -24,17 +24,19 @@ export const usersApiService = baseApiService.injectEndpoints({
 					method: 'GET',
 				};
 			},
-			providesTags: (response) =>
-				response
-					? [
-							 ...response.data.map(({ id }) => ({
-								 type: 'Users' as const,
+			providesTags: (response) => {
+				if (response) {
+					return [
+						...response.data.map(({ id }) => ({
+							type: 'Users' as const,
 
-								 id,
-							 })),
-							 'Users',
-					  ]
-					: ['Users'],
+							id,
+						})),
+						'Users',
+					];
+				}
+				return ['Users'];
+			},
 		}),
 	}),
 });

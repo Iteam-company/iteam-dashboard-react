@@ -1,6 +1,6 @@
 import { TableBody } from '@mui/material';
 import { FC, memo } from 'react';
-import { columns } from '../../../../constants/admin/columns-schema';
+import { columns } from '../../../../constants/admin/users-table-columns-schema';
 import { User } from '../../../../types/common/api/user';
 import { HeadTableCell } from '../custome-table-parts/head-table-cell';
 import { StyledTableRow } from '../custome-table-parts/body-style';
