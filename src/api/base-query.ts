@@ -11,7 +11,7 @@ import { StatusCodes } from '../constants/api/status-codes';
 import { apiURL as baseUrl } from '../constants/common/env';
 import { RootState } from '../store';
 import { removeCredentials, setCredentials } from '../store/slices/auth-slice';
-import { AUTH_ENDPOINTS } from '../constants/api/auth-endpoints-urls/auth-endpoints';
+import { AUTH_ENDPOINTS_URLS } from '../constants/api/auth-endpoints-urls';
 import { SignInDto as ApiSignInDto } from '../types/api/auth/sign-in.dto';
 
 const baseQuery = fetchBaseQuery({
@@ -40,7 +40,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 
 	if (originalResponse.error?.status === StatusCodes.UNAUHTORIZED) {
 		const refreshAccesResponse = await baseQuery(
-			{ method: 'POST', url: AUTH_ENDPOINTS.REFRESH },
+			{ method: 'POST', url: AUTH_ENDPOINTS_URLS.REFRESH },
 			api,
 			extraOptions,
 		);

@@ -1,5 +1,5 @@
 import { useGetAllUsersQuery } from '../../../../../api/users';
-import { columns } from '../../../../../constants/admin/columns-schema';
+import { columns } from '../../../../../constants/admin/users-table-columns-schema';
 import { Loader } from '../../../../components/common/loader';
 import { TableWrapper } from '../../../../components/common/table/table-wrapper';
 
