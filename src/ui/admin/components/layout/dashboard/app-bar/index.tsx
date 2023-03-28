@@ -9,6 +9,7 @@ import {
 	Badge,
 } from '@mui/material';
 import { FC, memo, MouseEventHandler, PropsWithChildren } from 'react';
+import { useHelmet } from '../../../../../../hooks/helmet/use-helmet';
 import { Sizes } from '../../../../utils/constants';
 
 interface AppBarProps extends MuiAppBarProps {
@@ -40,6 +41,8 @@ interface AppBarProps extends PropsWithChildren {
 
 export const AppBar: FC<AppBarProps> = memo(
 	({ toggleDrawer, isDrawerOpen }) => {
+		const { appBarTitle } = useHelmet();
+
 		return (
 			<StypedAppBar position='absolute' open={isDrawerOpen}>
 				<Toolbar
@@ -63,7 +66,7 @@ export const AppBar: FC<AppBarProps> = memo(
 						color='inherit'
 						noWrap
 						sx={{ flexGrow: 1 }}>
-						Here will be route
+						{appBarTitle}
 					</Typography>
 					<IconButton color='inherit'>
 						<Badge badgeContent={4} color='secondary'>
