@@ -6,9 +6,7 @@ type Props = {
 	query: string;
 	inputRef?: React.MutableRefObject<HTMLInputElement | null>;
 	icon?: ReactElement;
-	handleChange: (
-		event: React.ChangeEvent<HTMLInputElement>,
-	) => void;
+	handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const SearchInput: FC<Props> = ({
