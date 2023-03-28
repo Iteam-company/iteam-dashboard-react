@@ -7,5 +7,5 @@ import { commonRoutesSchema } from './common-routes-schema';
 export const rolesRoutesSchemas: { [key in Roles]: Array<RouteObject> } = {
 	[Roles.GUEST]: [...commonRoutesSchema, adminRoutesSchema],
 	[Roles.ADMIN]: [],
-	[Roles.DEVELOPER]: [],
+	[Roles.DEVELOPER]: [...commonRoutesSchema],
 };
