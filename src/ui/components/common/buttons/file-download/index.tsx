@@ -6,9 +6,14 @@ import BrowserUpdatedOutlinedIcon from '@mui/icons-material/BrowserUpdatedOutlin
 type Props = {
 	originalName?: string;
 	fileUrl?: string;
+	children: JSX.Element;
 };
 
-export const ButtonFileDownload: FC<Props> = ({ originalName, fileUrl }) => {
+export const ButtonFileDownload: FC<Props> = ({
+	originalName,
+	fileUrl,
+	children,
+}) => {
 	const handleDownload = () => {
 		if (fileUrl && originalName) {
 			saveAs(fileUrl, originalName);
@@ -18,9 +23,7 @@ export const ButtonFileDownload: FC<Props> = ({ originalName, fileUrl }) => {
 
 	return (
 		<Box sx={{ cursor: 'pointer' }} onClick={handleDownload}>
-			<Tooltip title='download'>
-				<BrowserUpdatedOutlinedIcon sx={{ fontSize: 'medium' }} />
-			</Tooltip>
+			<Tooltip title='download'>{children}</Tooltip>
 		</Box>
 	);
 };
