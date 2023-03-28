@@ -1,4 +1,4 @@
-import { USERS_ENDPOINTS } from '../constants/api/users-endpoints-urls/users-endpoints';
+import { USERS_ENDPOINTS } from '../constants/api/users-endpoints-urls';
 import { User } from '../types/common/api/user';
 import { AuthCredentials } from '../types/common/client/auth-credentials';
 import { baseApiService } from './base-query';
