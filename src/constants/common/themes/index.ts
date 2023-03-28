@@ -12,6 +12,7 @@ export const themes: { [key in ThemeNames]: Theme } = {
 		palette: {
 			mode: 'light',
 		},
+		
 	}),
 	[ThemeNames.CUSTOM]: createTheme({
 		palette: {
