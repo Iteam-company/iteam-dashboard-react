@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { FC, ReactElement } from 'react';
 
 type Props = {
-	query: string;
+	inputValue: string;
 	inputRef?: React.MutableRefObject<HTMLInputElement | null>;
 	icon?: ReactElement;
 	handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,14 +13,15 @@ export const SearchInput: FC<Props> = ({
 	inputRef,
 	icon = <SearchIcon />,
 	handleChange,
-	query,
+	inputValue,
 }) => {
+	const width = '190px';
 	return (
 		<TextField
-			sx={{ maxWidth: '190px', mr: 5 }}
+			sx={{ maxWidth: width, mr: 5 }}
 			id='outlined-multiline-flexible'
 			inputRef={inputRef}
-			value={query}
+			value={inputValue}
 			onChange={handleChange}
 			label='Search'
 			size='small'

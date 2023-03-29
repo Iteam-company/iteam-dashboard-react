@@ -17,22 +17,27 @@ export const columns = [
 	{
 		generateColumn: (user: User) => <FullName user={user} />,
 		title: 'Full Name',
+		id: 1,
 	},
 	{
 		generateColumn: (user: User) => <UserEmail user={user} />,
 		title: 'Email',
+		id: 2,
 	},
 	{
 		generateColumn: (user: User) => <UserStatus user={user} />,
 		title: 'Status',
+		id: 3,
 	},
 	{
 		generateColumn: (user: User) => <Projects user={user} />,
 		title: 'Projects',
+		id: 4,
 	},
 	{
 		generateColumn: (user: User) => <UserCv cv={user.cv} />,
 		title: 'CV',
+		id: 5,
 	},
 	{
 		generateColumn: (user: User) => (
@@ -62,5 +67,6 @@ export const columns = [
 			/>
 		),
 		title: 'Settings',
+		id: 6,
 	},
 ];

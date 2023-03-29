@@ -1,8 +1,8 @@
 import { TableBody } from '@mui/material';
 import { FC, memo } from 'react';
 import { User } from '../../../../types/common/api/user';
-import { HeadTableCell } from '../custome-table-parts/head-table-cell';
-import { StyledTableRow } from '../custome-table-parts/body-style';
+import { HeadTableCell } from '../custome-table/head';
+import { StyledTableRow } from '../custome-table/body';
 import { Status } from '../../../../types/common/api/user/status';
 import { columns } from '../../../../constants/admin/users-table-columns-schema';
 
@@ -12,13 +12,13 @@ type Props = {
 export const BodyOfTable: FC<Props> = memo(({ data }) => {
 	return (
 		<TableBody>
-			{data?.map((user: User) => (
+			{data?.map((user: User, index) => (
 				<StyledTableRow
-					key={user.id}
+					key={`${user.id} - ${index}`}
 					className={user.status === Status.ARCHIVED ? 'archived' : ''}>
-					{columns.map((column, index) => (
+					{columns.map((column) => (
 						<HeadTableCell
-							key={user.id + index}
+							key={column.id}
 							className={user.email ? 'email' : ''}>
 							{column.generateColumn(user)}
 						</HeadTableCell>

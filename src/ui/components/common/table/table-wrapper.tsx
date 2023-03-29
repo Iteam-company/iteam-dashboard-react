@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, memo, useState } from 'react';
-import { Table } from '../custome-table-parts/mui-table';
+import { Table } from '../custome-table/mui-table';
 import { Column } from '../../../../types/admin/column';
 import { BodyOfTable } from './body-of-table';
 import { HeadOfTable } from './head-of-table';
