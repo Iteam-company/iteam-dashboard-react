@@ -1,34 +1,34 @@
 import { Box, Paper } from '@mui/material';
-import { memo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { useGetAllUsersQuery } from '../../../../api/users';
-import { unionPart } from '../../../../types/common/user-part';
+import { useDebouncedState } from '../../../../hooks/debounce/use-debounced-state';
 import { Flexbox } from '../../../components/common/flex-box';
 import { SearchInput } from '../../../components/common/search/input';
 import { CommonTable } from '../../../components/common/table';
 
 export const Users = memo(() => {
 	const [query, setQuery] = useState('');
+	const [debouncedQuery, setDebounceQuery] = useDebouncedState('', 1000);
 
-	const { data, isLoading, isFetching } = useGetAllUsersQuery();
+	const { data: rawData, isLoading, isFetching } = useGetAllUsersQuery();
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(event.target.value);
+		setDebounceQuery(event.target.value);
 	};
 
-	const handleCheckUsersFields = (...userPart: unionPart[]) => {
-		return userPart.find((userInfo: string | null) => {
-			if (userInfo) {
-				return userInfo.toLowerCase().includes(query.toLocaleLowerCase());
-			}
+	const data = useMemo(() => {
+		const searchValue = debouncedQuery.toLocaleLowerCase();
+		if (!rawData) {
+			return [];
+		}
 
-			return;
+		return rawData.data.filter((user) => {
+			const { name, surname, email, status } = user;
+			return [name, surname, email, status].some((value) =>
+				value?.toLowerCase().includes(searchValue),
+			);
 		});
-	};
-
-	const filteredUsers = data?.data.filter((user) => {
-		const { name, surname, email, status } = user;
-
-		return handleCheckUsersFields(name, surname, email, status);
-	});
+	}, [rawData, debouncedQuery]);
 
 	return (
 		<Box
@@ -50,14 +50,15 @@ export const Users = memo(() => {
 				<Paper sx={{ p: 2, pt: 3 }}>
 					<Flexbox>
 						<Box>
-							<SearchInput query={query} handleChange={handleChange} />
+							<SearchInput inputValue={query} handleChange={handleChange} />
+							{debouncedQuery}
 						</Box>
 					</Flexbox>
 				</Paper>
 				<Paper elevation={0} sx={{ height: '100%' }}>
 					<CommonTable
 						isLoading={isLoading}
-						data={filteredUsers}
+						data={data}
 						isFetching={isFetching}
 					/>
 				</Paper>
