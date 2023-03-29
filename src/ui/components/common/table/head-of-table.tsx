@@ -1,6 +1,6 @@
 import { TableHead, TableRow } from '@mui/material';
 import { FC, memo } from 'react';
-import { HeadTableCell } from '../custome-table-parts/head-table-cell';
+import { HeadTableCell } from '../custome-table/head';
 import { Column } from '../../../../types/admin/column';
 
 type Props = {
@@ -12,7 +12,7 @@ export const HeadOfTable: FC<Props> = memo(({ columns = [] }) => {
 		<TableHead>
 			<TableRow>
 				{columns.map((column, i) => (
-					<HeadTableCell key={`${column} - ${i}`}>{column.title}</HeadTableCell>
+					<HeadTableCell key={column.id}>{column.title}</HeadTableCell>
 				))}
 			</TableRow>
 		</TableHead>

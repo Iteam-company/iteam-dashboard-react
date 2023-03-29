@@ -10,7 +10,6 @@ import { Status } from '../../../types/common/api/user/status';
 import { ArchiveUserModal } from '../../../ui/components/common/modals/archive-user';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import { RestoreUserModal } from '../../../ui/components/common/modals/restore-user';
-import { ButtonFileDownload } from '../../../ui/components/common/buttons/file-download';
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 
@@ -18,26 +17,27 @@ export const columns = [
 	{
 		generateColumn: (user: User) => <FullName user={user} />,
 		title: 'Full Name',
+		id: 1,
 	},
 	{
 		generateColumn: (user: User) => <UserEmail user={user} />,
 		title: 'Email',
+		id: 2,
 	},
 	{
 		generateColumn: (user: User) => <UserStatus user={user} />,
 		title: 'Status',
+		id: 3,
 	},
 	{
-		generateColumn: (user: User) => (
-			<Projects user={user} />
-		),
+		generateColumn: (user: User) => <Projects user={user} />,
 		title: 'Projects',
+		id: 4,
 	},
 	{
-		generateColumn: (user: User) => (
-			<UserCv cv={user.cv} component={<ButtonFileDownload />} />
-		),
+		generateColumn: (user: User) => <UserCv cv={user.cv} />,
 		title: 'CV',
+		id: 5,
 	},
 	{
 		generateColumn: (user: User) => (
@@ -67,5 +67,6 @@ export const columns = [
 			/>
 		),
 		title: 'Settings',
+		id: 6,
 	},
 ];

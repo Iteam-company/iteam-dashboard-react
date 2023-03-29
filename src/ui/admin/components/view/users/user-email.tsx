@@ -20,14 +20,14 @@ export const UserEmail: FC<Props> = ({ user }) => {
 
 	return (
 		<Flexbox alignItems={'center'} justifyContent={'space-between'}>
+			<Box sx={{ cursor: 'pointer', justifyItems: 'flex-start' }}>
+				<ButtonCopy text={email} />
+			</Box>
 			<Tooltip title='click for more information'>
-				<BoxEllipsis onClick={handleNavigate}>
+				<BoxEllipsis onClick={handleNavigate} width={'140px'}>
 					<MyLink>{email}</MyLink>
 				</BoxEllipsis>
 			</Tooltip>
-			<Box sx={{ cursor: 'pointer' }}>
-				<ButtonCopy text={email} />
-			</Box>
 		</Flexbox>
 	);
 };
