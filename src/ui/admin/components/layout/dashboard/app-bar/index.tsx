@@ -8,8 +8,8 @@ import {
 	Typography,
 } from '@mui/material';
 import { FC, memo, MouseEventHandler, PropsWithChildren } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Sizes } from '../../../../utils/constants';
+import { useHelmet } from '../../../../../../hooks/helmet/use-helmet';
 
 interface AppBarProps extends MuiAppBarProps {
 	open?: boolean;
@@ -41,11 +41,7 @@ interface AppBarProps extends PropsWithChildren {
 
 export const AppBar: FC<AppBarProps> = memo(
 	({ toggleDrawer, isDrawerOpen, component }) => {
-		const params = useLocation();
-		const title = params.pathname.replace(/[^a-zA-Z ]/g, '');
-		const helmetTitle = title
-			? title[0].toUpperCase() + title.slice(1)
-			: 'Dasboard';
+		const { appBarTitle } = useHelmet();
 
 		return (
 			<StypedAppBar position='absolute' open={isDrawerOpen}>
@@ -70,7 +66,7 @@ export const AppBar: FC<AppBarProps> = memo(
 						color='inherit'
 						noWrap
 						sx={{ flexGrow: 1 }}>
-						{helmetTitle}
+						{appBarTitle}
 					</Typography>
 					<IconButton color='inherit'>{component}</IconButton>
 				</Toolbar>
