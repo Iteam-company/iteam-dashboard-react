@@ -31,7 +31,6 @@ export const authAPIService = baseApiService.injectEndpoints({
 			query: () => ({
 				url: AUTH_ENDPOINTS_URLS.SIGN_OUT,
 				method: 'POST',
-				credentials: 'include',
 			}),
 		}),
 	}),
