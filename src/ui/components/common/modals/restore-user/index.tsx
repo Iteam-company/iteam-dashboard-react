@@ -5,9 +5,10 @@ import Typography from '@mui/material/Typography';
 import { useUpdateUserMutation } from '../../../../../api/user';
 import { Status } from '../../../../../types/common/api/user/status';
 import { style } from '../../../../../styles/modal-style';
-import { ModalButton } from '../../buttons/modal-button';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
+import { LoadingButton } from '@mui/lab';
+import { Button } from '@mui/material';
 
 type Props = {
 	open?: boolean;
@@ -61,20 +62,24 @@ export const RestoreUserModal: FC<Props> = ({
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
+							gridGap: '16px',
 						}}>
-						<Box sx={{ mr: 2 }}>
-							<ModalButton
-								handleClick={archiveUser}
-								text={'restore'}
-								loading={isLoading}
-							/>
-						</Box>
+						<LoadingButton
+							variant='contained'
+							color='primary'
+							type='submit'
+							loading={isLoading}
+							onClick={archiveUser}>
+							restore
+						</LoadingButton>
 
-						<ModalButton
-							handleClick={handleClose}
-							text='Close'
-							icon={<CloseIcon />}
-						/>
+						<Button
+							variant='contained'
+							color='primary'
+							onClick={handleClose}
+							startIcon={<CloseIcon />}>
+							Close
+						</Button>
 					</Box>
 				</Box>
 			</Modal>

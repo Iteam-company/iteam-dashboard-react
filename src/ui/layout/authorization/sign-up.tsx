@@ -1,8 +1,5 @@
 import { memo } from 'react';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
@@ -11,12 +8,13 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Copyright } from '../../components/common/mocked/copyright';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSignUpMutation } from '../../../api/auth';
 import { Link as RouterLink } from 'react-router-dom';
 import { CommontRoutes } from '../../../constants/common/routes/common-routes';
+import { Input } from '../../components/common/input';
+import { Button } from '@mui/material';
 
 const initialValues = {
 	email: '',
@@ -33,8 +31,6 @@ export const SignUp = memo(() => {
 			const { email, password } = data;
 			try {
 				const response = await registration({
-					// name,
-					// surname,
 					email,
 					password,
 				}).unwrap();
@@ -54,17 +50,16 @@ export const SignUp = memo(() => {
 		validateOnBlur: false,
 	});
 
-	const { errors, touched, values, handleChange, handleSubmit } = formik;
+	const { handleSubmit } = formik;
 
 	return (
-		<Container component='main' maxWidth='xs'>
-			<CssBaseline />
+		<Container component='main' maxWidth='xs' sx={{ marginTop: 8 }}>
 			<Box
 				sx={{
-					marginTop: 8,
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
+					gap: '10px',
 				}}>
 				<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
 					<LockOutlinedIcon />
@@ -72,36 +67,27 @@ export const SignUp = memo(() => {
 				<Typography component='h1' variant='h5'>
 					Sign up
 				</Typography>
-				<Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+				<Box
+					component='form'
+					noValidate
+					onSubmit={handleSubmit}
+					sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
 					<Grid container spacing={2}>
 						<Grid item xs={12} sm={6}></Grid>
 						<Grid item xs={12}>
-							<TextField
-								required
-								fullWidth
-								id='email'
-								label='Email Address'
+							<Input
+								type='email'
 								name='email'
-								autoComplete='email'
-								value={values.email}
-								onChange={handleChange}
-								helperText={touched.email && errors.email}
-								error={touched.email && Boolean(errors.email)}
+								formik={formik}
+								label='Email Address'
 							/>
 						</Grid>
 						<Grid item xs={12}>
-							<TextField
-								required
-								fullWidth
+							<Input
+								type='password'
 								name='password'
 								label='Password'
-								type='password'
-								id='password'
-								autoComplete='new-password'
-								value={values.password}
-								onChange={handleChange}
-								helperText={touched.password && errors.password}
-								error={touched.password && Boolean(errors.password)}
+								formik={formik}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -111,13 +97,11 @@ export const SignUp = memo(() => {
 							/>
 						</Grid>
 					</Grid>
-					<Button
-						type='submit'
-						fullWidth
-						variant='contained'
-						sx={{ mt: 3, mb: 2 }}>
+
+					<Button fullWidth variant='contained' type='submit'>
 						Sign Up
 					</Button>
+
 					<Grid container justifyContent='flex-end'>
 						<Grid item>
 							<Link
@@ -130,7 +114,6 @@ export const SignUp = memo(() => {
 					</Grid>
 				</Box>
 			</Box>
-			<Copyright sx={{ mt: 5 }} />
 		</Container>
 	);
 });
