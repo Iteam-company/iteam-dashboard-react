@@ -1,5 +1,4 @@
-import { Box, Button, CssBaseline, Grid, Link, TextField } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Box, Button, Grid, Link } from '@mui/material';
 import { memo } from 'react';
 import Typography from '@mui/material/Typography';
 import { Link as RouterLink } from 'react-router-dom';
@@ -8,95 +7,86 @@ import Avatar from '@mui/material/Avatar';
 import LockResetOutlinedIcon from '@mui/icons-material/LockResetOutlined';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { Error as ApiError } from '../../../types/common/api/error';
 import { CommontRoutes } from '../../../constants/common/routes/common-routes';
-
-const theme = createTheme();
+import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
+import { Input } from '../../components/common/input';
 
 const initialValues = {
 	email: '',
 };
 
 export const ForgotPassword = memo(() => {
+	const { showSnackbar } = useNotifySnackbar();
 	const formik = useFormik({
 		initialValues,
 		onSubmit: (data) => {
 			const { email } = data;
 			try {
 				// const response = 'waiting for endpoint'; /////waiting for endpoint to reset password
+				showSnackbar('successfully changed ', 'success');
 			} catch (error) {
-				console.log(JSON.stringify(error, null, 2));
+				const typedError = error as ApiError;
+				showSnackbar(typedError.data.message, 'error');
 			}
 			console.log(email);
 		},
 		validationSchema: Yup.object().shape({
 			email: Yup.string()
 				.email('Must be a valid email')
-				.max(50)
+				.max(20)
 				.required('Email is required'),
 		}),
 	});
 
 	const { errors, touched, values, handleChange, handleSubmit } = formik;
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<Container component='main' maxWidth='xs'>
+		<Container component='main' maxWidth='xs'>
+			<Box
+				sx={{
+					marginTop: 8,
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					justifyContent: 'center',
+					gap: '10px',
+				}}>
+				<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+					<LockResetOutlinedIcon />
+				</Avatar>
+				<Typography component='h2' variant='h5'>
+					Reset password
+				</Typography>
+
 				<Box
+					component='form'
+					noValidate
+					onSubmit={handleSubmit}
 					sx={{
-						marginTop: 8,
+						width: '100%',
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						justifyContent: 'center',
+						gap: '10px',
 					}}>
-					<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-						<LockResetOutlinedIcon />
-					</Avatar>
-					<Typography component='h2' variant='h5'>
-						Reset password
-					</Typography>
-					<Box
-						sx={{
-							width: '100%',
-						}}>
-						<Box
-							component='form'
-							noValidate
-							sx={{ mt: 2 }}
-							onSubmit={handleSubmit}>
-							<TextField
-								fullWidth
-								required
-								id='email'
-								label='Email Address'
-								name='email'
-								autoComplete='email'
-								autoFocus
-								value={values.email}
-								onChange={handleChange}
-								helperText={touched.email && errors.email}
-								error={touched.email && Boolean(errors.email)}
-							/>
-							<Box textAlign='center' sx={{ mt: 2 }}>
-								<Button variant='contained' type='submit'>
-									Reset Password
-								</Button>
-							</Box>
-						</Box>
-						<Grid container justifyContent='flex-end'>
-							<Grid item>
-								<Link
-									component={RouterLink}
-									to={`${CommontRoutes.ROOT_PATH}/${CommontRoutes.SIGN_IN}`}
-									variant='body2'>
-									Back to Sign In
-								</Link>
-							</Grid>
-						</Grid>
-					</Box>
+					<Input name='email' formik={formik} label='Email' />
+
+					<Button type='submit' variant='contained' sx={{ maxWidth: '200px' }}>
+						Reset Password
+					</Button>
 				</Box>
-			</Container>
-		</ThemeProvider>
+				<Grid container justifyContent='flex-end'>
+					<Grid item>
+						<Link
+							component={RouterLink}
+							to={`${CommontRoutes.ROOT_PATH}${CommontRoutes.SIGN_IN}`}
+							variant='body2'>
+							Back to Sign In
+						</Link>
+					</Grid>
+				</Grid>
+			</Box>
+		</Container>
 	);
 });
 

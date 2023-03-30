@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import { memo, useCallback, useState } from 'react';
+import { SignOut } from '../../../layout/authorization/sign-out';
 import { AppBar } from '../../components/layout/dashboard/app-bar';
 import { AdminSidebar } from '../../components/layout/dashboard/side-bar';
 import { ViewContainer } from '../../components/layout/dashboard/view-container';
@@ -11,7 +12,11 @@ export const AdminDashboard = memo(() => {
 	}, [setIsDrawerOpen]);
 	return (
 		<Box sx={{ display: 'flex' }}>
-			<AppBar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
+			<AppBar
+				toggleDrawer={toggleDrawer}
+				isDrawerOpen={isDrawerOpen}
+				component={<SignOut />}
+			/>
 			<AdminSidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
 			<ViewContainer />
 		</Box>

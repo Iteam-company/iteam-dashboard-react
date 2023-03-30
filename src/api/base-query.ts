@@ -16,7 +16,6 @@ import { SignInDto as ApiSignInDto } from '../types/api/auth/sign-in.dto';
 
 const baseQuery = fetchBaseQuery({
 	baseUrl,
-	credentials: 'include',
 	prepareHeaders: (headers, api) => {
 		const { accessToken } = (api.getState() as RootState).auth;
 
@@ -26,6 +25,7 @@ const baseQuery = fetchBaseQuery({
 
 		return headers;
 	},
+	credentials: 'include',
 });
 
 export const baseQueryWithReauth: BaseQueryFn<

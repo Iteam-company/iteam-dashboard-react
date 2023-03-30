@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -12,7 +11,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import * as Yup from 'yup';
-import { Copyright } from '../../components/common/mocked/copyright';
 import { useSignInMutation } from '../../../api/auth';
 import { useAppDispatch } from '../../../hooks/store/use-app-dispatch-hook';
 import { useFormik } from 'formik';
@@ -41,9 +39,6 @@ export const SignIn = memo(() => {
 				const response = await signIn({ email, password }).unwrap();
 				dispatch(setCredentials(response));
 				showSnackbar('successfully signed in', 'success');
-				// if (response) {
-				// 	return navigate(Routes.ROOT_PATH);
-				// }
 			} catch (error) {
 				const typedError = error as ApiError;
 				showSnackbar(typedError.data.message, 'error');
@@ -62,22 +57,30 @@ export const SignIn = memo(() => {
 	const { errors, touched, values, handleChange, handleSubmit } = formik;
 
 	return (
-		<Container component='main' maxWidth='xs'>
-			<CssBaseline />
+		<Container component='main' maxWidth='xs' sx={{ marginTop: 8 }}>
 			<Box
 				sx={{
-					marginTop: 8,
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
+					gap: '10px',
 				}}>
-				<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+				<Avatar sx={{ bgcolor: 'secondary.main' }}>
 					<LockOutlinedIcon />
 				</Avatar>
 				<Typography component='h1' variant='h5'>
 					Sign in
 				</Typography>
-				<Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+				<Box
+					component='form'
+					onSubmit={handleSubmit}
+					noValidate
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '15px',
+						width: '100%',
+					}}>
 					<TextField
 						error={touched.email && Boolean(errors.email)}
 						margin='normal'
@@ -111,23 +114,24 @@ export const SignIn = memo(() => {
 						control={<Checkbox value='remember' color='primary' />}
 						label='Remember me'
 					/>
-					<Button
-						type='submit'
-						fullWidth
-						variant='contained'
-						sx={{ mt: 3, mb: 2 }}>
+
+					<Button fullWidth variant='contained' type='submit'>
 						Sign In
 					</Button>
+
 					<Grid container>
 						<Grid item xs>
-							<Link href='#' variant='body2'>
+							<Link
+								component={RouterLink}
+								to={`${CommontRoutes.ROOT_PATH}${CommontRoutes.FORGOT_PASSWORD}`}
+								variant='body2'>
 								Forgot password?
 							</Link>
 						</Grid>
 						<Grid item>
 							<Link
 								component={RouterLink}
-								to={`/${CommontRoutes.SIGN_UP}`}
+								to={`${CommontRoutes.ROOT_PATH}${CommontRoutes.SIGN_UP}`}
 								variant='body2'>
 								{"Don't have an account? Sign Up"}
 							</Link>
@@ -135,7 +139,6 @@ export const SignIn = memo(() => {
 					</Grid>
 				</Box>
 			</Box>
-			<Copyright sx={{ mt: 8, mb: 4 }} />
 		</Container>
 	);
 });

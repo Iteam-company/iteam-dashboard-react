@@ -5,9 +5,10 @@ import Typography from '@mui/material/Typography';
 import { useUpdateUserMutation } from '../../../../../api/user';
 import { Status } from '../../../../../types/common/api/user/status';
 import { style } from '../../../../../styles/modal-style';
-import { ModalButton } from '../../buttons/modal-button';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNotifySnackbar } from '../../../../../hooks/snackbar/use-notify-snackbar';
+import { LoadingButton } from '@mui/lab';
+import { Button } from '@mui/material';
 
 type Props = {
 	open?: boolean;
@@ -34,7 +35,7 @@ export const ArchiveUserModal: FC<Props> = ({
 			status: Status.ARCHIVED,
 		};
 		archive({ id, ...statusArchived });
-	},[id]);
+	}, [id]);
 
 	if (isSuccess && handleClose) {
 		handleClose();
@@ -61,20 +62,25 @@ export const ArchiveUserModal: FC<Props> = ({
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
+							gridGap: '16px',
 						}}>
-						<Box sx={{ mr: 2 }}>
-							<ModalButton
-								handleClick={archiveUser}
-								text={'archive'}
-								loading={isLoading}
-							/>
-						</Box>
+						<LoadingButton
+							variant='contained'
+							color='primary'
+							type='submit'
+							loading={isLoading}
+							onClick={archiveUser}>
+							archive
+						</LoadingButton>
 
-						<ModalButton
-							handleClick={handleClose}
-							text='Close'
-							icon={<CloseIcon />}
-						/>
+						<Button
+							variant='contained'
+							color='primary'
+							type='submit'
+							startIcon={<CloseIcon />}
+							onClick={handleClose}>
+							Close
+						</Button>
 					</Box>
 				</Box>
 			</Modal>
