@@ -9,6 +9,7 @@ export const useHelmet = () => {
 	const appBarTitle = useMemo(
 		() =>
 			pathname
+				.replace(/[^a-zA-Z ]/g, '')
 				.split('/')
 				.reduce((accumulator, next) => {
 					return (
