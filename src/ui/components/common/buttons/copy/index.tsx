@@ -5,9 +5,10 @@ import { Box, Tooltip } from '@mui/material';
 
 type Props = {
 	text: string;
+	title?: string;
 };
 
-export const ButtonCopy: FC<Props> = ({ text }) => {
+export const ButtonCopy: FC<Props> = ({ text, title }) => {
 	const { showSnackbar } = useNotifySnackbar();
 	const handleCopy = () => {
 		navigator.clipboard.writeText(text);
@@ -15,7 +16,7 @@ export const ButtonCopy: FC<Props> = ({ text }) => {
 	};
 	return (
 		<Box onClick={handleCopy}>
-			<Tooltip title='Copy'>
+			<Tooltip title={title}>
 				<ContentCopyOutlinedIcon sx={{ fontSize: 'medium' }} />
 			</Tooltip>
 		</Box>

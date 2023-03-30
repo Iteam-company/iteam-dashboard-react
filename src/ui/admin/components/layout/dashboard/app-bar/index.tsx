@@ -1,4 +1,4 @@
-import { Menu, Notifications } from '@mui/icons-material';
+import { Menu } from '@mui/icons-material';
 import {
 	styled,
 	AppBar as MuiAppBar,
@@ -6,9 +6,9 @@ import {
 	Toolbar,
 	IconButton,
 	Typography,
-	Badge,
 } from '@mui/material';
 import { FC, memo, MouseEventHandler, PropsWithChildren } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Sizes } from '../../../../utils/constants';
 
 interface AppBarProps extends MuiAppBarProps {
@@ -36,10 +36,17 @@ const StypedAppBar = styled(MuiAppBar, {
 interface AppBarProps extends PropsWithChildren {
 	toggleDrawer?: MouseEventHandler<HTMLButtonElement>;
 	isDrawerOpen?: boolean;
+	component?: JSX.Element;
 }
 
 export const AppBar: FC<AppBarProps> = memo(
-	({ toggleDrawer, isDrawerOpen }) => {
+	({ toggleDrawer, isDrawerOpen, component }) => {
+		const params = useLocation();
+		const title = params.pathname.replace(/[^a-zA-Z ]/g, '');
+		const helmetTitle = title
+			? title[0].toUpperCase() + title.slice(1)
+			: 'Dasboard';
+
 		return (
 			<StypedAppBar position='absolute' open={isDrawerOpen}>
 				<Toolbar
@@ -63,13 +70,9 @@ export const AppBar: FC<AppBarProps> = memo(
 						color='inherit'
 						noWrap
 						sx={{ flexGrow: 1 }}>
-						Here will be route
+						{helmetTitle}
 					</Typography>
-					<IconButton color='inherit'>
-						<Badge badgeContent={4} color='secondary'>
-							<Notifications />
-						</Badge>
-					</IconButton>
+					<IconButton color='inherit'>{component}</IconButton>
 				</Toolbar>
 			</StypedAppBar>
 		);
