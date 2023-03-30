@@ -51,7 +51,6 @@ export const Users = memo(() => {
 					<Flexbox>
 						<Box>
 							<SearchInput inputValue={query} handleChange={handleChange} />
-							{debouncedQuery}
 						</Box>
 					</Flexbox>
 				</Paper>

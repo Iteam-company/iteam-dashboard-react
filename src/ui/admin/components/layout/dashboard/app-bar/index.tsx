@@ -1,4 +1,4 @@
-import { Menu, Notifications } from '@mui/icons-material';
+import { Menu } from '@mui/icons-material';
 import {
 	styled,
 	AppBar as MuiAppBar,
@@ -6,11 +6,10 @@ import {
 	Toolbar,
 	IconButton,
 	Typography,
-	Badge,
 } from '@mui/material';
 import { FC, memo, MouseEventHandler, PropsWithChildren } from 'react';
-import { useHelmet } from '../../../../../../hooks/helmet/use-helmet';
 import { Sizes } from '../../../../utils/constants';
+import { useHelmet } from '../../../../../../hooks/helmet/use-helmet';
 
 interface AppBarProps extends MuiAppBarProps {
 	open?: boolean;
@@ -37,10 +36,11 @@ const StypedAppBar = styled(MuiAppBar, {
 interface AppBarProps extends PropsWithChildren {
 	toggleDrawer?: MouseEventHandler<HTMLButtonElement>;
 	isDrawerOpen?: boolean;
+	component?: JSX.Element;
 }
 
 export const AppBar: FC<AppBarProps> = memo(
-	({ toggleDrawer, isDrawerOpen }) => {
+	({ toggleDrawer, isDrawerOpen, component }) => {
 		const { appBarTitle } = useHelmet();
 
 		return (
@@ -68,11 +68,7 @@ export const AppBar: FC<AppBarProps> = memo(
 						sx={{ flexGrow: 1 }}>
 						{appBarTitle}
 					</Typography>
-					<IconButton color='inherit'>
-						<Badge badgeContent={4} color='secondary'>
-							<Notifications />
-						</Badge>
-					</IconButton>
+					<IconButton color='inherit'>{component}</IconButton>
 				</Toolbar>
 			</StypedAppBar>
 		);
