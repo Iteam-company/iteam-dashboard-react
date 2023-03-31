@@ -14,7 +14,6 @@ type Props = {
 };
 
 export const FileUpload: FC<Props> = ({
-	user,
 	file,
 	handleFileUpload,
 	removeFile,
