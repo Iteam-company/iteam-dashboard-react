@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { useSignOutMutation } from '../../../api/auth';
+// import { useSignOutMutation } from '../../../api/auth';
 import { useAppDispatch } from '../../../hooks/store/use-app-dispatch-hook';
-import { useAppSelector } from '../../../hooks/store/use-app-selector-hook';
+// import { useAppSelector } from '../../../hooks/store/use-app-selector-hook';
 import { removeCredentials } from '../../../store/slices/auth-slice';
 type Props = {
 	icon?: JSX.Element;
