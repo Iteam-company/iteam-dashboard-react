@@ -1,7 +1,16 @@
 import { Box, Typography } from '@mui/material';
+import { FC, Fragment } from 'react';
+import { User } from '../../../../../../types/common/api/user';
 import { Flexbox } from '../../../../../components/common/flex-box';
+import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 
-export const UserEducationItem = () => {
+type Props = {
+	data: User;
+};
+
+export const UserEducationItem: FC<Props> = ({ data }) => {
+	const { educationInfo } = objectFieldChecker<User>(data);
+
 	return (
 		<>
 			<Flexbox>
@@ -12,28 +21,18 @@ export const UserEducationItem = () => {
 					sx={{ mr: 2, maxWidth: '50px', maxHeight: '50px' }}
 				/>
 				<Box>
-					<Typography variant='body2' sx={{ fontWeight: '800' }}>
-						{' '}
-						National Transport University
-					</Typography>
-					<Flexbox>
-						<Box sx={{ color: '#424242', mr: 5 }}>
-							<Typography variant='body2'>
-								Master of Architecture (MArch), Computer Science
+					{!educationInfo.length && 'N/A'}
+					{educationInfo.map((item) => (
+						<Fragment key={item.id}>
+							<Typography variant='body2' sx={{ fontWeight: '800' }}>
+								{item.universityName}
 							</Typography>
-							<Typography variant='body2'>Sep 2017 - Jun 2021</Typography>
-						</Box>
-						<Typography sx={{ cursor: 'pointer' }}>see more...</Typography>
-					</Flexbox>
+							<Typography variant='body2'>{item.specialization}</Typography>;
+							<Typography variant='body2'>{`${item.startDate} - ${item.endDate}`}</Typography>
+						</Fragment>
+					))}
 				</Box>
 			</Flexbox>
-			<Box
-				sx={{
-					width: '100%',
-					height: '1px',
-					backgroundColor: '#f3f3f3',
-					mt: 1,
-				}}></Box>
 		</>
 	);
 };

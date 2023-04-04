@@ -1,54 +1,27 @@
 import { Box, Typography } from '@mui/material';
+import { FC, Fragment } from 'react';
+import { User } from '../../../../../../types/common/api/user';
 import { Flexbox } from '../../../../../components/common/flex-box';
+import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 
-export const UserExperienceItem = () => {
+type Props = {
+	data: User;
+};
+
+export const UserExperienceItem: FC<Props> = ({ data }) => {
+	const { experience } = objectFieldChecker<User>(data);
+
 	return (
-		<Flexbox>
+		<Flexbox sx={{ gridGap: '16px' }}>
 			<Box
 				component='img'
 				alt='user-avatar'
 				src='https://via.placeholder.com/50'
-				sx={{ mr: 2, maxWidth: '50px', maxHeight: '50px' }}
+				sx={{ maxWidth: '50px', maxHeight: '50px' }}
 			/>
 			<Box sx={{ width: '100%' }}>
-				<Typography
-					variant='subtitle1'
-					sx={{
-						fontWeight: '800',
-						lineHeight: '120%',
-					}}>
-					Full-Stack Developer
-				</Typography>
-				<Box
-					sx={{
-						color: '#424242',
-					}}>
-					<Typography variant='body2'>Upwork Freelance</Typography>
-					<Typography variant='body2'>Apr 2019 - Presen 3 yrs 7 mos</Typography>
-					<Box
-						sx={{
-							mb: 2,
-						}}>
-						Ukraine
-					</Box>
-					<Flexbox>
-						<Box sx={{ mb: 2 }}>
-							<Typography variant='body2'>
-								Project: Smartannie (litesite.com)
-							</Typography>
-							<Typography variant='body2'>
-								Business management tool for interaction with customers and
-								clients
-							</Typography>
-						</Box>
-						<Typography sx={{ ml: 5, cursor: 'pointer' }}>
-							see more...
-						</Typography>
-					</Flexbox>
-					<Typography variant='body2'>
-						Skills: React.js, JS, TS, Npm, Angular, Rxjs
-					</Typography>
-				</Box>
+				<Typography>{experience}</Typography>
+				<Box>{experience}</Box>
 			</Box>
 		</Flexbox>
 	);
