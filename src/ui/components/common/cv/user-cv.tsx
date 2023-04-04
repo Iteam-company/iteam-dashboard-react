@@ -5,17 +5,17 @@ import { Cv } from '../../../../types/common/api/user/cv';
 import { ButtonFileDownload } from '../buttons/file-download';
 
 type Props = {
-	cv: Cv | null;
+	cv?: Cv | null;
 };
 
-export const UserCv: FC<Props> = ({ cv }) => {
+export const UserCv: FC<Props> = ({ cv = null }) => {
 	const { originalName, fileUrl } = cv || {};
 	return (
 		<>
 			{cv ? (
 				<ButtonFileDownload originalName={originalName} fileUrl={fileUrl}>
 					<BoxEllipsis width='80px'>
-						<Link noWrap>{cv.originalName}</Link>
+						<Link noWrap>{originalName}</Link>
 					</BoxEllipsis>
 				</ButtonFileDownload>
 			) : (
