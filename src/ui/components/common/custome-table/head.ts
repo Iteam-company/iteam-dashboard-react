@@ -18,5 +18,6 @@ export const HeadTableCell = styled(TableCell)(({ theme }) => ({
 
 	'&.email': {
 		width: '30%',
+		whiteSpace: 'nowrap',
 	},
 }));

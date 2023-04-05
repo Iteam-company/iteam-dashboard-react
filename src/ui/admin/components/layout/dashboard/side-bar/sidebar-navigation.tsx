@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { List } from '@mui/material';
 import { AdminRoutes } from '../../../../../../constants/admin/admin-routes';
 import { CommontRoutes } from '../../../../../../constants/common/routes/common-routes';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const sidebarOptionsDescription = [
 	{
@@ -37,6 +38,11 @@ const sidebarOptionsDescription = [
 		text: 'Integrations',
 		icon: <LayersIcon />,
 		route: AdminRoutes.INTEGRATIONS,
+	},
+	{
+		text: 'Add user',
+		icon: <PersonAddIcon />,
+		route: AdminRoutes.ADD_USER,
 	},
 ];
 
