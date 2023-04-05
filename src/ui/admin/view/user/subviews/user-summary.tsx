@@ -1,12 +1,9 @@
 import { Box, Card } from '@mui/material';
 import React, { useRef } from 'react';
 import { memo, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useGetUserQuery } from '../../../../../api/user';
 import { AdminRoutes } from '../../../../../constants/admin/admin-routes';
 import { CommontRoutes } from '../../../../../constants/common/routes/common-routes';
 import { ButtonBack } from '../../../../components/common/buttons/back';
-import { Loader } from '../../../../components/common/loader';
 import { ViewDefaultPage } from '../../../../components/common/view-default-page';
 import { UserAbout } from '../../../components/view/user/user-summary/user-about';
 import { UserEducation } from '../../../components/view/user/user-summary/user-education';

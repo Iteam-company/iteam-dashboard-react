@@ -5,9 +5,14 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 type Props = {
 	children?: JSX.Element;
 	title?: string;
+	param?: boolean;
 };
 
-export const UserCardWrapper: React.FC<Props> = ({ children, title }) => {
+export const UserCardWrapper: React.FC<Props> = ({
+	children,
+	title,
+	param = true,
+}) => {
 	return (
 		<>
 			<Box
@@ -19,10 +24,12 @@ export const UserCardWrapper: React.FC<Props> = ({ children, title }) => {
 				<Typography variant='h6' sx={{ mb: 2 }}>
 					{title}
 				</Typography>
-				<Box>
-					<AddOutlinedIcon sx={{ mr: 3, cursor: 'pointer' }} />
-					<CreateOutlinedIcon sx={{ cursor: 'pointer' }} />
-				</Box>
+				{param && (
+					<Box>
+						<AddOutlinedIcon sx={{ mr: 3, cursor: 'pointer' }} />
+						<CreateOutlinedIcon sx={{ cursor: 'pointer' }} />
+					</Box>
+				)}
 			</Box>
 			{children}
 		</>

@@ -27,7 +27,7 @@ export const authAPIService = baseApiService.injectEndpoints({
 				method: 'POST',
 			}),
 		}),
-		signOut: builder.mutation({
+		signOut: builder.mutation<void, void>({
 			query: () => ({
 				url: AUTH_ENDPOINTS_URLS.SIGN_OUT,
 				method: 'POST',

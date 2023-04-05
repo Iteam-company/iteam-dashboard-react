@@ -10,6 +10,7 @@ import { AdminRoutes } from '../admin-routes';
 import { CommontRoutes } from '../../common/routes/common-routes';
 import { UserSummary } from '../../../ui/admin/view/user/subviews/user-summary';
 import { commonRoutesSchema } from '../../common/routes/routes-schemas/common-routes-schema';
+import { AddUserWrapper } from '../../../ui/admin/view/user/subviews/add-user-wrapper';
 
 export const adminRoutesSchema: RouteObject = {
 	path: CommontRoutes.ROOT_PATH,
@@ -43,6 +44,10 @@ export const adminRoutesSchema: RouteObject = {
 		{
 			path: `${AdminRoutes.USERS}/:id`,
 			element: <UserSummary />,
+		},
+		{
+			path: AdminRoutes.ADD_USER,
+			element: <AddUserWrapper />,
 		},
 	],
 };

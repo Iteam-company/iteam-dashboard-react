@@ -8,7 +8,7 @@ import { UserEducationItem } from './user-education-item';
 export const UserEducation = () => {
 	const [title] = useState('Education');
 	const { id = null } = useParams();
-	const { data = null, isLoading } = useGetUserQuery(id);
+	const { data = null } = useGetUserQuery(id);
 	return (
 		<UserCardWrapper title={title}>
 			{data ? <UserEducationItem data={data} /> : <Skeleton />}
