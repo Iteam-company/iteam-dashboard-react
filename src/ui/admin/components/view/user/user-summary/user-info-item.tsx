@@ -3,6 +3,8 @@ import { ElementType, FC } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { Variant } from '@mui/material/styles/createTypography';
+import { checkProps } from '../../../../../utils/object-props-checker';
+import { Flexbox } from '../../../../../components/common/flex-box';
 
 type Props = {
 	data: User;
@@ -26,16 +28,13 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 
 	const userProps = [
 		{
+			title: 'Full name',
 			value: `${name} ${surname}`,
-			variant: 'subtitle1',
-			component: 'h2',
 			sx: (theme: Theme) => ({ color: theme.palette.primary.main }),
 		},
 		{
 			title: 'employee position',
 			value: positionDescription,
-			variant: 'subtitle2',
-			component: 'h3',
 		},
 		{
 			title: 'phone number',
@@ -90,23 +89,12 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 					src={'https://via.placeholder.com/200'}
 				/>
 			</Box>
-			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+			<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 				{userProps.map((element, index) => (
-					<Typography
-						sx={element.sx ? element.sx : null}
-						variant={
-							element.variant ? (`${element.variant}` as Variant) : 'caption'
-						}
-						component={
-							element.component
-								? (`${element.component}` as ElementType<JSX.Element>)
-								: 'div'
-						}
-						key={`${element.title}_${index}`}>
-						{element.title
-							? `${element.title}: ${element.value}`
-							: element.value}
-					</Typography>
+					<Flexbox sx={{ gridGap: '16px' }} key={`${element}-${index}`}>
+						<Box>{element.title}</Box>
+						{checkProps(element)}
+					</Flexbox>
 				))}
 			</Box>
 		</Box>
