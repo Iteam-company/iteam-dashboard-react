@@ -1,0 +1,25 @@
+import { Box, Card } from '@mui/material';
+import { useAllProjectsQuery } from '../../../../api/project';
+import { Loader } from '../../../components/common/loader';
+import { UserProject } from '../../components/view/project';
+
+export const Projects = () => {
+	const { data = null, isLoading } = useAllProjectsQuery();
+
+	console.log(data, 'hi');
+	return (
+		<>
+			{data ? (
+				data.map((item, index) => (
+					<Box sx={{ p: 2 }} key={item.id}>
+						<Card sx={{ p: 2 }}>
+							<UserProject data={item} />
+						</Card>
+					</Box>
+				))
+			) : (
+				<Loader isLoading={isLoading} />
+			)}
+		</>
+	);
+};
