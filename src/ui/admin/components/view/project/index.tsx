@@ -5,7 +5,7 @@ import { FC, Fragment } from 'react';
 import { Project } from '../../../../../types/common/api/user/project';
 import { Flexbox } from '../../../../components/common/flex-box';
 import { objectFieldChecker } from '../../../../utils/object-field-checker';
-import { checkProps } from '../../../../utils/object-props-checker';
+import { checkVariantOfTag } from '../../../../utils/object-tag-checker';
 
 type Props = {
 	data: Project;
@@ -54,7 +54,7 @@ export const UserProject: FC<Props> = ({ data }) => {
 			{projectArr.map((item, index) => (
 				<Flexbox sx={{ gridGap: '16px' }} key={`${item.title}_${index}`}>
 					<Box>{item.title}</Box>
-					{checkProps(item)}
+					{checkVariantOfTag(item)}
 				</Flexbox>
 			))}
 		</>
