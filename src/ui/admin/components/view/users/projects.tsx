@@ -9,7 +9,6 @@ type Props = {
 export const Projects: FC<Props> = ({ user }) => {
 	const { leadingInProjects, name } = user;
 	const username = name ? name?.slice(0, 1).toUpperCase() + name?.slice(1) : '';
-	console.log(leadingInProjects);
 	return (
 		<>
 			{leadingInProjects?.length ? (

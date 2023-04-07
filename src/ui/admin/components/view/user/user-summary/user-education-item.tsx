@@ -10,29 +10,29 @@ type Props = {
 
 export const UserEducationItem: FC<Props> = ({ data }) => {
 	const { educationInfo } = objectFieldChecker<User>(data);
-
+	console.log(educationInfo);
 	return (
 		<>
-			<Flexbox>
-				<Box
-					component='img'
-					alt='user-avatar'
-					src='https://via.placeholder.com/50'
-					sx={{ mr: 2, maxWidth: '50px', maxHeight: '50px' }}
-				/>
-				<Box>
-					{!educationInfo.length && 'N/A'}
-					{educationInfo.map((item) => (
-						<Fragment key={item.id}>
+			{educationInfo.map((item) => {
+				const { universityName, specialization, startDate } = item;
+				return (
+					<Flexbox key={item.id}>
+						<Box
+							component='img'
+							alt='user-avatar'
+							src='https://via.placeholder.com/50'
+							sx={{ mr: 2, maxWidth: '50px', maxHeight: '50px' }}
+						/>
+						<Box>
 							<Typography variant='body2' sx={{ fontWeight: '800' }}>
-								{item.universityName}
+								{universityName}
 							</Typography>
-							<Typography variant='body2'>{item.specialization}</Typography>;
-							<Typography variant='body2'>{`${item.startDate} - ${item.endDate}`}</Typography>
-						</Fragment>
-					))}
-				</Box>
-			</Flexbox>
+							<Typography variant='body2'>{specialization}</Typography>
+							<Typography variant='body2'>{startDate}</Typography>
+						</Box>
+					</Flexbox>
+				);
+			})}
 		</>
 	);
 };

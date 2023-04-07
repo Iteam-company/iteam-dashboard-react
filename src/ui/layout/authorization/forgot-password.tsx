@@ -29,7 +29,6 @@ export const ForgotPassword = memo(() => {
 				const typedError = error as ApiError;
 				showSnackbar(typedError.data.message, 'error');
 			}
-			console.log(email);
 		},
 		validationSchema: Yup.object().shape({
 			email: Yup.string()
