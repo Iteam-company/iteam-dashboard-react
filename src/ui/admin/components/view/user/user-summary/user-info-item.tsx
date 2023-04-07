@@ -3,7 +3,7 @@ import { ElementType, FC } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { Variant } from '@mui/material/styles/createTypography';
-import { checkProps } from '../../../../../utils/object-props-checker';
+import { checkVariantOfTag } from '../../../../../utils/object-tag-checker';
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { CheckProps } from '../../../../../../types/ui/check-layout-props';
 
@@ -109,7 +109,7 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 				{userProps.map((element, index) => (
 					<Flexbox sx={{ gridGap: '16px' }} key={`${element}-${index}`}>
 						<Box>{element.title}</Box>
-						{checkProps(element as CheckProps)}
+						{checkVariantOfTag(element as CheckProps)}
 					</Flexbox>
 				))}
 			</Box>

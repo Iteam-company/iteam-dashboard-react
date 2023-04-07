@@ -1,7 +1,7 @@
 import { Box, Link } from '@mui/material';
 import { CheckProps } from '../../types/ui/check-layout-props';
 
-export const checkProps = (item: CheckProps) => {
+export const checkVariantOfTag = (item: CheckProps) => {
 	return item.href && item.value !== 'N/A' ? (
 		<Link sx={item.sx} href={item.value as string}>
 			{item.value}
