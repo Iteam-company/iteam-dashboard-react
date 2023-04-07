@@ -1,6 +1,6 @@
 export interface CheckProps {
 	title: string;
-	value: string | null | number;
+	value: string | number;
 	component?: React.ElementType<any>;
 	href?: string;
 	sx?: object;

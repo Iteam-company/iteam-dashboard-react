@@ -5,7 +5,6 @@ import { useMemo } from 'react';
 export const useHelmet = () => {
 	const location = useLocation();
 	const { pathname } = location;
-	console.log(pathname);
 	const appBarTitle = useMemo(
 		() =>
 			pathname

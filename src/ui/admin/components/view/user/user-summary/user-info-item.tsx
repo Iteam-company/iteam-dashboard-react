@@ -5,6 +5,7 @@ import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { Variant } from '@mui/material/styles/createTypography';
 import { checkProps } from '../../../../../utils/object-props-checker';
 import { Flexbox } from '../../../../../components/common/flex-box';
+import { CheckProps } from '../../../../../../types/ui/check-layout-props';
 
 type Props = {
 	data: User;
@@ -25,6 +26,21 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 		email,
 		phone,
 	} = objectFieldChecker<User>(data);
+
+	console.log(
+		name,
+		surname,
+		birthday,
+		startDate,
+		endDate,
+		endReason,
+		address,
+		language,
+		positionDescription,
+		status,
+		email,
+		phone,
+	);
 
 	const userProps = [
 		{
@@ -93,7 +109,7 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 				{userProps.map((element, index) => (
 					<Flexbox sx={{ gridGap: '16px' }} key={`${element}-${index}`}>
 						<Box>{element.title}</Box>
-						{checkProps(element)}
+						{checkProps(element as CheckProps)}
 					</Flexbox>
 				))}
 			</Box>

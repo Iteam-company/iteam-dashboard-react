@@ -5,8 +5,6 @@ import { UserProject } from '../../components/view/project';
 
 export const Projects = () => {
 	const { data = null, isLoading } = useAllProjectsQuery();
-
-	console.log(data, 'hi');
 	return (
 		<>
 			{data ? (
