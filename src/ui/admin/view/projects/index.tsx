@@ -8,7 +8,7 @@ export const Projects = () => {
 	return (
 		<>
 			{data ? (
-				data.map((item, index) => (
+				data.map((item) => (
 					<Box sx={{ p: 2 }} key={item.id}>
 						<Card sx={{ p: 2 }}>
 							<UserProject data={item} />

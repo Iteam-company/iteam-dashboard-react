@@ -1,6 +1,4 @@
-import { Link } from '@mui/material';
 import { Box } from '@mui/system';
-import { AnalysisOptions } from 'eslint-scope';
 import { FC, Fragment } from 'react';
 import { Project } from '../../../../../types/common/api/user/project';
 import { Flexbox } from '../../../../components/common/flex-box';

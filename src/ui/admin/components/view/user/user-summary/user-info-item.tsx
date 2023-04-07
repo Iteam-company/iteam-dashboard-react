@@ -1,8 +1,7 @@
-import { Box, Theme, Typography } from '@mui/material';
-import { ElementType, FC } from 'react';
+import { Box, Theme } from '@mui/material';
+import { FC } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
-import { Variant } from '@mui/material/styles/createTypography';
 import { checkVariantOfTag } from '../../../../../utils/object-tag-checker';
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { CheckProps } from '../../../../../../types/ui/check-layout-props';
