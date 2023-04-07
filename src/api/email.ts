@@ -11,7 +11,16 @@ export const authAPIService = baseApiService.injectEndpoints({
 				body: email,
 			}),
 		}),
+		deleteEmailFromWhiteList: builder.mutation<string, void>({
+			query: (id) => ({
+				url: `${EMAIL_ENDPOINTS_URLS.ALLOWED_REGISTRATION_EMAIL}/${id}`,
+				method: 'DELETE',
+			}),
+		}),
 	}),
 });
 
-export const { useAddEmailToWhiteListMutation } = authAPIService;
+export const {
+	useAddEmailToWhiteListMutation,
+	useDeleteEmailFromWhiteListMutation,
+} = authAPIService;

@@ -2,6 +2,8 @@ import { USERS_ENDPOINTS } from '../constants/api/users-endpoints-urls';
 import { User } from '../types/common/api/user';
 import { AuthCredentials } from '../types/common/client/auth-credentials';
 import { baseApiService } from './base-query';
+import { UserTechnologyReg } from '../types/common/api/technology/index';
+import { assignEducationInfoToUser } from '../types/common/api/education-info/index';
 
 export interface BanReq {
 	userId: number;
@@ -48,6 +50,25 @@ export const userApiService = baseApiService.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+		assignTechnologyForUser: builder.mutation<
+			UserTechnologyReg,
+			UserTechnologyReg
+		>({
+			query: (params: UserTechnologyReg) => ({
+				url: `${USERS_ENDPOINTS.TECHNOLOGY}`,
+				method: 'POST',
+				body: params,
+			}),
+		}),
+		assignEducationInfoToUser: builder.mutation<
+			assignEducationInfoToUser,
+			assignEducationInfoToUser
+		>({
+			query: () => ({
+				url: `${USERS_ENDPOINTS.EDUCATIONINFO}`,
+				method: 'POST',
+			}),
+		}),
 	}),
 });
 
@@ -57,4 +78,5 @@ export const {
 	useUploadUserCVMutation,
 	useBanUserMutation,
 	useGetUserQuery,
+	useAssignTechnologyForUserMutation,
 } = userApiService;
