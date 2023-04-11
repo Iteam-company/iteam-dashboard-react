@@ -13,6 +13,7 @@
 		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
 		"@mui/styled-engine-sc": "^5.11.11",
 		"@reduxjs/toolkit": "^1.9.1",
+		"class-validator": "^0.14.0",
 		"file-saver": "^2.0.5",
 		"formik": "^2.2.9",
 		"notistack": "^2.0.8",

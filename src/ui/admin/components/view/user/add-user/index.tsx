@@ -59,8 +59,18 @@ export const AddUser = () => {
 						gap: '10px',
 						width: '400px',
 					}}>
-					<Input name='email' formik={formik} label='Email' />
-					<Input name='password' formik={formik} label='Password' />
+					<Input
+						name='email'
+						formik={formik}
+						label='Email'
+						formikValue={'email'}
+					/>
+					<Input
+						name='password'
+						formik={formik}
+						label='Password'
+						formikValue={'password'}
+					/>
 
 					<LoadingButton
 						variant='contained'
