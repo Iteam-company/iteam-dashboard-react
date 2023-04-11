@@ -49,6 +49,7 @@ export const userApiService = baseApiService.injectEndpoints({
 				url: `${USERS_ENDPOINTS.USERS}/${id}`,
 				method: 'GET',
 			}),
+			providesTags: (result) => (result ? ['Users'] : []),
 		}),
 		assignTechnologyForUser: builder.mutation<
 			UserTechnologyReg,

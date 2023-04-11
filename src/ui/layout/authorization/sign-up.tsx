@@ -83,6 +83,7 @@ export const SignUp = memo(() => {
 								name='email'
 								formik={formik}
 								label='Email Address'
+								formikValue={'email'}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -90,6 +91,7 @@ export const SignUp = memo(() => {
 								type='password'
 								name='password'
 								label='Password'
+								formikValue={'password'}
 								formik={formik}
 							/>
 						</Grid>

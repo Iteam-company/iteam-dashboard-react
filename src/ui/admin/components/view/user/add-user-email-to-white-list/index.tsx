@@ -56,7 +56,12 @@ export const AddEmailToWhiteList = () => {
 						gap: '10px',
 						width: '400px',
 					}}>
-					<Input name='email' formik={formik} label='Email' />
+					<Input
+						name='email'
+						formik={formik}
+						label='Email'
+						formikValue={'email'}
+					/>
 					<LoadingButton
 						variant='contained'
 						color='primary'

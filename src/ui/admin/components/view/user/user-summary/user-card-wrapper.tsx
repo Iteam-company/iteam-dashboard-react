@@ -1,17 +1,28 @@
 import { Box, Typography } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import { cloneElement } from 'react';
 
 type Props = {
 	children?: JSX.Element;
 	title?: string;
 	param?: boolean;
+	modal?: JSX.Element;
+	handleOpen?: () => void;
+	handleClose?: () => void;
+	open?: boolean;
+	isLoading?: boolean;
 };
 
 export const UserCardWrapper: React.FC<Props> = ({
 	children,
 	title,
 	param = true,
+	modal,
+	handleOpen,
+	handleClose,
+	open,
+	isLoading,
 }) => {
 	return (
 		<>
@@ -27,11 +38,15 @@ export const UserCardWrapper: React.FC<Props> = ({
 				{param && (
 					<Box>
 						<AddOutlinedIcon sx={{ mr: 3, cursor: 'pointer' }} />
-						<CreateOutlinedIcon sx={{ cursor: 'pointer' }} />
+						<CreateOutlinedIcon
+							sx={{ cursor: 'pointer' }}
+							onClick={handleOpen}
+						/>
 					</Box>
 				)}
 			</Box>
 			{children}
+			{modal && cloneElement(modal, { open, handleOpen, handleClose,isLoading })}
 		</>
 	);
 };

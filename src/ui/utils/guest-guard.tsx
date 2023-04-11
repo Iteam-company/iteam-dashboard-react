@@ -9,6 +9,8 @@ export const GuestGuard: FC<PropsWithChildren> = ({ children }) => {
 		return <Navigate to={CommontRoutes.ROOT_PATH} />;
 	}
 
+	
+
 	return <>{children}</>;
 };
 

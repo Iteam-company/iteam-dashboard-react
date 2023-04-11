@@ -68,7 +68,7 @@ export const ForgotPassword = memo(() => {
 						alignItems: 'center',
 						gap: '10px',
 					}}>
-					<Input name='email' formik={formik} label='Email' />
+					<Input name='email' formik={formik} label='Email' formikValue={'email'}/>
 
 					<Button type='submit' variant='contained' sx={{ maxWidth: '200px' }}>
 						Reset Password
