@@ -48,7 +48,7 @@ export const UserAbout = memo(() => {
 					isLoading={isLoading}
 					modal={
 						<EditModal
-							handleUploadClick={handleUploadClick!}
+							handleSubmit={handleUploadClick!}
 							text={'Change Cv'}
 							element={
 								<FileUpload

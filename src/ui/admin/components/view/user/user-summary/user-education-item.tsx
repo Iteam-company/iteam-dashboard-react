@@ -51,7 +51,16 @@ export const UserEducationItem: FC<Props> = ({ data }) => {
 			open={open}
 			handleClose={handleClose}
 			handleOpen={handleOpen}>
-			<>{layout}</>
+			<>
+				<Flexbox sx={{ gridGap: '16px' }}>
+					<Box
+						component='img'
+						alt='user-avatar'
+						src='https://via.placeholder.com/50'
+						sx={{ maxWidth: '50px', maxHeight: '50px' }} />
+					{layout}
+				</Flexbox>
+			</>
 		</UserCardWrapper>
 	);
 };

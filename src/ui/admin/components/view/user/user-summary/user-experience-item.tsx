@@ -1,5 +1,8 @@
 import { Box, Typography } from '@mui/material';
-import { FC, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useUpdateUserMutation } from '../../../../../../api/user';
+import { useDebouncedState } from '../../../../../../hooks/debounce/use-debounced-state';
 import { User } from '../../../../../../types/common/api/user';
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
@@ -11,31 +14,45 @@ type Props = {
 };
 
 export const UserExperienceItem: FC<Props> = ({ data }) => {
+	const { id } = useParams();
 	const { experience } = objectFieldChecker<User>(data);
+	const [debouncedQuery, setDebounceQuery] = useDebouncedState('', 1000);
 	const [title] = useState('Experience');
+	const [query, setQuery] = useState('');
 	const [open, setOpen] = useState(false);
+	const [update, { isSuccess, isLoading }] = useUpdateUserMutation();
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setQuery(event.target.value);
+		setDebounceQuery(event.target.value);
+	};
+
+	const handleSubmit = useCallback(() => {
+		update({ id: +id!, experience: debouncedQuery });
+	}, [id, isSuccess, isLoading]);
+
+	useEffect(() => {
+		isSuccess && setOpen(false);
+	}, [isSuccess]);
 
 	return (
 		<UserCardWrapper
 			title={title}
-			modal={<EditModal />}
+			modal={
+				<EditModal
+					isLoading={isLoading}
+					experience={true}
+					text={'experience'}
+					query={query}
+					handleChange={handleChange}
+					handleSubmit={handleSubmit!}
+				/>
+			}
 			open={open}
 			handleOpen={handleOpen}
 			handleClose={handleClose}>
-			<Flexbox sx={{ gridGap: '16px' }}>
-				<Box
-					component='img'
-					alt='user-avatar'
-					src='https://via.placeholder.com/50'
-					sx={{ maxWidth: '50px', maxHeight: '50px' }}
-				/>
-				<Box sx={{ width: '100%' }}>
-					<Typography>{experience}</Typography>
-					<Box>{experience}</Box>
-				</Box>
-			</Flexbox>
+			<Box>{experience}</Box>
 		</UserCardWrapper>
 	);
 };
