@@ -1,10 +1,9 @@
-import { Box, Typography } from '@mui/material';
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { Box } from '@mui/material';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUpdateUserMutation } from '../../../../../../api/user';
 import { useDebouncedState } from '../../../../../../hooks/debounce/use-debounced-state';
 import { User } from '../../../../../../types/common/api/user';
-import { Flexbox } from '../../../../../components/common/flex-box';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { UserCardWrapper } from './user-card-wrapper';
