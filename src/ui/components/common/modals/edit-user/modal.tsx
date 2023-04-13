@@ -6,6 +6,7 @@ import { LoadingButton } from '@mui/lab';
 import CloseIcon from '@mui/icons-material/Close';
 import { Input } from '../../input';
 import { context } from '../../../../admin/components/view/user/user-summary/user-info-item';
+import { TextareaAutosize } from '@mui/base';
 
 type Props = {
 	open?: boolean;
@@ -14,7 +15,10 @@ type Props = {
 	isLoading?: boolean;
 	text?: string;
 	element?: JSX.Element;
-	handleUploadClick?: () => void;
+	handleSubmit?: () => void;
+	experience?: boolean;
+	query?: string;
+	handleChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 export const EditModal: FC<Props> = ({
 	open,
@@ -22,7 +26,10 @@ export const EditModal: FC<Props> = ({
 	isLoading = false,
 	text = 'Submit',
 	element,
-	handleUploadClick,
+	handleSubmit,
+	experience,
+	handleChange,
+	query,
 }) => {
 	const values = useContext(context);
 	const submit = values ? values.formik.handleSubmit : null;
@@ -34,16 +41,23 @@ export const EditModal: FC<Props> = ({
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'>
 				<Box sx={style}>
+					{experience ? (
+						<TextareaAutosize
+							minRows='10'
+							value={query}
+							onChange={handleChange}></TextareaAutosize>
+					) : null}
 					{element && element}
-					{values?.modalArray ? values.modalArray.map((item, index) => (
-						<Fragment key={`${item}_${index}`}>
-							<Input
-								name={item.title}
-								formikValue={item.formikValue}
-								formik={values.formik}
-								label={item.title}
-							/>
-						</Fragment>
+					{values?.modalArray
+						? values.modalArray.map((item, index) => (
+							<Fragment key={`${item}_${index}`}>
+								<Input
+									name={item.title}
+									formikValue={item.formikValue}
+									formik={values.formik}
+									label={item.title}
+								/>
+							</Fragment>
 						  ))
 						: null}
 					<Flexbox
@@ -54,7 +68,7 @@ export const EditModal: FC<Props> = ({
 							variant='contained'
 							color='primary'
 							type='submit'
-							onClick={submit || handleUploadClick}
+							onClick={submit || handleSubmit}
 							loading={isLoading}>
 							{text}
 						</LoadingButton>
