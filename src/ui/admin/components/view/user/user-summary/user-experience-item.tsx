@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { FC, Fragment, useState } from 'react';
+import { FC, useState } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';

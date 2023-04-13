@@ -35,7 +35,7 @@ export const columns = [
 		id: 4,
 	},
 	{
-		generateColumn: (user: User) => <UserCv cv={user.cv} />,
+		generateColumn: (user: User) => <UserCv cv={user.cv || 'N/A'} />,
 		title: 'CV',
 		id: 5,
 	},
