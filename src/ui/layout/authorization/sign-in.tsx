@@ -21,7 +21,7 @@ import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
 import { CommontRoutes } from '../../../constants/common/routes/common-routes';
 
 const initialValues = {
-	email: 'example@gmail.com',
+	email: '12212121@gmail.com',
 	password: 'some hashed data',
 };
 

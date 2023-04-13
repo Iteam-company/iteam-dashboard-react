@@ -1,4 +1,4 @@
-import { Box, Button, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal } from '@mui/material';
 import { FC, Fragment, useContext } from 'react';
 import { style } from '../../../../../styles/modal-style';
 import { Flexbox } from '../../flex-box';
@@ -12,12 +12,17 @@ type Props = {
 	handleOpen?: () => void;
 	handleClose?: () => void;
 	isLoading?: boolean;
+	text?: string;
+	element?: JSX.Element;
+	handleUploadClick?: () => void;
 };
 export const EditModal: FC<Props> = ({
 	open,
-	handleOpen,
 	handleClose,
 	isLoading = false,
+	text = 'Submit',
+	element,
+	handleUploadClick,
 }) => {
 	const values = useContext(context);
 	const submit = values ? values.formik.handleSubmit : null;
@@ -29,16 +34,16 @@ export const EditModal: FC<Props> = ({
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'>
 				<Box sx={style}>
-					{values?.modalArray
-						? values.modalArray.map((item, index) => (
-							<Fragment key={`${item}_${index}`}>
-								<Input
-									name={item.title}
-									formikValue={item.formikValue}
-									formik={values.formik}
-									label={item.title}
-								/>
-							</Fragment>
+					{element && element}
+					{values?.modalArray ? values.modalArray.map((item, index) => (
+						<Fragment key={`${item}_${index}`}>
+							<Input
+								name={item.title}
+								formikValue={item.formikValue}
+								formik={values.formik}
+								label={item.title}
+							/>
+						</Fragment>
 						  ))
 						: null}
 					<Flexbox
@@ -49,9 +54,9 @@ export const EditModal: FC<Props> = ({
 							variant='contained'
 							color='primary'
 							type='submit'
-							onClick={submit}
+							onClick={submit || handleUploadClick}
 							loading={isLoading}>
-							Submit
+							{text}
 						</LoadingButton>
 						<Button
 							variant='contained'
