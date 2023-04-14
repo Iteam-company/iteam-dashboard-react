@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, TextareaAutosize } from '@mui/material';
 import { FC, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUpdateUserMutation } from '../../../../../../api/user';
@@ -41,10 +41,13 @@ export const UserExperienceItem: FC<Props> = ({ data }) => {
 			modal={
 				<EditModal
 					isLoading={isLoading}
-					experience={true}
-					text={'experience'}
-					query={query}
-					handleChange={handleChange}
+					element={
+						<TextareaAutosize
+							minRows='10'
+							value={query}
+							onChange={handleChange}></TextareaAutosize>
+					}
+					text={'add experience'}
 					handleSubmit={handleSubmit!}
 				/>
 			}

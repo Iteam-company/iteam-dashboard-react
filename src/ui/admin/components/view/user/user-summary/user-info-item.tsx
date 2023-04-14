@@ -10,11 +10,10 @@ import { EditModal } from '../../../../../components/common/modals/edit-user/mod
 import { useUpdateUserMutation } from '../../../../../../api/user';
 import { useFormik } from 'formik';
 import { Error as ApiError } from '../../../../../../types/common/api/error';
-import * as Yup from 'yup';
 import { useNotifySnackbar } from '../../../../../../hooks/snackbar/use-notify-snackbar';
-import { isPhoneNumber } from 'class-validator';
 import { UserInfoContext } from '../../../../../../types/common/context/user-info';
 import { UserProps } from '../../../../../../types/admin/edit-user';
+import { userInfoCustomValidationSchema } from '../../../../utils/custom-validation.ts/user-info';
 
 type Props = {
 	data: User;
@@ -123,15 +122,7 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 		id,
 	};
 
-	const customValidationSchema = Yup.object().shape({
-		name: Yup.string().min(2).max(30),
-		surname: Yup.string().min(2).max(30),
-		phone: Yup.string().test('phone', 'Invalid phone number', (value) => {
-			return isPhoneNumber(value as string, 'UA') || false;
-		}),
-		endDate: Yup.date().typeError('Invalid Date!').nullable().notRequired(),
-		startDate: Yup.date().typeError('Invalid Date!').nullable().notRequired(),
-	});
+
 
 	const formik = useFormik({
 		initialValues,
@@ -171,7 +162,7 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 				showSnackbar(typedError.data.message, 'error');
 			}
 		},
-		validationSchema: customValidationSchema,
+		validationSchema: userInfoCustomValidationSchema,
 	});
 
 	return (
