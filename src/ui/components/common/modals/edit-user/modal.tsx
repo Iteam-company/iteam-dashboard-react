@@ -6,7 +6,6 @@ import { LoadingButton } from '@mui/lab';
 import CloseIcon from '@mui/icons-material/Close';
 import { Input } from '../../input';
 import { context } from '../../../../admin/components/view/user/user-summary/user-info-item';
-import { TextareaAutosize } from '@mui/base';
 
 type Props = {
 	open?: boolean;
@@ -16,9 +15,6 @@ type Props = {
 	text?: string;
 	element?: JSX.Element;
 	handleSubmit?: () => void;
-	experience?: boolean;
-	query?: string;
-	handleChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 export const EditModal: FC<Props> = ({
 	open,
@@ -27,9 +23,6 @@ export const EditModal: FC<Props> = ({
 	text = 'Submit',
 	element,
 	handleSubmit,
-	experience,
-	handleChange,
-	query,
 }) => {
 	const values = useContext(context);
 	const submit = values ? values.formik.handleSubmit : null;
@@ -41,12 +34,6 @@ export const EditModal: FC<Props> = ({
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'>
 				<Box sx={style}>
-					{experience ? (
-						<TextareaAutosize
-							minRows='10'
-							value={query}
-							onChange={handleChange}></TextareaAutosize>
-					) : null}
 					{element && element}
 					{values?.modalArray
 						? values.modalArray.map((item, index) => (

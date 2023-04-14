@@ -6,6 +6,7 @@ import { EditModal } from '../../../../../components/common/modals/edit-user/mod
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { UserCardWrapper } from './user-card-wrapper';
 
+
 type Props = {
 	data: User;
 };
