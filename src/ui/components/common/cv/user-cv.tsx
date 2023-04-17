@@ -12,7 +12,7 @@ export const UserCv: FC<Props> = ({ cv = 'N/A' }) => {
 	return (
 		<>
 			{typeof cv === 'string' ? (
-				{ cv }
+				cv 
 			) : (
 				<ButtonFileDownload originalName={cv.originalName} fileUrl={cv.fileUrl}>
 					<BoxEllipsis width='80px'>

@@ -1,30 +1,55 @@
 import { Box, Container, Typography } from '@mui/material';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import { FC, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { UserCardWrapper } from './user-card-wrapper';
-import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
+import { UserSkillsPatch } from './user-skills-patch';
+import { useUpdateUserMutation } from '../../../../../../api/user';
+
 type Props = {
 	data: User;
 };
 
 export const UserSkillsItem: FC<Props> = ({ data }) => {
-	const { skills } = objectFieldChecker<User>(data);
-	const [title] = useState('Skills');
+	const { skills, id } = objectFieldChecker<User>(data);
+	const title = 'Skills';
 	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
+	const handleOpen = () => setOpen((prev) => !prev);
 	const handleClose = () => setOpen(false);
+	const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
+		[],
+	);
+	const [update] = useUpdateUserMutation();
+	const onSubmit = () => {
+		handleClose();	
+		update({ id: +id, skills: selectedTechnologies.join(',') });
+	};
 
+	const handleTechnologiesChange = (
+		event: ChangeEvent<object>,
+		value: string[],
+	) => {
+		setSelectedTechnologies(value);
+	};
 	return (
 		<UserCardWrapper
 			title={title}
-			modal={<EditModal />}
 			open={open}
 			handleOpen={handleOpen}
 			handleClose={handleClose}>
 			<>
-				<Typography>{skills}</Typography>
+				<Typography>
+					{open ? (
+						<UserSkillsPatch
+							handleTechnologiesChange={handleTechnologiesChange}
+							selectedTechnologies={selectedTechnologies}
+							onSubmit={onSubmit}
+						/>
+					) : (
+						skills
+					)}
+				</Typography>
 				<Box
 					sx={{
 						width: '100%',
