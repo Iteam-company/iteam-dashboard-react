@@ -1,10 +1,5 @@
 import { TextField } from '@mui/material';
-import {
-	FC,
-	InputHTMLAttributes,
-	memo,
-	PropsWithChildren,
-} from 'react';
+import { FC, InputHTMLAttributes, memo, PropsWithChildren } from 'react';
 
 interface InputProps extends PropsWithChildren {
 	type?: InputHTMLAttributes<unknown>['type'];
@@ -12,10 +7,20 @@ interface InputProps extends PropsWithChildren {
 	formik?: any;
 	label?: string;
 	formikValue?: string;
+	value?: string;
+	handleChange?: (...args: any) => void;
 }
 
 export const Input: FC<InputProps> = memo((props) => {
-	const { type = 'text', name, formik, label, formikValue } = props;
+	const {
+		type = 'text',
+		name,
+		formik,
+		label,
+		formikValue,
+		value,
+		handleChange,
+	} = props;
 
 	if (formik && formikValue) {
 		const { errors, touched, values, handleChange } = formik;
@@ -36,7 +41,17 @@ export const Input: FC<InputProps> = memo((props) => {
 		);
 	}
 
-	return <TextField fullWidth name={name} label={name} type={type} id={name} />;
+	return (
+		<TextField
+			fullWidth
+			name={name}
+			label={name}
+			type={type}
+			id={name}
+			value={value}
+			onChange={handleChange}
+		/>
+	);
 });
 
 Input.displayName = 'Input';
