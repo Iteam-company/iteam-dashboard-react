@@ -122,8 +122,6 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 		id,
 	};
 
-
-
 	const formik = useFormik({
 		initialValues,
 		onSubmit: async (data) => {
