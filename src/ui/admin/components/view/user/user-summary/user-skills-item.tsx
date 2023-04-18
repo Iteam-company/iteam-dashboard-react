@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { UserCardWrapper } from './user-card-wrapper';
@@ -20,11 +20,14 @@ export const UserSkillsItem: FC<Props> = ({ data }) => {
 	const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
 		[],
 	);
-	const [update] = useUpdateUserMutation();
+	const [update, { isSuccess }] = useUpdateUserMutation();
 	const onSubmit = () => {
-		handleClose();	
 		update({ id: +id, skills: selectedTechnologies.join(',') });
 	};
+
+	useEffect(() => {
+		isSuccess && handleClose();
+	}, [isSuccess]);
 
 	const handleTechnologiesChange = (
 		event: ChangeEvent<object>,

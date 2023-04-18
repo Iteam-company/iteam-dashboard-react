@@ -45,7 +45,7 @@ export const UserSkillsPatch: FC<Props> = ({
 				)}
 				style={{ width: 500 }}
 				renderInput={(params) => (
-					<TextField {...params} label='Checkboxes' placeholder='Favorites' />
+					<TextField {...params} label='Technologies' placeholder='Favorites' />
 				)}
 				onChange={handleTechnologiesChange}
 			/>
