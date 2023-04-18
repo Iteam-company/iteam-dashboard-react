@@ -2,6 +2,7 @@ import { Box } from '@mui/system';
 import { FC, Fragment } from 'react';
 import { useGetUserQuery } from '../../../../../api/user';
 import { AdminRoutes } from '../../../../../constants/admin/admin-routes';
+import { User } from '../../../../../types/common/api/user';
 import { Project } from '../../../../../types/common/api/user/project';
 import { Flexbox } from '../../../../components/common/flex-box';
 import { objectFieldChecker } from '../../../../utils/object-field-checker';
@@ -23,6 +24,8 @@ export const UserProject: FC<Props> = ({ project }) => {
 		userId,
 	} = objectFieldChecker<Project>(project);
 	const { data } = useGetUserQuery(userId.toString());
+	
+
 	const projectArr = [
 		{
 			title: 'name of project:',
@@ -51,7 +54,7 @@ export const UserProject: FC<Props> = ({ project }) => {
 		},
 		{
 			title: 'user:',
-			value: (data?.name && data?.surname) || 'N/A',
+			value: data?.name && data?.surname ? `${data.name} ${data.surname}` : 'N/A',
 			href: `${AdminRoutes.USERS}/${data?.id}`,
 		},
 	];
