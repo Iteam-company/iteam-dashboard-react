@@ -11,9 +11,9 @@ type Props = {
 };
 
 export const UserExperienceItem: FC<Props> = ({ data }) => {
-	const { experience, id} = objectFieldChecker<User>(data);
+	const { experience, id } = objectFieldChecker<User>(data);
 	const title = 'Experience';
-	const [query, setQuery] = useState('');
+	const [query, setQuery] = useState(experience as string);
 	const [open, setOpen] = useState(false);
 	const [update, { isSuccess, isLoading }] = useUpdateUserMutation();
 	const handleOpen = () => setOpen(true);
@@ -21,7 +21,6 @@ export const UserExperienceItem: FC<Props> = ({ data }) => {
 	const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setQuery(event.target.value);
 	};
-	console.log(query);
 	const handleSubmit = useCallback(() => {
 		update({ id: +id!, experience: query });
 	}, [id, isSuccess, isLoading, query]);
