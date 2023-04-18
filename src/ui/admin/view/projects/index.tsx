@@ -1,6 +1,5 @@
 import { Box, Card } from '@mui/material';
 import { useAllProjectsQuery } from '../../../../api/project';
-import { useGetUserQuery } from '../../../../api/user';
 import { Loader } from '../../../components/common/loader';
 import { UserProject } from '../../components/view/project';
 
