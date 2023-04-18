@@ -11,6 +11,7 @@ import { UserSummary } from '../../../ui/admin/view/user/subviews/user-summary';
 import { commonRoutesSchema } from '../../common/routes/routes-schemas/common-routes-schema';
 import { AddUserWrapper } from '../../../ui/admin/view/user/subviews/add-user-wrapper';
 import { Projects } from '../../../ui/admin/view/projects';
+import { Orders } from '../../../ui/components/common/mocked/orders';
 
 export const adminRoutesSchema: RouteObject = {
 	path: CommontRoutes.ROOT_PATH,
@@ -27,7 +28,7 @@ export const adminRoutesSchema: RouteObject = {
 		},
 		{
 			path: AdminRoutes.ORDERS,
-			element: <Projects />,
+			element: <Orders />,
 		},
 		{
 			path: AdminRoutes.USERS,
@@ -48,6 +49,10 @@ export const adminRoutesSchema: RouteObject = {
 		{
 			path: AdminRoutes.ADD_USER,
 			element: <AddUserWrapper />,
+		},
+		{
+			path: AdminRoutes.PROJECTS,
+			element: <Projects />,
 		},
 	],
 };

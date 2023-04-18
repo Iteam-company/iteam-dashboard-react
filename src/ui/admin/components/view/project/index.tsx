@@ -1,15 +1,17 @@
 import { Box } from '@mui/system';
 import { FC, Fragment } from 'react';
+import { useGetUserQuery } from '../../../../../api/user';
+import { AdminRoutes } from '../../../../../constants/admin/admin-routes';
 import { Project } from '../../../../../types/common/api/user/project';
 import { Flexbox } from '../../../../components/common/flex-box';
 import { objectFieldChecker } from '../../../../utils/object-field-checker';
 import { checkVariantOfTag } from '../../../../utils/object-tag-checker';
 
 type Props = {
-	data: Project;
+	project: Project;
 };
 
-export const UserProject: FC<Props> = ({ data }) => {
+export const UserProject: FC<Props> = ({ project }) => {
 	const {
 		name,
 		attachedAttachments,
@@ -18,7 +20,9 @@ export const UserProject: FC<Props> = ({ data }) => {
 		hourlyRate,
 		pricingModel,
 		projectLink,
-	} = objectFieldChecker<Project>(data);
+		userId,
+	} = objectFieldChecker<Project>(project);
+	const { data } = useGetUserQuery(userId.toString());
 	const projectArr = [
 		{
 			title: 'name of project:',
@@ -44,6 +48,11 @@ export const UserProject: FC<Props> = ({ data }) => {
 			title: 'project link:',
 			value: projectLink,
 			href: projectLink,
+		},
+		{
+			title: 'user:',
+			value: (data?.name && data?.surname) || 'N/A',
+			href: `${AdminRoutes.USERS}/${data?.id}`,
 		},
 	];
 

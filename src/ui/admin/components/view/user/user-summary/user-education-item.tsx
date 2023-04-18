@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import moment from 'moment';
-import { FC, Fragment, useState } from 'react';
+import { FC, Fragment, useEffect, useState } from 'react';
 import { useUpdateUserMutation } from '../../../../../../api/user';
 import { User } from '../../../../../../types/common/api/user';
 import { EducationInfo } from '../../../../../../types/common/api/user/education-info';
@@ -15,7 +15,10 @@ type Props = {
 };
 
 export const UserEducationItem: FC<Props> = ({ data }) => {
-	const [update] = useUpdateUserMutation();
+	const [update, { isSuccess }] = useUpdateUserMutation();
+
+	const { educationInfo } = objectFieldChecker<User>(data);
+
 	const [query, setQuery] = useState({
 		id: data.id,
 		startDate: null,
@@ -24,14 +27,17 @@ export const UserEducationItem: FC<Props> = ({ data }) => {
 		specialization: '',
 		pricingModel: '',
 	});
-	console.log(query);
-	const { educationInfo } = objectFieldChecker<User>(data);
 	const title = 'Education';
 
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	const onSubmit = () => update(query);
+	useEffect(() => {
+		if (isSuccess) {
+			handleClose();
+		}
+	}, [isSuccess]);
 
 	const handleUnivercityInfo = (
 		event: React.ChangeEvent<HTMLInputElement>,
@@ -50,28 +56,31 @@ export const UserEducationItem: FC<Props> = ({ data }) => {
 		}));
 	};
 	let layout;
-	console.log(educationInfo);
 	if (educationInfo.length) {
-		layout = educationInfo.map((item) => {
-			const { universityName, specialization, startDate } = item;
-			return (
-				<Flexbox key={item.id} sx={{ gridGap: '16px' }}>
-					<Box
-						component='img'
-						alt='user-avatar'
-						src='https://via.placeholder.com/50'
-						sx={{ maxWidth: '50px', maxHeight: '50px' }}
-					/>
-					<Box>
-						<Typography variant='body2' sx={{ fontWeight: '800' }}>
-							{universityName}
-						</Typography>
-						<Typography variant='body2'>{specialization}</Typography>
-						<Typography variant='body2'>{startDate?.toString()}</Typography>
-					</Box>
-				</Flexbox>
-			);
-		});
+		layout = (
+			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+				{educationInfo.map((item) => {
+					const { universityName, specialization, startDate } = item;
+					return (
+						<Flexbox key={item.id} sx={{ gridGap: '16px' }}>
+							<Box
+								component='img'
+								alt='user-avatar'
+								src='https://via.placeholder.com/50'
+								sx={{ maxWidth: '50px', maxHeight: '50px' }}
+							/>
+							<Box>
+								<Typography variant='body2' sx={{ fontWeight: '800' }}>
+									{universityName}
+								</Typography>
+								<Typography variant='body2'>{specialization}</Typography>
+								<Typography variant='body2'>{startDate?.toString()}</Typography>
+							</Box>
+						</Flexbox>
+					);
+				})}
+			</Box>
+		);
 	} else {
 		layout = 'N/A';
 	}
@@ -96,17 +105,7 @@ export const UserEducationItem: FC<Props> = ({ data }) => {
 			open={open}
 			handleClose={handleClose}
 			handleOpen={handleOpen}>
-			<>
-				<Flexbox sx={{ gridGap: '16px' }}>
-					<Box
-						component='img'
-						alt='user-avatar'
-						src='https://via.placeholder.com/50'
-						sx={{ maxWidth: '50px', maxHeight: '50px' }}
-					/>
-					{layout}
-				</Flexbox>
-			</>
+			<>{layout}</>
 		</UserCardWrapper>
 	);
 };

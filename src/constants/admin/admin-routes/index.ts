@@ -4,4 +4,5 @@ export enum AdminRoutes {
 	REPORTS = 'reports',
 	INTEGRATIONS = 'integrations',
 	ADD_USER = 'add-user',
+	PROJECTS = 'projects',
 }
