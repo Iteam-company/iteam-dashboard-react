@@ -3,7 +3,7 @@ import { useCreateUserMutation } from '../../../../../../api/user';
 import { useNotifySnackbar } from '../../../../../../hooks/snackbar/use-notify-snackbar';
 import * as Yup from 'yup';
 import { Error as ApiError } from '../../../../../../types/common/api/error';
-import { UserCardWrapper } from '../user-summary/user-card-wrapper';
+import { CardWrapper } from '../user-summary/user-card-wrapper';
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { Box } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
@@ -43,7 +43,7 @@ export const AddUser = () => {
 
 	const { handleSubmit } = formik;
 	return (
-		<UserCardWrapper param={false} title={title}>
+		<CardWrapper param={false} title={title}>
 			<Flexbox
 				justifyContent={'center'}
 				alignItems={'center'}
@@ -81,6 +81,6 @@ export const AddUser = () => {
 					</LoadingButton>
 				</Box>
 			</Flexbox>
-		</UserCardWrapper>
+		</CardWrapper>
 	);
 };

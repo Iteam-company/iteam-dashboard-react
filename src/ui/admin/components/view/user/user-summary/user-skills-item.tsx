@@ -3,7 +3,7 @@ import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
-import { UserCardWrapper } from './user-card-wrapper';
+import { CardWrapper } from './user-card-wrapper';
 import { UserSkillsPatch } from './user-skills-patch';
 import { useUpdateUserMutation } from '../../../../../../api/user';
 
@@ -36,7 +36,7 @@ export const UserSkillsItem: FC<Props> = ({ data }) => {
 		setSelectedTechnologies(value);
 	};
 	return (
-		<UserCardWrapper
+		<CardWrapper
 			title={title}
 			open={open}
 			handleOpen={handleOpen}
@@ -74,6 +74,6 @@ export const UserSkillsItem: FC<Props> = ({ data }) => {
 					/>
 				</Container>
 			</>
-		</UserCardWrapper>
+		</CardWrapper>
 	);
 };

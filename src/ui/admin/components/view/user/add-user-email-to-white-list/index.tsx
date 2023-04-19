@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { useAddEmailToWhiteListMutation } from '../../../../../../api/email';
 import { Box } from '@mui/material';
 import { Flexbox } from '../../../../../components/common/flex-box';
-import { UserCardWrapper } from '../user-summary/user-card-wrapper';
+import { CardWrapper } from '../user-summary/user-card-wrapper';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 const initialValues = {
@@ -40,7 +40,7 @@ export const AddEmailToWhiteList = () => {
 
 	const { handleSubmit } = formik;
 	return (
-		<UserCardWrapper param={false} title={title}>
+		<CardWrapper param={false} title={title}>
 			<Flexbox
 				justifyContent={'center'}
 				alignItems={'center'}
@@ -71,6 +71,6 @@ export const AddEmailToWhiteList = () => {
 					</LoadingButton>
 				</Box>
 			</Flexbox>
-		</UserCardWrapper>
+		</CardWrapper>
 	);
 };

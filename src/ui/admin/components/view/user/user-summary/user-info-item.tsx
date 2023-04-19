@@ -5,7 +5,7 @@ import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { checkVariantOfTag } from '../../../../../utils/object-tag-checker';
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { CheckProps } from '../../../../../../types/ui/check-layout-props';
-import { UserCardWrapper } from './user-card-wrapper';
+import { CardWrapper } from './user-card-wrapper';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
 import { useUpdateUserMutation } from '../../../../../../api/user';
 import { useFormik } from 'formik';
@@ -165,7 +165,7 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 
 	return (
 		<context.Provider value={{ modalArray, formik }}>
-			<UserCardWrapper
+			<CardWrapper
 				modal={<EditModal />}
 				open={open}
 				handleOpen={handleOpen}
@@ -191,7 +191,7 @@ export const UserInfoItem: FC<Props> = ({ data }) => {
 						))}
 					</Box>
 				</Box>
-			</UserCardWrapper>
+			</CardWrapper>
 		</context.Provider>
 	);
 };

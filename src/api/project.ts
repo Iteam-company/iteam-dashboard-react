@@ -10,7 +10,17 @@ export const projectsApiService = baseApiService.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+		patchProject: builder.query<
+			Project,
+			Pick<Project, 'id'> & Partial<Project>
+		>({
+			query: (id, ...patch) => ({
+				url: `${USERS_ENDPOINTS.ALL_PROJECTS}/${id}`,
+				method: 'PATCH',
+				body: patch,
+			}),
+		}),
 	}),
 });
 
-export const { useAllProjectsQuery } = projectsApiService;
+export const { useAllProjectsQuery, usePatchProjectQuery } = projectsApiService;

@@ -14,7 +14,7 @@ type Props = {
 	isLoading?: boolean;
 };
 
-export const UserCardWrapper: React.FC<Props> = memo(
+export const CardWrapper: React.FC<Props> = memo(
 	({
 		children,
 		title,
@@ -54,4 +54,4 @@ export const UserCardWrapper: React.FC<Props> = memo(
 	},
 );
 
-UserCardWrapper.displayName = 'UserCardWrapper';
+CardWrapper.displayName = 'UserCardWrapper';

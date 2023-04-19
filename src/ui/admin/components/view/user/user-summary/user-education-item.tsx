@@ -7,7 +7,7 @@ import { EducationInfo } from '../../../../../../types/common/api/user/education
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
-import { UserCardWrapper } from './user-card-wrapper';
+import { CardWrapper } from './user-card-wrapper';
 import { UserEducationPatch } from './user-education-patch';
 
 type Props = {
@@ -86,7 +86,7 @@ export const UserEducationItem: FC<Props> = ({ data }) => {
 	}
 
 	return (
-		<UserCardWrapper
+		<CardWrapper
 			title={title}
 			modal={
 				<EditModal
@@ -106,6 +106,6 @@ export const UserEducationItem: FC<Props> = ({ data }) => {
 			handleClose={handleClose}
 			handleOpen={handleOpen}>
 			<>{layout}</>
-		</UserCardWrapper>
+		</CardWrapper>
 	);
 };
