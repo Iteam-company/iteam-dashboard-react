@@ -65,14 +65,14 @@ export const UserEducationPatch: FC<Props> = ({
 						if (item.date) {
 							return (
 								<Fragment key={`${item.title}_${index}`}>
-									<Typography>{item.title || 'N/A'}</Typography>
+									<Typography>{item.title}</Typography>
 									<DatePicker value={item.value} onChange={item.onChange} />
 								</Fragment>
 							);
 						}
 						return (
 							<Fragment key={`${item.title}_${index}`}>
-								<Typography>{item.title || 'N/A'}</Typography>
+								<Typography>{item.title}</Typography>
 								<Input
 									key={`${item.title}_${index}`}
 									name={item.title}
