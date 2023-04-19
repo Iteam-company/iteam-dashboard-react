@@ -4,7 +4,7 @@ import { useUpdateUserMutation } from '../../../../../../api/user';
 import { User } from '../../../../../../types/common/api/user';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
-import { UserCardWrapper } from './user-card-wrapper';
+import { CardWrapper } from './user-card-wrapper';
 
 type Props = {
 	data: User;
@@ -30,7 +30,7 @@ export const UserExperienceItem: FC<Props> = ({ data }) => {
 	}, [isSuccess]);
 
 	return (
-		<UserCardWrapper
+		<CardWrapper
 			title={title}
 			modal={
 				<EditModal
@@ -49,6 +49,6 @@ export const UserExperienceItem: FC<Props> = ({ data }) => {
 			handleOpen={handleOpen}
 			handleClose={handleClose}>
 			<Box>{experience}</Box>
-		</UserCardWrapper>
+		</CardWrapper>
 	);
 };

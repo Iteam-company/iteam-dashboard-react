@@ -5,7 +5,7 @@ import {
 	useUploadUserCVMutation,
 } from '../../../../../../api/user';
 import { Skeleton } from '@mui/material';
-import { UserCardWrapper } from './user-card-wrapper';
+import { CardWrapper } from './user-card-wrapper';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
 import { memo, useMemo, useState } from 'react';
 import { FileUpload } from '../../../../../components/common/file-upload';
@@ -44,7 +44,7 @@ export const UserAbout = memo(() => {
 	return (
 		<>
 			{data?.cv ? (
-				<UserCardWrapper
+				<CardWrapper
 					isLoading={isLoading}
 					modal={
 						<EditModal
@@ -65,7 +65,7 @@ export const UserAbout = memo(() => {
 					<>
 						<UserCv cv={data.cv || 'N/A'} />
 					</>
-				</UserCardWrapper>
+				</CardWrapper>
 			) : (
 				<Skeleton />
 			)}

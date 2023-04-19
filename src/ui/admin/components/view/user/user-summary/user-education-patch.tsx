@@ -4,7 +4,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Input } from '../../../../../components/common/input';
 import { Typography } from '@mui/material';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { EducationInfo } from '../../../../../../types/common/api/user/education-info';
 
 type Props = {
@@ -23,48 +23,65 @@ export const UserEducationPatch: FC<Props> = ({
 	handleUnivercityInfo,
 	handleUnivercityDateInfo,
 }) => {
+	const patchModel = [
+		{
+			title: 'Name of University',
+			value: query.universityName,
+			onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+				handleUnivercityInfo(e, 'universityName'),
+		},
+		{
+			title: 'Specialization',
+			value: query.specialization,
+			onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+				handleUnivercityInfo(e, 'specialization'),
+		},
+		{
+			title: 'Pricing model',
+			value: query.pricingModel,
+			onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+				handleUnivercityInfo(e, 'pricingModel'),
+		},
+		{
+			title: 'Start date',
+			value: query.startDate,
+			date: true,
+			onChange: (date: Date | null) =>
+				handleUnivercityDateInfo(date, 'startDate'),
+		},
+		{
+			title: 'End date',
+			value: query.endDate,
+			date: true,
+			onChange: (date: Date | null) =>
+				handleUnivercityDateInfo(date, 'endDate'),
+		},
+	];
 	return (
 		<>
 			<LocalizationProvider dateAdapter={AdapterDayjs}>
 				<DemoContainer components={['DateRangePicker']}>
-					<Typography>Name of University</Typography>
-					<Input
-						name='university name'
-						value={query.universityName}
-						handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-							handleUnivercityInfo(e, 'universityName')
+					{patchModel.map((item, index) => {
+						if (item.date) {
+							return (
+								<Fragment key={`${item.title}_${index}`}>
+									<Typography>{item.title || 'N/A'}</Typography>
+									<DatePicker value={item.value} onChange={item.onChange} />
+								</Fragment>
+							);
 						}
-					/>
-					<Typography>fac</Typography>
-					<Input
-						name='specialization'
-						value={query.specialization}
-						handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-							handleUnivercityInfo(e, 'specialization')
-						}
-					/>
-					<Typography>pricing model</Typography>
-					<Input
-						name='pricing model'
-						value={query.pricingModel}
-						handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-							handleUnivercityInfo(e, 'pricingModel')
-						}
-					/>
-					<Typography>Start Date</Typography>
-					<DatePicker
-						value={query.startDate}
-						onChange={(date: Date | null) =>
-							handleUnivercityDateInfo(date, 'startDate')
-						}
-					/>
-					<Typography>End Date</Typography>
-					<DatePicker
-						value={query.endDate}
-						onChange={(date: Date | null) =>
-							handleUnivercityDateInfo(date, 'endDate')
-						}
-					/>
+						return (
+							<Fragment key={`${item.title}_${index}`}>
+								<Typography>{item.title || 'N/A'}</Typography>
+								<Input
+									key={`${item.title}_${index}`}
+									name={item.title}
+									value={item.value as string}
+									handleChange={item.onChange}
+								/>
+							</Fragment>
+						);
+					})}
 				</DemoContainer>
 			</LocalizationProvider>
 		</>
