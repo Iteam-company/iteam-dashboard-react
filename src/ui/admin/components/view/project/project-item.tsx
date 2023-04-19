@@ -1,5 +1,7 @@
 import { Box } from '@mui/system';
-import { FC, Fragment, useState } from 'react';
+import moment from 'moment';
+import { FC, Fragment, useEffect, useState } from 'react';
+import { usePatchProjectMutation } from '../../../../../api/project';
 import { useGetUserQuery } from '../../../../../api/user';
 import { AdminRoutes } from '../../../../../constants/admin/admin-routes';
 import { Project } from '../../../../../types/common/api/user/project';
@@ -8,16 +10,18 @@ import { EditModal } from '../../../../components/common/modals/edit-user/modal'
 import { objectFieldChecker } from '../../../../utils/object-field-checker';
 import { checkVariantOfTag } from '../../../../utils/object-tag-checker';
 import { CardWrapper } from '../user/user-summary/user-card-wrapper';
+import { ProjectItemPatch } from './project-item-patch';
 
 type Props = {
 	project: Project;
 };
 
-export const UserProject: FC<Props> = ({ project }) => {
+export const ProjectItem: FC<Props> = ({ project }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	const {
+		id,
 		name,
 		attachedAttachments,
 		averageHoursPerMonth,
@@ -25,14 +29,87 @@ export const UserProject: FC<Props> = ({ project }) => {
 		hourlyRate,
 		pricingModel,
 		projectLink,
+		client,
+		status,
+		teamSize,
+		ourCompanyResponsibility,
+		startDate,
+		endDate,
+		endReason,
 		userId,
 	} = objectFieldChecker<Project>(project);
 	const { data } = useGetUserQuery(userId.toString());
+	const [query, setQuery] = useState({
+		id,
+		name,
+		averageHoursPerMonth,
+		description,
+		hourlyRate,
+		pricingModel,
+		projectLink,
+		client,
+		status,
+		teamSize,
+		ourCompanyResponsibility,
+		startDate,
+		endDate,
+		endReason,
+	});
 
+	const [patch, { isSuccess }] = usePatchProjectMutation();
+
+	const onSubmit = () => patch(query);
+
+	useEffect(() => {
+		handleClose();
+	}, [isSuccess]);
+
+	const handleProjectInfo = (
+		event: React.ChangeEvent<HTMLInputElement>,
+		name: keyof Project,
+	) => {
+		setQuery((prev) => ({ ...prev, [name]: event.target.value }));
+	};
+
+	const handleProjectDateInfo = (date: Date | null, name: keyof Project) => {
+		setQuery((prev) => ({
+			...prev,
+			[name]: moment(date).format('DD/MM/YYYY'),
+		}));
+	};
 	const projectArr = [
 		{
 			title: 'description:',
 			value: description,
+		},
+
+		{
+			title: 'start date:',
+			value: startDate,
+		},
+		{
+			title: 'end date:',
+			value: endDate,
+		},
+		{
+			title: 'end reason:',
+			value: endReason as string,
+		},
+		{
+			title: 'responsibity:',
+			value: ourCompanyResponsibility,
+		},
+		{
+			title: 'client:',
+			value: client as string,
+		},
+		{
+			title: 'status:',
+			value: status,
+		},
+		{
+			title: 'team size:',
+			value: teamSize,
 		},
 		{
 			title: 'average hours per month:',
@@ -62,7 +139,20 @@ export const UserProject: FC<Props> = ({ project }) => {
 	return (
 		<CardWrapper
 			title={name}
-			modal={<EditModal />}
+			modal={
+				<EditModal
+					handleSubmit={onSubmit}
+					element={
+						<Box>
+							<ProjectItemPatch
+								query={query}
+								handleProjectInfo={handleProjectInfo}
+								handleProjectDateInfo={handleProjectDateInfo}
+							/>
+						</Box>
+					}
+				/>
+			}
 			open={open}
 			handleOpen={handleOpen}
 			handleClose={handleClose}>

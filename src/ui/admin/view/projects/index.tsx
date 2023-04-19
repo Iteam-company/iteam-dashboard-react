@@ -1,7 +1,7 @@
 import { Box, Card } from '@mui/material';
 import { useAllProjectsQuery } from '../../../../api/project';
 import { Loader } from '../../../components/common/loader';
-import { UserProject } from '../../components/view/project';
+import { ProjectItem } from '../../components/view/project/project-item';
 
 export const Projects = () => {
 	const { data = null, isLoading } = useAllProjectsQuery();
@@ -11,7 +11,7 @@ export const Projects = () => {
 				data.map((item) => (
 					<Box sx={{ p: 2 }} key={item.id}>
 						<Card sx={{ p: 2 }}>
-							<UserProject project={item} />
+							<ProjectItem project={item} />
 						</Card>
 					</Box>
 				))

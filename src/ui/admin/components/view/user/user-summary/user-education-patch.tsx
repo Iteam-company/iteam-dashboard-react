@@ -74,7 +74,6 @@ export const UserEducationPatch: FC<Props> = ({
 							<Fragment key={`${item.title}_${index}`}>
 								<Typography>{item.title}</Typography>
 								<Input
-									key={`${item.title}_${index}`}
 									name={item.title}
 									value={item.value as string}
 									handleChange={item.onChange}

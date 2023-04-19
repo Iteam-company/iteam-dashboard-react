@@ -26,7 +26,7 @@ export const UserSummary = memo(() => {
 
 	return (
 		<>
-			<Box ref={ref}></Box>
+			<Box ref={ref} />
 			<Box
 				sx={{
 					display: 'flex',
