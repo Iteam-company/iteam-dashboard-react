@@ -39,7 +39,7 @@ export const ForgotPassword = memo(() => {
 		}),
 	});
 
-	const { errors, touched, values, handleChange, handleSubmit } = formik;
+	const { handleSubmit } = formik; // was: {errors, touched, values, handleChange}
 	return (
 		<Container component='main' maxWidth='xs'>
 			<Box
