@@ -1,26 +1,13 @@
-import { Typography } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { FC, Fragment } from 'react';
-import { Project } from '../../../../../types/common/api/user/project';
-import { Input } from '../../../../components/common/input';
+import { Fragment, useContext } from 'react';
+import { PatchModele } from '../../layout/patch-modele';
+import { projectContext } from './project-item';
 
-type Props = {
-	query: Partial<Project>;
-	handleProjectInfo: (
-		event: React.ChangeEvent<HTMLInputElement>,
-		name: keyof Project,
-	) => void;
-	handleProjectDateInfo: (date: Date | null, name: keyof Project) => void;
-};
-
-export const ProjectItemPatch: FC<Props> = ({
-	query,
-	handleProjectInfo,
-	handleProjectDateInfo,
-}) => {
+export const ProjectItemPatch = () => {
+	const context = useContext(projectContext);
+	const { query, handleProjectInfo, handleProjectDateInfo } = context ?? {};
 	const {
 		name,
 		description,
@@ -34,7 +21,7 @@ export const ProjectItemPatch: FC<Props> = ({
 		startDate,
 		endDate,
 		endReason,
-	} = query;
+	} = query!;
 
 	const ProjectPatchModel = [
 		{
@@ -104,25 +91,13 @@ export const ProjectItemPatch: FC<Props> = ({
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs}>
 			<DemoContainer components={['DateRangePicker']}>
-				{ProjectPatchModel.map((item, index) => {
-					if (item.date) {
-						return (
-							<Fragment key={`${item.title}_${index}`}>
-								<Typography>{item.title}</Typography>
-								<DatePicker />
-							</Fragment>
-						);
-					}
-
+				{ProjectPatchModel.map((item) => {
 					return (
-						<Fragment key={`${item.title}_${index}`}>
-							<Typography>{item.title}</Typography>
-							<Input
-								name={item.title}
-								value={item.value as string}
-								handleChange={(e) =>
-									handleProjectInfo(e, item.argumentName as keyof Project)
-								}
+						<Fragment key={`${item.title}`}>
+							<PatchModele
+								item={item!}
+								handleInfo={handleProjectInfo!}
+								handleDateInfo={handleProjectDateInfo!}
 							/>
 						</Fragment>
 					);

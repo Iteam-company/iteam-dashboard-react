@@ -1,14 +1,17 @@
 import { Box, Typography } from '@mui/material';
 import moment from 'moment';
-import { FC, Fragment, useEffect, useState } from 'react';
+import { createContext, FC, Fragment, useEffect, useState } from 'react';
 import { useUpdateUserMutation } from '../../../../../../api/user';
 import { User } from '../../../../../../types/common/api/user';
 import { EducationInfo } from '../../../../../../types/common/api/user/education-info';
+import { EducationContext } from '../../../../../../types/common/context/education';
 import { Flexbox } from '../../../../../components/common/flex-box';
 import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { CardWrapper } from './user-card-wrapper';
 import { UserEducationPatch } from './user-education-patch';
+
+export const educationContext = createContext<EducationContext | null>(null);
 
 type Props = {
 	data: User;
@@ -86,26 +89,25 @@ export const UserEducationItem: FC<Props> = ({ data }) => {
 	}
 
 	return (
-		<CardWrapper
-			title={title}
-			modal={
-				<EditModal
-					handleSubmit={onSubmit}
-					element={
-						<Box>
-							<UserEducationPatch
-								query={query}
-								handleUnivercityInfo={handleUnivercityInfo}
-								handleUnivercityDateInfo={handleUnivercityDateInfo}
-							/>
-						</Box>
-					}
-				/>
-			}
-			open={open}
-			handleClose={handleClose}
-			handleOpen={handleOpen}>
-			<>{layout}</>
-		</CardWrapper>
+		<educationContext.Provider
+			value={{ query, handleUnivercityInfo, handleUnivercityDateInfo }}>
+			<CardWrapper
+				title={title}
+				modal={
+					<EditModal
+						handleSubmit={onSubmit}
+						element={
+							<Box>
+								<UserEducationPatch />
+							</Box>
+						}
+					/>
+				}
+				open={open}
+				handleClose={handleClose}
+				handleOpen={handleOpen}>
+				<>{layout}</>
+			</CardWrapper>
+		</educationContext.Provider>
 	);
 };
