@@ -16,7 +16,8 @@ type Props = {
 
 export const TableWrapper: FC<Props> = memo(({ columns, data, reFetching }) => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const [userPerPage, setUsersPerPage] = useState(10);
+
+	const userPerPage = 10;
 	const indexOfLastUser = currentPage * userPerPage;
 	const count = +Math.ceil((data.length ?? 0) / userPerPage);
 
