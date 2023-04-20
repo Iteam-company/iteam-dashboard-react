@@ -1,10 +1,11 @@
 import { Box } from '@mui/system';
 import moment from 'moment';
-import { FC, Fragment, useEffect, useState } from 'react';
+import { createContext, FC, Fragment, useEffect, useState } from 'react';
 import { usePatchProjectMutation } from '../../../../../api/project';
 import { useGetUserQuery } from '../../../../../api/user';
 import { AdminRoutes } from '../../../../../constants/admin/admin-routes';
 import { Project } from '../../../../../types/common/api/user/project';
+import { ProjectContext } from '../../../../../types/common/context/project';
 import { Flexbox } from '../../../../components/common/flex-box';
 import { EditModal } from '../../../../components/common/modals/edit-user/modal';
 import { objectFieldChecker } from '../../../../utils/object-field-checker';
@@ -12,6 +13,7 @@ import { checkVariantOfTag } from '../../../../utils/object-tag-checker';
 import { CardWrapper } from '../user/user-summary/user-card-wrapper';
 import { ProjectItemPatch } from './project-item-patch';
 
+export const projectContext = createContext<ProjectContext | null>(null);
 type Props = {
 	project: Project;
 };
@@ -137,33 +139,32 @@ export const ProjectItem: FC<Props> = ({ project }) => {
 	];
 
 	return (
-		<CardWrapper
-			title={name}
-			modal={
-				<EditModal
-					handleSubmit={onSubmit}
-					element={
-						<Box>
-							<ProjectItemPatch
-								query={query}
-								handleProjectInfo={handleProjectInfo}
-								handleProjectDateInfo={handleProjectDateInfo}
-							/>
-						</Box>
-					}
-				/>
-			}
-			open={open}
-			handleOpen={handleOpen}
-			handleClose={handleClose}>
-			<>
-				{projectArr.map((item, index) => (
-					<Flexbox sx={{ gridGap: '16px' }} key={`${item.title}_${index}`}>
-						<Box>{item.title}</Box>
-						{checkVariantOfTag(item)}
-					</Flexbox>
-				))}
-			</>
-		</CardWrapper>
+		<projectContext.Provider
+			value={{ query, handleProjectInfo, handleProjectDateInfo }}>
+			<CardWrapper
+				title={name}
+				modal={
+					<EditModal
+						handleSubmit={onSubmit}
+						element={
+							<Box>
+								<ProjectItemPatch />
+							</Box>
+						}
+					/>
+				}
+				open={open}
+				handleOpen={handleOpen}
+				handleClose={handleClose}>
+				<>
+					{projectArr.map((item, index) => (
+						<Flexbox sx={{ gridGap: '16px' }} key={`${item.title}_${index}`}>
+							<Box>{item.title}</Box>
+							{checkVariantOfTag(item)}
+						</Flexbox>
+					))}
+				</>
+			</CardWrapper>
+		</projectContext.Provider>
 	);
 };
