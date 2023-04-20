@@ -1,4 +1,4 @@
-import { createTheme, PaletteOptions, Theme } from '@mui/material';
+import { createTheme, Theme } from '@mui/material';
 import { green, purple } from '@mui/material/colors';
 import { ThemeNames } from './theme-names';
 

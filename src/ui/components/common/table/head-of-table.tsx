@@ -11,7 +11,7 @@ export const HeadOfTable: FC<Props> = memo(({ columns = [] }) => {
 	return (
 		<TableHead>
 			<TableRow>
-				{columns.map((column, i) => (
+				{columns.map((column) => (
 					<HeadTableCell key={column.id}>{column.title}</HeadTableCell>
 				))}
 			</TableRow>
