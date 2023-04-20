@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { UserCardWrapper } from './user-card-wrapper';
+import { Skeleton } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { useGetUserQuery } from '../../../../../../api/user';
 import { UserEducationItem } from './user-education-item';
 
 export const UserEducation = () => {
-	const [title] = useState('Education');
-	return (
-		<UserCardWrapper title={title}>
-			<UserEducationItem />
-		</UserCardWrapper>
-	);
+	const { id = null } = useParams();
+	const { data = null } = useGetUserQuery(id);
+	return <>{data ? <UserEducationItem data={data} /> : <Skeleton />}</>;
 };

@@ -54,7 +54,7 @@ export interface User {
 	individualEntrepreneurBankCode: null | number;
 	individualEntrepreneurBeneficiaryBank: null | string;
 	individualEntrepreneurSwiftCode: null | string;
-	workHistory: WorkHistory;
+	workHistory: WorkHistory[];
 	defaultCoverLetter: null | string;
 	createdAt: string;
 	updatedAt: string;

@@ -4,32 +4,54 @@ import { FC, InputHTMLAttributes, memo, PropsWithChildren } from 'react';
 interface InputProps extends PropsWithChildren {
 	type?: InputHTMLAttributes<unknown>['type'];
 	name: string;
-	formik: any;
+	formik?: any;
 	label?: string;
+	formikValue?: string;
+	value?: string;
+	handleChange?: (...args: any) => void;
 }
 
 export const Input: FC<InputProps> = memo((props) => {
-	const { type = 'text', name, formik, label } = props;
-	const { errors, touched, values, handleChange } = formik;
+	const {
+		type = 'text',
+		name,
+		formik,
+		label,
+		formikValue,
+		value,
+		handleChange,
+	} = props;
 
-	if (formik) {
+	if (formik && formikValue) {
+		const { errors, touched, values, handleChange } = formik;
+
 		return (
 			<TextField
 				required
 				fullWidth
 				id={name}
 				label={label}
-				name={name}
+				name={formikValue}
 				autoComplete={name}
-				value={values[name]}
+				value={values[formikValue]}
 				onChange={handleChange}
-				helperText={touched[name] && errors[name]}
-				error={touched[name] && Boolean(errors[name])}
+				helperText={touched[formikValue] && errors[formikValue]}
+				error={touched[formikValue] && Boolean(errors[formikValue])}
 			/>
 		);
 	}
 
-	return <TextField fullWidth name={name} label={name} type={type} id={name} />;
+	return (
+		<TextField
+			fullWidth
+			name={name}
+			label={name}
+			type={type}
+			id={name}
+			value={value}
+			onChange={handleChange}
+		/>
+	);
 });
 
 Input.displayName = 'Input';

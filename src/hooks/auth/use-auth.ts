@@ -19,7 +19,7 @@ export const useAuth = () => {
 	const signOut = useCallback(async () => {
 		if (!isAuthorized) {
 			try {
-				await logout(null);
+				await logout();
 			} catch (error) {
 				console.log(JSON.stringify(error, null, 2));
 			} finally {

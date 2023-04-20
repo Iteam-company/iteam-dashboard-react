@@ -5,21 +5,20 @@ import { Cv } from '../../../../types/common/api/user/cv';
 import { ButtonFileDownload } from '../buttons/file-download';
 
 type Props = {
-	cv: Cv | null;
+	cv?: Cv | string;
 };
 
-export const UserCv: FC<Props> = ({ cv }) => {
-	const { originalName, fileUrl } = cv || {};
+export const UserCv: FC<Props> = ({ cv = 'N/A' }) => {
 	return (
 		<>
-			{cv ? (
-				<ButtonFileDownload originalName={originalName} fileUrl={fileUrl}>
+			{typeof cv === 'string' ? (
+				cv 
+			) : (
+				<ButtonFileDownload originalName={cv.originalName} fileUrl={cv.fileUrl}>
 					<BoxEllipsis width='80px'>
 						<Link noWrap>{cv.originalName}</Link>
 					</BoxEllipsis>
 				</ButtonFileDownload>
-			) : (
-				'N/A'
 			)}
 		</>
 	);
