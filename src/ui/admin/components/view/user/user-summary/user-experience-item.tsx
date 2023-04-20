@@ -1,55 +1,54 @@
-import { Box, Typography } from '@mui/material';
-import { Flexbox } from '../../../../../components/common/flex-box';
+import { Box, TextareaAutosize } from '@mui/material';
+import { FC, useCallback, useEffect, useState } from 'react';
+import { useUpdateUserMutation } from '../../../../../../api/user';
+import { User } from '../../../../../../types/common/api/user';
+import { EditModal } from '../../../../../components/common/modals/edit-user/modal';
+import { objectFieldChecker } from '../../../../../utils/object-field-checker';
+import { CardWrapper } from './user-card-wrapper';
 
-export const UserExperienceItem = () => {
+type Props = {
+	data: User;
+};
+
+export const UserExperienceItem: FC<Props> = ({ data }) => {
+	const { experience, id } = objectFieldChecker<User>(data);
+	const title = 'Experience';
+	const [query, setQuery] = useState(experience as string);
+	const [open, setOpen] = useState(false);
+	const [update, { isSuccess, isLoading }] = useUpdateUserMutation();
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
+	const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setQuery(event.target.value);
+	};
+	const handleSubmit = useCallback(() => {
+		update({ id: +id!, experience: query });
+	}, [id, isSuccess, isLoading, query]);
+
+	useEffect(() => {
+		isSuccess && setOpen(false);
+	}, [isSuccess]);
+
 	return (
-		<Flexbox>
-			<Box
-				component='img'
-				alt='user-avatar'
-				src='https://via.placeholder.com/50'
-				sx={{ mr: 2, maxWidth: '50px', maxHeight: '50px' }}
-			/>
-			<Box sx={{ width: '100%' }}>
-				<Typography
-					variant='subtitle1'
-					sx={{
-						fontWeight: '800',
-						lineHeight: '120%',
-					}}>
-					Full-Stack Developer
-				</Typography>
-				<Box
-					sx={{
-						color: '#424242',
-					}}>
-					<Typography variant='body2'>Upwork Freelance</Typography>
-					<Typography variant='body2'>Apr 2019 - Presen 3 yrs 7 mos</Typography>
-					<Box
-						sx={{
-							mb: 2,
-						}}>
-						Ukraine
-					</Box>
-					<Flexbox>
-						<Box sx={{ mb: 2 }}>
-							<Typography variant='body2'>
-								Project: Smartannie (litesite.com)
-							</Typography>
-							<Typography variant='body2'>
-								Business management tool for interaction with customers and
-								clients
-							</Typography>
-						</Box>
-						<Typography sx={{ ml: 5, cursor: 'pointer' }}>
-							see more...
-						</Typography>
-					</Flexbox>
-					<Typography variant='body2'>
-						Skills: React.js, JS, TS, Npm, Angular, Rxjs
-					</Typography>
-				</Box>
-			</Box>
-		</Flexbox>
+		<CardWrapper
+			title={title}
+			modal={
+				<EditModal
+					isLoading={isLoading}
+					element={
+						<TextareaAutosize
+							minRows='10'
+							value={query}
+							onChange={handleChange}></TextareaAutosize>
+					}
+					text={'add experience'}
+					handleSubmit={handleSubmit!}
+				/>
+			}
+			open={open}
+			handleOpen={handleOpen}
+			handleClose={handleClose}>
+			<Box>{experience}</Box>
+		</CardWrapper>
 	);
 };

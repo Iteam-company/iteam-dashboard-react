@@ -11,10 +11,11 @@ import Container from '@mui/material/Container';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSignUpMutation } from '../../../api/auth';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { CommontRoutes } from '../../../constants/common/routes/common-routes';
 import { Input } from '../../components/common/input';
 import { Button } from '@mui/material';
+import { useNotifySnackbar } from '../../../hooks/snackbar/use-notify-snackbar';
 
 const initialValues = {
 	email: '',
@@ -22,6 +23,8 @@ const initialValues = {
 };
 
 export const SignUp = memo(() => {
+	const navigate = useNavigate();
+	const { showSnackbar } = useNotifySnackbar();
 	const [
 		registration /*{ isLoading: isSignUpLoading, isError: isSignUpError }*/,
 	] = useSignUpMutation();
@@ -34,7 +37,7 @@ export const SignUp = memo(() => {
 					email,
 					password,
 				}).unwrap();
-				console.log(response);
+				showSnackbar('success', 'success');
 			} catch (error) {
 				alert(JSON.stringify(data, null, 2));
 			}
@@ -80,6 +83,7 @@ export const SignUp = memo(() => {
 								name='email'
 								formik={formik}
 								label='Email Address'
+								formikValue={'email'}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -87,6 +91,7 @@ export const SignUp = memo(() => {
 								type='password'
 								name='password'
 								label='Password'
+								formikValue={'password'}
 								formik={formik}
 							/>
 						</Grid>

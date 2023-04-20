@@ -1,4 +1,4 @@
-import { SxProps, Theme } from "@mui/system";
+import { SxProps, Theme } from '@mui/system';
 
 export const style: SxProps<Theme> = {
 	position: 'absolute' as const,
@@ -13,5 +13,6 @@ export const style: SxProps<Theme> = {
 	flexDirection: 'column',
 	gap: '20px',
 	outline: 'none',
-	overflow: 'hidden',
+	overflowY: 'auto',
+	maxHeight: '80vh',
 };

@@ -5,7 +5,6 @@ import { useMemo } from 'react';
 export const useHelmet = () => {
 	const location = useLocation();
 	const { pathname } = location;
-
 	const appBarTitle = useMemo(
 		() =>
 			pathname
@@ -16,10 +15,10 @@ export const useHelmet = () => {
 						accumulator + ' ' + next.slice(0, 1).toUpperCase() + next.slice(1)
 					);
 				}, '')
-				.trim() || 'Dashboard',
+				.trim()
+				.replace('Adduser', 'Add user') || 'Dashboard',
 		[pathname],
 	);
-
 	return {
 		helmet: <Helmet title={appBarTitle} />,
 		appBarTitle,

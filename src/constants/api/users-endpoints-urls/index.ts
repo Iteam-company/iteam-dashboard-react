@@ -8,4 +8,5 @@ export enum USERS_ENDPOINTS {
 	EDUCATIONINFO = '/education-info',
 	WORKHISTORYINFO = '/work-history-info',
 	CV = '/cv',
+	ALL_PROJECTS = '/projects',
 }
