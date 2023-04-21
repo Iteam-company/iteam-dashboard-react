@@ -1,4 +1,5 @@
 import { USERS_ENDPOINTS } from '../constants/api/users-endpoints-urls';
+import { ProjectCreate } from '../types/common/api/project/create';
 import { Project } from '../types/common/api/user/project';
 import { baseApiService } from './base-query';
 
@@ -9,6 +10,15 @@ export const projectsApiService = baseApiService.injectEndpoints({
 				url: `${USERS_ENDPOINTS.ALL_PROJECTS}`,
 				method: 'GET',
 			}),
+			providesTags: (result) => (result ? ['Projects'] : []),
+		}),
+		createProject: builder.mutation<Project, ProjectCreate>({
+			query: (param: ProjectCreate) => ({
+				url: `${USERS_ENDPOINTS.ALL_PROJECTS}`,
+				method: 'POST',
+				body: param,
+			}),
+			invalidatesTags: ['Projects'],
 		}),
 		patchProject: builder.mutation<
 			Project,
@@ -19,8 +29,13 @@ export const projectsApiService = baseApiService.injectEndpoints({
 				method: 'PATCH',
 				body: patch,
 			}),
+			invalidatesTags: ['Projects'],
 		}),
 	}),
 });
 
-export const { useAllProjectsQuery, usePatchProjectMutation } = projectsApiService;
+export const {
+	useAllProjectsQuery,
+	usePatchProjectMutation,
+	useCreateProjectMutation,
+} = projectsApiService;

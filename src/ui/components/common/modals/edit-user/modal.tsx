@@ -6,6 +6,7 @@ import { LoadingButton } from '@mui/lab';
 import CloseIcon from '@mui/icons-material/Close';
 import { Input } from '../../input';
 import { context } from '../../../../admin/components/view/user/user-summary/user-info-item';
+import { projectContext } from '../../../../admin/view/projects';
 
 type Props = {
 	open?: boolean;
@@ -24,7 +25,7 @@ export const EditModal: FC<Props> = ({
 	element,
 	handleSubmit,
 }) => {
-	const values = useContext(context);
+	const values = useContext(context) || useContext(projectContext);
 	const submit = values ? values.formik.handleSubmit : null;
 	return (
 		<>
