@@ -1,5 +1,5 @@
 import { Box, Tooltip } from '@mui/material';
-import { cloneElement, FC, ReactElement, useState } from 'react';
+import { cloneElement, FC, ReactElement, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../../../../../types/common/api/user';
 
@@ -24,6 +24,7 @@ export const SettingsButton: FC<Props> = ({ user, modal, icon, text }) => {
 	const handleClose = () => {
 		setOpen(false);
 	};
+
 	return (
 		<>
 			<Box sx={{ cursor: 'pointer' }} onClick={handleOpen}>
