@@ -1,11 +1,10 @@
-import { Box, Card } from '@mui/material';
+import { Box } from '@mui/material';
 import {
 	useAllProjectsQuery,
 	useCreateProjectMutation,
 } from '../../../../api/project';
 import { Loader } from '../../../components/common/loader';
 import { ViewDefaultPage } from '../../../components/common/view-default-page';
-import { ProjectItem } from '../../components/view/project/project-item';
 import { createContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -13,6 +12,7 @@ import { Error as ApiError } from '../../../../types/common/api/error';
 import { ProjectCreateContext } from '../../../../types/common/context/project/create';
 import { useNotifySnackbar } from '../../../../hooks/snackbar/use-notify-snackbar';
 import { AddProject } from '../../components/view/project/add-project';
+import { ProjectSubview } from '../../components/view/project/project-subview';
 
 export const projectContext = createContext<ProjectCreateContext | null>(null);
 const initialValues = {
@@ -69,13 +69,7 @@ export const Projects = () => {
 						/>
 					}>
 					{data ? (
-						data.map((item) => (
-							<Box sx={{ mt: '16px' }} key={item.id}>
-								<Card sx={{ p: 2 }}>
-									<ProjectItem project={item} />
-								</Card>
-							</Box>
-						))
+						<ProjectSubview data={data} />
 					) : (
 						<Loader isLoading={isLoading} />
 					)}
