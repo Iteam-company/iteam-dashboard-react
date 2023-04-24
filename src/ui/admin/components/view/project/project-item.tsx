@@ -15,7 +15,7 @@ import { ProjectItemPatch } from './project-item-patch';
 
 export const projectContext = createContext<ProjectContext | null>(null);
 type Props = {
-	project: Project;
+	project?: Project;
 };
 
 export const ProjectItem: FC<Props> = ({ project }) => {
@@ -39,7 +39,7 @@ export const ProjectItem: FC<Props> = ({ project }) => {
 		endDate,
 		endReason,
 		userId,
-	} = objectFieldChecker<Project>(project);
+	} = objectFieldChecker<Project>(project!);
 	const { data } = useGetUserQuery(userId.toString());
 	const [query, setQuery] = useState({
 		id,

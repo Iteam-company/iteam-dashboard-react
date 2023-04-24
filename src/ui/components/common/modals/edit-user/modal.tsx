@@ -7,6 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Input } from '../../input';
 import { context } from '../../../../admin/components/view/user/user-summary/user-info-item';
 import { projectContext } from '../../../../admin/view/projects';
+import { userBankInfoContext } from '../../../../admin/components/view/user/user-summary/user-financial-details-item';
 
 type Props = {
 	open?: boolean;
@@ -25,7 +26,10 @@ export const EditModal: FC<Props> = ({
 	element,
 	handleSubmit,
 }) => {
-	const values = useContext(context) || useContext(projectContext);
+	const values =
+		useContext(context) ||
+		useContext(projectContext) ||
+		useContext(userBankInfoContext);
 	const submit = values ? values.formik.handleSubmit : null;
 	return (
 		<>
@@ -38,7 +42,7 @@ export const EditModal: FC<Props> = ({
 					{element && element}
 					{values?.modalArray
 						? values.modalArray.map((item, index) => (
-							<Fragment key={`${item}_${index}`}>
+							 <Fragment key={`${item}_${index}`}>
 								<Input
 									name={item.title}
 									formikValue={item.formikValue}
