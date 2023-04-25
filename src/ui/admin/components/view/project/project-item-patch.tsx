@@ -8,6 +8,7 @@ import { projectContext } from './project-item';
 export const ProjectItemPatch = () => {
 	const context = useContext(projectContext);
 	const { query, handleProjectInfo, handleProjectDateInfo } = context ?? {};
+	
 	const {
 		name,
 		description,

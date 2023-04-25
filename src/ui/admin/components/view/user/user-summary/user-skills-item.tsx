@@ -4,7 +4,7 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { User } from '../../../../../../types/common/api/user';
 import { objectFieldChecker } from '../../../../../utils/object-field-checker';
 import { CardWrapper } from './user-card-wrapper';
-import { UserSkillsPatch } from './user-skills-patch';
+import { UpdateInfoPatch } from './user-skills-patch';
 import { useUpdateUserMutation } from '../../../../../../api/user';
 
 type Props = {
@@ -44,7 +44,7 @@ export const UserSkillsItem: FC<Props> = ({ data }) => {
 			<>
 				<Typography>
 					{open ? (
-						<UserSkillsPatch
+						<UpdateInfoPatch
 							handleTechnologiesChange={handleTechnologiesChange}
 							selectedTechnologies={selectedTechnologies}
 							onSubmit={onSubmit}

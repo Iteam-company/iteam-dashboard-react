@@ -1,7 +1,9 @@
 import { Box } from '@mui/system';
 import moment from 'moment';
 import { createContext, FC, Fragment, useEffect, useState } from 'react';
-import { usePatchProjectMutation } from '../../../../../api/project';
+import {
+	usePatchProjectMutation,
+} from '../../../../../api/project';
 import { useGetUserQuery } from '../../../../../api/user';
 import { AdminRoutes } from '../../../../../constants/admin/admin-routes';
 import { Project } from '../../../../../types/common/api/user/project';
@@ -22,6 +24,7 @@ export const ProjectItem: FC<Props> = ({ project }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+
 	const {
 		id,
 		name,

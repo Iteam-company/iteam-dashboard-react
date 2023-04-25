@@ -4,6 +4,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import React, { ChangeEvent, FC } from 'react';
 import { Button } from '@mui/material';
 import { Flexbox } from '../../../../../components/common/flex-box';
+import { User } from '../../../../../../types/common/api/user';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
 const checkedIcon = <CheckBoxIcon fontSize='small' />;
@@ -16,7 +17,7 @@ type Props = {
 	selectedTechnologies: Array<string>;
 	onSubmit: () => void;
 };
-export const UserSkillsPatch: FC<Props> = ({
+export const UpdateInfoPatch: FC<Props> = ({
 	handleTechnologiesChange,
 	selectedTechnologies,
 	onSubmit,
