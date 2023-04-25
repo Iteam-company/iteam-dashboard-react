@@ -1,4 +1,4 @@
-import { Project } from '../api/user/project';
+import { Project } from '../../api/user/project';
 
 export interface ProjectContext {
 	query: Partial<Project>;

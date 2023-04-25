@@ -3,7 +3,7 @@ import { FC, InputHTMLAttributes, memo, PropsWithChildren } from 'react';
 
 interface InputProps extends PropsWithChildren {
 	type?: InputHTMLAttributes<unknown>['type'];
-	name: string;
+	name?: string;
 	formik?: any;
 	label?: string;
 	formikValue?: string;
