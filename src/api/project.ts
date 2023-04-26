@@ -20,6 +20,13 @@ export const projectsApiService = baseApiService.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+		deleteProject: builder.mutation<void, string | null>({
+			query: (id) => ({
+				url: `${PROJECT_ENDPOINTS.ALL_PROJECTS}/${id}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: ['Projects'],
+		}),
 		createProject: builder.mutation<Project, ProjectCreate>({
 			query: (param: ProjectCreate) => ({
 				url: `${PROJECT_ENDPOINTS.ALL_PROJECTS}`,
@@ -71,4 +78,5 @@ export const {
 	useAssignClientOfProjectMutation,
 	useAssignLeadOfProjectMutation,
 	useGetProjectByIdQuery,
+	useDeleteProjectMutation,
 } = projectsApiService;
