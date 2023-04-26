@@ -22,7 +22,7 @@ const initialValues = {
 	description: '',
 };
 export const Projects = () => {
-	const { data = null, isLoading } = useAllProjectsQuery();
+	const { data = null, isLoading, isFetching } = useAllProjectsQuery();
 	const [open, setOpen] = useState(false);
 	const handleClose = () => setOpen(false);
 	const handleOpen = () => setOpen(true);
@@ -80,6 +80,9 @@ export const Projects = () => {
 		},
 	];
 
+	if (isFetching) {
+		return <Loader isLoading={isFetching} />;
+	}
 	return (
 		<projectContext.Provider value={{ modalArray, formik }}>
 			<Box sx={{ p: 2 }}>

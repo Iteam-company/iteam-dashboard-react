@@ -2,6 +2,7 @@ import { Box } from '@mui/system';
 import moment from 'moment';
 import { createContext, FC, Fragment, useEffect, useState } from 'react';
 import {
+	useDeleteProjectMutation,
 	usePatchProjectMutation,
 } from '../../../../../api/project';
 import { useGetUserQuery } from '../../../../../api/user';
@@ -14,21 +15,26 @@ import { objectFieldChecker } from '../../../../utils/object-field-checker';
 import { checkVariantOfTag } from '../../../../utils/object-tag-checker';
 import { CardWrapper } from '../user/user-summary/user-card-wrapper';
 import { ProjectItemPatch } from './project-item-patch';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export const projectContext = createContext<ProjectContext | null>(null);
 type Props = {
-	project?: Project;
+	project: Project;
 };
 
 export const ProjectItem: FC<Props> = ({ project }) => {
 	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
+	const handleOpen = () => {
+		setOpen(true);
+	};
+	const handleClose = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		setOpen(false);
+	};
 
 	const {
 		id,
 		name,
-		attachedAttachments,
 		averageHoursPerMonth,
 		description,
 		hourlyRate,
@@ -42,8 +48,13 @@ export const ProjectItem: FC<Props> = ({ project }) => {
 		endDate,
 		endReason,
 		userId,
-	} = objectFieldChecker<Project>(project!);
-	const { data } = useGetUserQuery(userId.toString());
+	} = objectFieldChecker<Project>(project);
+	const [deleteProject] = useDeleteProjectMutation();
+	const handleDeleteProject = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		deleteProject(id.toString());
+	};
+	const { data } = useGetUserQuery(userId ? userId.toString() : null);
 	const [query, setQuery] = useState({
 		id,
 		name,
@@ -66,7 +77,7 @@ export const ProjectItem: FC<Props> = ({ project }) => {
 	const onSubmit = () => patch(query);
 
 	useEffect(() => {
-		handleClose();
+		(e: React.MouseEvent) => handleClose(e);
 	}, [isSuccess]);
 
 	const handleProjectInfo = (
@@ -146,6 +157,8 @@ export const ProjectItem: FC<Props> = ({ project }) => {
 			value={{ query, handleProjectInfo, handleProjectDateInfo }}>
 			<CardWrapper
 				title={name}
+				icon={<DeleteOutlineIcon />}
+				handleAnotherFunc={handleDeleteProject}
 				modal={
 					<EditModal
 						handleSubmit={onSubmit}

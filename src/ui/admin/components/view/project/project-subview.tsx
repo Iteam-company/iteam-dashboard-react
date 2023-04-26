@@ -1,5 +1,6 @@
 import { Box, Card, Pagination } from '@mui/material';
 import { ChangeEvent, FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Project } from '../../../../../types/common/api/user/project';
 import { Flexbox } from '../../../../components/common/flex-box';
 import { ProjectItem } from './project-item';
@@ -10,6 +11,7 @@ type Props = {
 
 export const ProjectSubview: FC<Props> = ({ data }) => {
 	const [currentPage, setCurrentPage] = useState(1);
+	const navigate = useNavigate();
 
 	const projectPerPage = 4;
 	const indexOfLastProject = currentPage * projectPerPage;
@@ -31,7 +33,9 @@ export const ProjectSubview: FC<Props> = ({ data }) => {
 			}}>
 			{currentProjects.map((item) => (
 				<Box sx={{ mt: '16px' }} key={item.id}>
-					<Card sx={{ p: 2 }}>
+					<Card
+						sx={{ p: 2, cursor: 'pointer' }}
+						onClick={() => navigate(`${item.id}`)}>
 						<ProjectItem project={item} />
 					</Card>
 				</Box>
