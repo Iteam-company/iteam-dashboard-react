@@ -1,6 +1,6 @@
 import { ModalArrayForProject } from '../../api/project/modal-array-for-project';
 
 export interface ProjectCreateContext {
-	modalArray: ModalArrayForProject[];
+	modalArray?: ModalArrayForProject[];
 	formik: any;
 }

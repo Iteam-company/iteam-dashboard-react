@@ -43,7 +43,7 @@ export const EditModal: FC<Props> = ({
 					onClick={(e: React.MouseEvent) => {
 						e.stopPropagation();
 					}}>
-					{element && element}
+					{element ?? element}
 					{values?.modalArray
 						? values.modalArray.map((item, index) => (
 							<Fragment key={`${item}_${index}`}>
