@@ -69,22 +69,12 @@ export const Projects = () => {
 			);
 		});
 	}, [data, debouncedQuery]);
-	const modalArray = [
-		{
-			title: 'name',
-			formikValue: 'name',
-		},
-		{
-			title: 'description',
-			formikValue: 'description',
-		},
-	];
 
 	if (isFetching) {
 		return <Loader isLoading={isFetching} />;
 	}
 	return (
-		<projectContext.Provider value={{ modalArray, formik }}>
+		<projectContext.Provider value={{ formik }}>
 			<Box sx={{ p: 2 }}>
 				<ViewDefaultPage
 					ButtonWithSelectActions={
