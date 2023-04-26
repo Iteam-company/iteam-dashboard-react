@@ -38,11 +38,15 @@ export const EditModal: FC<Props> = ({
 				onClose={handleClose}
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'>
-				<Box sx={style}>
+				<Box
+					sx={style}
+					onClick={(e: React.MouseEvent) => {
+						e.stopPropagation();
+					}}>
 					{element && element}
 					{values?.modalArray
 						? values.modalArray.map((item, index) => (
-							 <Fragment key={`${item}_${index}`}>
+							<Fragment key={`${item}_${index}`}>
 								<Input
 									name={item.title}
 									formikValue={item.formikValue}
