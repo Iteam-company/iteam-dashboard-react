@@ -1,17 +1,20 @@
 import { Box, Typography } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import { cloneElement, memo } from 'react';
+import React, { cloneElement, Fragment, memo } from 'react';
+import { Flexbox } from '../../../../../components/common/flex-box';
 
 type Props = {
 	children?: JSX.Element;
 	title?: string;
 	param?: boolean;
 	modal?: JSX.Element;
-	handleOpen?: () => void;
-	handleClose?: () => void;
+	handleOpen?: (e: React.MouseEvent) => void;
+	handleClose?: (e: React.MouseEvent) => void;
 	open?: boolean;
 	isLoading?: boolean;
+	icon?: JSX.Element;
+	handleAnotherFunc?: (e: React.MouseEvent) => void;
 };
 
 export const CardWrapper: React.FC<Props> = memo(
@@ -24,7 +27,17 @@ export const CardWrapper: React.FC<Props> = memo(
 		handleClose,
 		open,
 		isLoading,
+		icon = <AddOutlinedIcon />,
+		handleAnotherFunc,
 	}) => {
+		const openModal = (e: React.MouseEvent) => {
+			if (handleOpen) {
+				e.stopPropagation();
+				handleOpen(e);
+			}
+
+			return;
+		};
 		return (
 			<>
 				<Box
@@ -37,13 +50,14 @@ export const CardWrapper: React.FC<Props> = memo(
 						{title}
 					</Typography>
 					{param && (
-						<Box>
-							<AddOutlinedIcon sx={{ mr: 3, cursor: 'pointer' }} />
+						<Flexbox gridGap='16px' justifyContent='center'>
+							<Box onClick={handleAnotherFunc}>{icon}</Box>
+
 							<CreateOutlinedIcon
+								onClick={(e) => openModal(e)}
 								sx={{ cursor: 'pointer' }}
-								onClick={handleOpen}
 							/>
-						</Box>
+						</Flexbox>
 					)}
 				</Box>
 				{children}

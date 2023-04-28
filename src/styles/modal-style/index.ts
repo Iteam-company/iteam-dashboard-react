@@ -15,4 +15,5 @@ export const style: SxProps<Theme> = {
 	outline: 'none',
 	overflowY: 'auto',
 	maxHeight: '80vh',
+	zIndex: '1',
 };
