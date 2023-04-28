@@ -43,7 +43,7 @@ export const TableWrapper: FC<Props> = memo(({ columns, data, reFetching }) => {
 				</Table>
 			</Box>
 
-			<Flexbox justifyContent={'center'} alignItems={'center'}>
+			<Flexbox justifyContent='center' alignItems='center'>
 				<Pagination
 					shape='rounded'
 					variant='outlined'

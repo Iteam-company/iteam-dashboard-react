@@ -11,7 +11,7 @@ import { useUpdateUserMutation } from '../../../../../../api/user';
 import { useFormik } from 'formik';
 import { Error as ApiError } from '../../../../../../types/common/api/error';
 import { useNotifySnackbar } from '../../../../../../hooks/snackbar/use-notify-snackbar';
-import { UserInfoContext } from '../../../../../../types/common/context/user-info';
+import { UserUpdateContext } from '../../../../../../types/common/context/user-info';
 import { UserProps } from '../../../../../../types/admin/edit-user';
 import { userInfoCustomValidationSchema } from '../../../../utils/custom-validation.ts/user-info';
 
@@ -19,7 +19,7 @@ type Props = {
 	data: User;
 };
 
-export const context = createContext<UserInfoContext | null>(null);
+export const context = createContext<UserUpdateContext | null>(null);
 export const UserInfoItem: FC<Props> = ({ data }) => {
 	const {
 		name,

@@ -1,6 +1,6 @@
 import { UserProps } from '../../admin/edit-user';
 
-export interface UserInfoContext {
+export interface UserUpdateContext {
 	modalArray: UserProps[] | null;
 	formik: any;
 }

@@ -12,6 +12,7 @@ import { commonRoutesSchema } from '../../common/routes/routes-schemas/common-ro
 import { AddUserWrapper } from '../../../ui/admin/view/user/subviews/add-user-wrapper';
 import { Projects } from '../../../ui/admin/view/projects';
 import { Orders } from '../../../ui/components/common/mocked/orders';
+import { ProjectWrapper } from '../../../ui/admin/view/project/wrapper';
 
 export const adminRoutesSchema: RouteObject = {
 	path: CommontRoutes.ROOT_PATH,
@@ -53,6 +54,10 @@ export const adminRoutesSchema: RouteObject = {
 		{
 			path: AdminRoutes.PROJECTS,
 			element: <Projects />,
+		},
+		{
+			path: `${AdminRoutes.PROJECTS}/:id`,
+			element: <ProjectWrapper />,
 		},
 	],
 };
